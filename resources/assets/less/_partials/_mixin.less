@@ -1,0 +1,21 @@
+@padding: left, right;
+
+//ASSIGN NO-PADDING TO LEFT AND RIGHT
+.padding(@counter,@padding) when (@counter>0) {
+  @name: extract(@padding, @counter);
+  .no-padding-@{name} {
+    padding-@{name}: 0;
+  }
+  .padding((@counter)-1,@padding);
+}
+
+//WHEN PADDING ZERO ASSIGN PADDING TO ZERO
+.padding(@counter,@padding) when (@counter<=0) {
+  .no-padding{
+    padding:0;
+  }
+}
+
+.padding(2,@padding);
+
+
