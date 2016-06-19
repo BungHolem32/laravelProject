@@ -25,7 +25,7 @@ Route::group(['prefix' => 'products'], function () {
 });
 
 
-Route::group(['prefix'=>''],function(){
+Route::group(['prefix'=>'admin'],function(){
 
     Route::get('/',['as'=>'routes-login','uses'=>'AdminController@index' ]);
     Route::post('/',['as'=>'routes-request','uses'=>'AdminController@login']);

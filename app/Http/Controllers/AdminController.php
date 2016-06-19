@@ -11,6 +11,6 @@ class AdminController extends BaseController
 {
     protected function index()
     {
-        return view('pages.admin.index');
+        return view('_pages.admin.login.index');
     }
 }
