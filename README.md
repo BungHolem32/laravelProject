@@ -1,2 +1,0 @@
-# laravelProject
-LaravelProject
