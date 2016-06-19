@@ -9,7 +9,6 @@
 namespace App\Http\Models;
 
 
-use Illuminate\Database\Eloquent\Model as BaseModel;
 use Illuminate\Support\Facades\DB;
 
 

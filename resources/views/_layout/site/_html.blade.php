@@ -3,7 +3,7 @@
 <head>
 
     {{--HEADER --}}
-    @include('_layout.pages._head')
+    @include('_layout.site._head')
 
     {{--TITLE PAGE--}}
     <title>
@@ -45,7 +45,7 @@
 
     {{--FOOTER--}}
     <footer class="footer-part-wrapper container">
-        @include('_layout.pages._footer')
+        @include('_layout.site._footer')
     </footer>
 
 
