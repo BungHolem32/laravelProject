@@ -20,6 +20,6 @@ class AdminModel extends BaseModel
 
     public function check_email($email = null)
     {
-        $this->db->select('select * from users where email = ? ',[$email]);
+        
     }
 }
