@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    @include('_layout.cms.head')
+    @include('_layout.cms._head')
     @include('_layout.cms._top-script')
     @stack('top-script')
 </head>
@@ -11,7 +11,7 @@
 </header>
 
 <nav class="cms-navigation">
-    @include('_partials._nav-bar')
+    @section('nav-bar') @show
 </nav>
 
 <main class="cms-content">

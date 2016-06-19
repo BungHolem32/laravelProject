@@ -3,3 +3,9 @@ storage
 tests
 node_modules
 .idea
+.idea/copyright/
+.idea/laravelProject.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+npm-debug.log
