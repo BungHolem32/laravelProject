@@ -1,9 +1,9 @@
-<?php $__env->startSection('title','Product Page'); ?>
+@extends('_layout._pages.about.index')
+@section('title','About Page')
 
+@section('content')
 
-<?php $__env->startSection('content'); ?>
-
-    <section class="products-page">
+    <section class="about-page">
         <header class="title">
             <h2>about title</h2>
         </header>
@@ -17,7 +17,4 @@
     </section>
 
 
-<?php $__env->stopSection(); ?>
-
-
-<?php echo $__env->make('_layout._html', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+@stop

@@ -1,4 +1,4 @@
-@extends('_layout._html')
+@extends('_layout.pages._html')
 @section('title','Home Page')
 
 

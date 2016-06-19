@@ -11,6 +11,6 @@ use App\Http\Requests;
 class AboutController extends BaseController
 {
     public function index(){
-        return view('_pages.about');
+        return view('_pages.about.index');
     }
 }

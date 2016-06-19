@@ -13,19 +13,22 @@ class ProductsController extends BaseController
 {
     protected $products = null;
 
-    public function index()
+    public function __construct()
     {
-        $this->model = new ProductModel();
-        return view('_pages.products');
+        $this->model = new ProductsModel();
+        return view('_pages.products.index');
     }
 
 
     public function getProducts()
     {
-        $this->products = new ProductsModel();
-        print_r(DB::select('select * from ilanbase_products'));
-        
+        $products = $this->model->getProducts();
+        return view('_pages.products.index')->with('products',$products);
+    }
 
-        return view('_pages.products');
+    public function getProduct($id){
+        $product  = null;
+        $product = $this->model->getProduct($id);
+        return view('_pages.products.index')->with('product',$product);
     }
 }

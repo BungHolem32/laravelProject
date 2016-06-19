@@ -6758,3 +6758,8 @@ body .nav-bar-wrapper .nav-bar-li-element:hover a {
   color: darkblue;
   text-decoration: none;
 }
+body .main-content .products-page-wrapper .product {
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px 20px;
+}

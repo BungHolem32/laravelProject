@@ -10,6 +10,7 @@ namespace App\Http\Models;
 
 
 use Illuminate\Database\Eloquent\Model as BaseModel;
+use Illuminate\Support\Facades\DB;
 
 
 class ProductsModel extends BaseModel
@@ -19,5 +20,22 @@ class ProductsModel extends BaseModel
         parent::__construct();
     }
 
+    public function getProducts()
+    {
+        $products = null;
+        $products = DB::select('select * from ilanbase_products');
 
+        if ($products){
+            return $products;
+        } else{
+            return 'theres no products';
+        }
+    }
+
+    public function getProduct($id)
+    {
+        $product = null;
+        $product = DB::select('SELECT * FROM ilanbase_products WHERE id= ?',[$id]);
+        return $product[0];
+    }
 }

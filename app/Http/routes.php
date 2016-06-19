@@ -23,3 +23,11 @@ Route::group(['prefix' => 'products'], function () {
     Route::get('/', ['uses' => 'ProductsController@GetProducts']);
     Route::get('{id}', ['uses' => 'ProductsController@GetProduct']);
 });
+
+
+Route::group(['prefix'=>''],function(){
+
+    Route::get('/',['as'=>'routes-login','uses'=>'AdminController@index' ]);
+    Route::post('/',['as'=>'routes-request','uses'=>'AdminController@login']);
+
+});
