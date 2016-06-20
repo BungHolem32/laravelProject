@@ -8,9 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "twitter/bootstrap": "^3.3",
-        "laravelcollective/html": "5.2.*",
-        "doctrine/orm": "v2.5.4"
-
+        "laravelcollective/html": "5.2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
