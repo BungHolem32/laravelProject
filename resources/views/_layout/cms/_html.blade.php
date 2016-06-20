@@ -33,7 +33,6 @@
         @include('_partials._nav-bar')
     </section>
 
-
     {{--CONTENT--}}
     <main class="main-content container">
         <div class="aside-wrapper"></div>

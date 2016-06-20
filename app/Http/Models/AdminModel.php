@@ -7,8 +7,7 @@
  */
 
 namespace App\Http\Models;
-
-use Illuminate\Support\Facades\DB;
+use App\Http\Libs\DBModel;
 
 
 class AdminModel extends BaseModel
@@ -16,10 +15,11 @@ class AdminModel extends BaseModel
     public function __construct()
     {
         parent::__construct();
+        $this->db = DBModel::getInstance()->connect();
     }
 
     public function check_email($email = null)
     {
-        
+
     }
 }

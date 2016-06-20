@@ -27,8 +27,9 @@ class AdminController extends BaseController
 
     protected function login(Request $request)
     {
+
         $data = null;
-        
+
         if (!empty($request)) {
             $inputs = $request->input('User');
 
