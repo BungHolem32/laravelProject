@@ -3,7 +3,7 @@
 <head>
 
     {{--HEADER --}}
-    @include('_layout.site._head')
+    @include('_production._layout._head')
 
     {{--TITLE PAGE--}}
     <title>
@@ -24,13 +24,13 @@
 <div class="wrapper container-fluid no-padding">
     {{--HEADER--}}
     <header class="header-part-wrapper container">
-        @include('_partials._header')
+        @include('_production._partials._header')
     </header>
 
 
     {{--NAVBAR--}}
     <section class="nav-bar-wrapper ">
-        @include('_partials._nav-bar')
+        @include('_production._partials._nav-bar')
     </section>
 
 
@@ -45,7 +45,7 @@
 
     {{--FOOTER--}}
     <footer class="footer-part-wrapper container">
-        @include('_layout.site._footer')
+        @include('_production._layout._footer')
     </footer>
 
 

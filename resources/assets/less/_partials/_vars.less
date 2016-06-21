@@ -4,3 +4,16 @@
 
 @padding-default: @default-size;
 @font-size: @default-size;
+
+.padd(@elem:1,@until,@locations) when (@elem<@until) {
+  @pos: extract(@locations, @elem);
+
+  .padding-@{pos} {
+      padding-@{pos}: @default-size;
+  }
+
+  .padd(@elem+1,@until,@locations)
+}
+
+
+

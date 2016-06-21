@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Crm;
 
 use App\Http\Requests;
 use App\Http\Models\AdminModel as AdminModel;
@@ -21,7 +21,7 @@ class AdminController extends BaseController
     protected function index()
 
     {
-        return view('_pages.admin.login.index');
+        return view('_crm._pages.login.index');
     }
 
 
@@ -31,14 +31,9 @@ class AdminController extends BaseController
         $data = null;
 
         if (!empty($request)) {
+
             $inputs = $request->input('User');
-
             $isUserExist = $this->model->check_email($inputs['email']);
-
-
         }
-
-
     }
-
 }

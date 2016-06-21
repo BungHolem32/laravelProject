@@ -1,21 +1,38 @@
-@padding: left, right;
+@locations: left, right, top, bottom;
+
+
+
+//ASSIGN DEFAULT PADDING TO ALL SIDES
+.with-padding(@elem:1,@until,@locations) when (@elem<@until) {
+  @pos: extract(@locations, @elem);
+
+  .padding-@{pos} {
+    padding-@{pos}: @default-size;
+  }
+
+  .with-padding(@elem+1,@until,@locations)
+
+}
+
+
 
 //ASSIGN NO-PADDING TO LEFT AND RIGHT
-.padding(@counter,@padding) when (@counter>0) {
+.without-padding(@counter,@padding) when (@counter>0) {
   @name: extract(@padding, @counter);
   .no-padding-@{name} {
     padding-@{name}: 0;
   }
-  .padding((@counter)-1,@padding);
+  .without-padding((@counter)-1,@padding);
 }
 
-//WHEN PADDING ZERO ASSIGN PADDING TO ZERO
-.padding(@counter,@padding) when (@counter<=0) {
+//WHEN NO PADDING FOR ALL SIDES
+.without-padding(@counter,@padding) when (@counter<=0) {
   .no-padding{
     padding:0;
   }
 }
 
-.padding(2,@padding);
 
 
+.without-padding(2,@locations);
+.with-padding(1,5,@locations);

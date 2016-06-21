@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Site;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -16,7 +16,7 @@ class HomeController extends BaseController
     protected function index()
 
     {
-        return view("_pages.home.index");
+        return view("_production._pages.home.index");
     }
 
     

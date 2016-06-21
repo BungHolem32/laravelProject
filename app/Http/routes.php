@@ -11,23 +11,30 @@
 |
 */
 
+Route::group(['namespace' => 'Site'], function () {
 
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
-Route::get('about', ['as' => 'about', 'uses' => 'AboutController@index']);
-Route::get('products', ['as' => 'products', 'uses' => 'ProductsController@index']);
-Route::get('contact-us', ['as' => 'contact-us', 'uses' => 'ContactUsController@index']);
+    Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+    Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
+    Route::get('about', ['as' => 'about', 'uses' => 'AboutController@index']);
+    Route::get('products', ['as' => 'products', 'uses' => 'ProductsController@index']);
+    Route::get('contact-us', ['as' => 'contact-us', 'uses' => 'ContactUsController@index']);
 
 
-Route::group(['prefix' => 'products'], function () {
-    Route::get('/', ['uses' => 'ProductsController@GetProducts']);
-    Route::get('{id}', ['uses' => 'ProductsController@GetProduct']);
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('/', ['uses' => 'ProductsController@GetProducts']);
+        Route::get('{id}', ['uses' => 'ProductsController@GetProduct']);
+    });
+
+});
+
+
+Route::group(['prefix' => 'admin','namespace'=>'Crm'], function () {
+
+    Route::get('/', ['as' => 'routes-login', 'uses' => 'AdminController@index']);
+    Route::post('/', ['as' => 'routes-request', 'uses' => 'AdminController@login']);
+    Route::resource('users', 'UsersController');
+    Route::resource('pages', 'PagesController');
+
 });
 
 
-Route::group(['prefix'=>'admin'],function(){
-
-    Route::get('/',['as'=>'routes-login','uses'=>'AdminController@index' ]);
-    Route::post('/',['as'=>'routes-request','uses'=>'AdminController@login']);
-
-});

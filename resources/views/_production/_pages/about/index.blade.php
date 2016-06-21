@@ -1,4 +1,4 @@
-@extends('_layout._pages.about.index')
+@extends('_production._layout._html')
 @section('title','About Page')
 
 @section('content')

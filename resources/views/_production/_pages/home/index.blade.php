@@ -1,4 +1,4 @@
-@extends('_layout.site._html')
+@extends('_production._layout._html')
 @section('title','Home Page')
 
 @section('content')

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -16,19 +16,19 @@ class ProductsController extends BaseController
     public function __construct()
     {
         $this->model = new ProductsModel();
-        return view('_pages.products.index');
+        return view('_production._pages.products.index');
     }
 
 
     public function getProducts()
     {
         $products = $this->model->getProducts();
-        return view('_pages.products.index')->with('products',$products);
+        return view('_production._pages.products.index')->with('products',$products);
     }
 
     public function getProduct($id){
         $product  = null;
         $product = $this->model->getProduct($id);
-        return view('_pages.products.index')->with('product',$product);
+        return view('_production._pages.products.index')->with('product',$product);
     }
 }

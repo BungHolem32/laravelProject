@@ -1,4 +1,4 @@
-@extends('_layout.cms.html')
+@extends('_crm._layout._html')
 
 <div class="cms-login-wrapper container">
 
