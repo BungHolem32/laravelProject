@@ -15,11 +15,11 @@ class AdminModel extends BaseModel
     public function __construct()
     {
         parent::__construct();
-        $this->db = DBModel::getInstance()->connect();
+        $this->db = new DBModel();
     }
 
     public function check_email($email = null)
     {
-
+        $this->db->connect();
     }
 }
