@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\Crm;
 
 use App\Http\Models\AdminModel;
-use App\Http\Models\Interfaces\ModelInterface;
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use App\Http\Requests;
 
 class AdminController extends BaseController
 {
-
-    protected $db;
 
     public function __construct(AdminModel $model)
     {
@@ -28,8 +25,6 @@ class AdminController extends BaseController
     protected function login(Request $request )
     {
         $data = null;
-
-        dd($this->model);
 
 //        if (!empty($request)) {
 //            $email = $request->input('email');

@@ -13,6 +13,6 @@ class AdminModel extends BaseModel
 
 	public function check_email($email)
 	{
-		dd($this->con);
+		echo 123;
 	}
 }

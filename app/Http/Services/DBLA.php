@@ -7,10 +7,12 @@
  */
 
 namespace App\Http\Services;
+
 use Doctrine\DBAL\DriverManager;
 
 
-interface DBLAInterface{
+interface DBLAInterface
+{
 
 }
 
