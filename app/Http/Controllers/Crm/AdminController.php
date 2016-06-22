@@ -7,6 +7,7 @@ use App\Http\Models\AdminModel as AdminModel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
+
 class AdminController extends BaseController
 {
 
@@ -19,21 +20,18 @@ class AdminController extends BaseController
 
 
     protected function index()
-
     {
         return view('_crm._pages.login.index');
     }
 
 
-    protected function login(Request $request)
+    protected function login(Request $request )
     {
-
         $data = null;
 
         if (!empty($request)) {
-
-            $inputs = $request->input('User');
-            $isUserExist = $this->model->check_email($inputs['email']);
+            $email = $request->input('email');
+            $isUserExist = $this->model->check_email($email);
         }
     }
 }
