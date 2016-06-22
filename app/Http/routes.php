@@ -30,8 +30,9 @@ Route::group(['namespace' => 'Site'], function () {
 
 Route::group(['prefix' => 'admin','namespace'=>'Crm'], function () {
 
-    Route::get('/', ['as' => 'routes-login', 'uses' => 'AdminController@index']);
-    Route::post('/', ['as' => 'routes-request', 'uses' => 'AdminController@login']);
+    Route::get('/', ['as' => 'login-page', 'uses' => 'AdminController@index']);
+    Route::post('/', ['as' => 'login-validation', 'uses' => 'AdminController@login']);
+    Route::get('/home',['as'=>'crm-dashboard','uses'=>'AdminController@dashboard']);
     Route::resource('users', 'UsersController');
     Route::resource('pages', 'PagesController');
 

@@ -14,11 +14,20 @@ use Illuminate\Database\Eloquent\Model as Model;
 use Illuminate\Support\Facades\DB;
 
 
+/**
+ * @property DBService DBservice
+ */
 class BaseModel extends Model
 {
-	public function __construct(DBService $connection)
+
+	/**
+	 * BaseModel constructor.
+	 * @param DBService $DBService
+	 */
+	public function __construct(DBService $DBService)
 	{
 		parent::__construct();
-		$this->connection = $connection;
+		$this->DBservice = $DBService;
+
 	}
 }

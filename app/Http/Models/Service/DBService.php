@@ -13,9 +13,13 @@ use App\Http\Models\Interfaces\DBInterface;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
 
+/**
+ * @property \Doctrine\DBAL\Connection connect
+ */
 class DBService implements DBInterface
 {
-	private $connection;
+
+
 
 	public function __construct($connectionParams = null)
 	{
@@ -23,13 +27,14 @@ class DBService implements DBInterface
 
 		if (is_null($connectionParams)) {
 			$connectionParams = array(
-				'dbname' => 'crmLaravel',
+				'dbname' => 'CRMLARAVEL',
 				'user' => 'root',
 				'password' => '',
-				'host' => 'localhost',
+				'host' => '127.0.0.1',
 				'driver' => 'pdo_mysql',
 			);
 		}
-		$this->connection = DriverManager::getConnection($connectionParams, $config);
+		$this->connect =  DriverManager::getConnection($connectionParams, $config);
+
 	}
 }

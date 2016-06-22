@@ -28,12 +28,26 @@ class AdminController extends BaseController
 	protected function login(Request $request)
 	{
 
-		$data = null;
+		$isUserExist = null;
 
 		if (!empty($request)) {
-
 			$inputs = $request->input('User');
-			$isUserExist = $this->model->check_email($inputs['email']);
+			$isUserExist = $this->model->isParamExist('CRMLARAVEL.crmLaravel_users', 'email', $inputs['email']);
+
+			if ($isUserExist) {
+				$isLoginCurrent = $this->model->isValidLogin('CRMLARAVEL.crmLaravel_users', ['email', 'password'], $inputs);
+
+				if ($isLoginCurrent) {
+					return redirect()->route('crm-dashboard');
+
+				}
+			}
 		}
+	}
+
+	protected function dashboard(Request $request){
+
+		return view('_crm._pages.main.index');
+
 	}
 }

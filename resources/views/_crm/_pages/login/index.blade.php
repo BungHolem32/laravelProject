@@ -15,7 +15,7 @@
     {{--PASSWORD INPUT--}}
     <div class="form-group password ">
         {!! Form::label('password','password:',['class'=>'text-capitalize']) !!}
-        {!! Form::password('',['class'=>'form-control','name'=>'User[pass]' ,'required'=>'required']) !!}
+        {!! Form::password('',['class'=>'form-control','name'=>'User[password]' ,'required'=>'required']) !!}
     </div>
 
     <div class="form-group submit">
