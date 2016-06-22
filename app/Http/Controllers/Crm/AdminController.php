@@ -2,38 +2,38 @@
 
 namespace App\Http\Controllers\Crm;
 
+use App\Http\Models\AdminModel;
 use App\Http\Requests;
-use App\Http\Models\AdminModel as AdminModel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class AdminController extends BaseController
 {
 
-    protected $model;
+	protected $model;
 
-    public function __construct()
-    {
-        $this->model = new AdminModel();
-    }
-
-
-    protected function index()
-
-    {
-        return view('_crm._pages.login.index');
-    }
+	public function __construct(AdminModel $model)
+	{
+		$this->model = $model;
+	}
 
 
-    protected function login(Request $request)
-    {
+	protected function index()
 
-        $data = null;
+	{
+		return view('_crm._pages.login.index');
+	}
 
-        if (!empty($request)) {
 
-            $inputs = $request->input('User');
-            $isUserExist = $this->model->check_email($inputs['email']);
-        }
-    }
+	protected function login(Request $request)
+	{
+
+		$data = null;
+
+		if (!empty($request)) {
+
+			$inputs = $request->input('User');
+			$isUserExist = $this->model->check_email($inputs['email']);
+		}
+	}
 }

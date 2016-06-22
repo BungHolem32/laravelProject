@@ -22,7 +22,7 @@ class ProductsModel extends BaseModel
     public function getProducts()
     {
         $products = null;
-        $products = DB::select('select * from ilanbase_products');
+        $products = DB::select('select * from `TiPiCRM-Products`');
 
         if ($products){
             return $products;
@@ -34,7 +34,7 @@ class ProductsModel extends BaseModel
     public function getProduct($id)
     {
         $product = null;
-        $product = DB::select('SELECT * FROM ilanbase_products WHERE id= ?',[$id]);
+        $product = DB::select('SELECT * FROM `TiPiCRM-Products` WHERE id= ?',[$id]);
         return $product[0];
     }
 }

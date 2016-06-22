@@ -11,7 +11,7 @@ namespace App\Http\Libs;
 class DBModel
 {
     protected $host = 'localhost',
-        $dbname = 'laravelCRM',
+        $dbname = 'TiPiCRM',
         $user = 'root',
         $pass = '',
         $instance,
@@ -42,11 +42,8 @@ class DBModel
     public function connect()
     {
 
-        $dbh = 'mysql:host=localhost;dbname=laravelCRM';
+        $dbh = "mysql:host={$this->host};dbname={$this->dbname}";
         try {
-
-            var_dump($this->pass);
-            die;
             $this->connection = new \PDO($dbh, $this->user, $this->pass);
         }
         catch (\PDOException $e) {
