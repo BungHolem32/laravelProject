@@ -12,14 +12,12 @@ use App\Http\Libs\DBModel;
 
 class AdminModel extends BaseModel
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->db = new DBModel();
-    }
+	
 
     public function check_email($email = null)
     {
-        $this->db->connect();
+		$sql = "SELECT now();";
+		$stmt = $this->connection->query($sql); // Simple, but has several drawbacks
+
     }
 }

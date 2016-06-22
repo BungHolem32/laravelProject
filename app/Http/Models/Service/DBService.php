@@ -15,6 +15,7 @@ use Doctrine\DBAL\DriverManager;
 
 class DBService implements DBInterface
 {
+	private $connection;
 
 	public function __construct($connectionParams = null)
 	{
@@ -22,13 +23,13 @@ class DBService implements DBInterface
 
 		if (is_null($connectionParams)) {
 			$connectionParams = array(
-				'dbname' => 'mydb',
-				'user' => 'user',
-				'password' => 'secret',
+				'dbname' => 'crmLaravel',
+				'user' => 'root',
+				'password' => '',
 				'host' => 'localhost',
 				'driver' => 'pdo_mysql',
 			);
 		}
-		$conn = DriverManager::getConnection($connectionParams, $config);
+		$this->connection = DriverManager::getConnection($connectionParams, $config);
 	}
 }
