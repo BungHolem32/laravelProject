@@ -7,34 +7,23 @@
  */
 
 namespace App\Http\Services;
-
 use Doctrine\DBAL\DriverManager;
 
 
-class DBLA
+interface DBLAInterface{
+
+}
+
+
+class DBLA implements DBLAInterface
 {
 	private $conn;
-	private static $connections;
 
-	private function __construct()
-	{}
-
-
-	public static function  getConnection($connectionParams = null,$connectionKey = null)
+	public function __construct($connectionParams = null)
 	{
-		if (is_array(self::$connections) &&  array_key_exists($connectionKey,self::$connections) ){
-			return self::$connections[$connectionKey];
-		} else{
-			$connection =  self::setupConnection($connectionParams,$connectionKey);
-			return $connection;
-		}
-	}
-
-	private static function setupConnection(Array $connectionsParams=null,$connectionKey){
 		$config = new \Doctrine\DBAL\Configuration();
-
-		if ($connectionsParams === null)
-			$connectionsParams= array(
+		if ($connectionParams === null)
+			$connectionParams = array(
 				'dbname' => 'laravelCRM',
 				'user' => 'root',
 				'password' => '',
@@ -42,9 +31,6 @@ class DBLA
 				'driver' => 'pdo_mysql',
 			);
 
-		self::$connections[$connectionKey] = DriverManager::getConnection($connectionsParams, $config);
-		return self::$connections[$connectionKey];
+		$this->conn = DriverManager::getConnection($connectionParams, $config);
 	}
-
-
 }

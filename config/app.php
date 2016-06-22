@@ -159,6 +159,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\DbDbalProvider::class,
+        App\Providers\ModelProvider::class
 
     ],
 

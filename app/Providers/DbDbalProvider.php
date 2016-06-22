@@ -37,8 +37,8 @@ class DbDbalProvider extends ServiceProvider
 //        $stmt->execute();
 //        $get = $stmt->fetchAll();
 
-        $this->app->singleton('App\Http\Services\DBLA', function ($app){
-            return $app->make('App\Http\Services\DBLA');
+        $this->app->singleton('App\\Http\\Services\\DBLAInterface', function ($app){
+            return $app->make('App\\Http\\Services\\DBLA');
         });
     }
 }

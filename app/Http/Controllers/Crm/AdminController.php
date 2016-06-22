@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Crm;
 
+use App\Http\Models\AdminModel;
+use App\Http\Models\Interfaces\ModelInterface;
 use App\Http\Requests;
-use App\Http\Models\AdminModel as AdminModel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-
 
 class AdminController extends BaseController
 {
 
-    protected $model;
+    protected $db;
 
-    public function __construct()
+    public function __construct(AdminModel $model)
     {
-        $this->model = new AdminModel();
+        $this->model = $model;
     }
 
 
@@ -29,9 +29,11 @@ class AdminController extends BaseController
     {
         $data = null;
 
-        if (!empty($request)) {
-            $email = $request->input('email');
-            $isUserExist = $this->model->check_email($email);
-        }
+        dd($this->model);
+
+//        if (!empty($request)) {
+//            $email = $request->input('email');
+//            $isUserExist = $this->db->check_email($email);
+//        }
     }
 }

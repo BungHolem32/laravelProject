@@ -6,18 +6,19 @@
  * Time: 23:37
  */
 
-namespace app\Http\Models;
+namespace App\Http\Models;
 
-
+use App\Http\Models\Interfaces\ModelInterface;
+use App\Http\Services\DBLA;
 use Illuminate\Database\Eloquent\Model as Model;
-use Illuminate\Support\Facades\DB;
 
 
-class BaseModel extends Model
+
+class BaseModel extends Model implements ModelInterface
 {
-    public function __construct()
+    public function __construct(DBLA $db)
     {
-        parent::__construct();
-        $this->db = new DB();
+        $this->db = $db;
     }
 }
+
