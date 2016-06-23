@@ -6,22 +6,20 @@
  * Time: 18:07
  */
 
-namespace App\Http\Controllers\Crm;
+namespace app\Http\Controllers\Crm;
 
-use app\Http\Models\DataMapper\ForgotPasswordModel;
-use App\Http\Requests\Request;
+use App\Http\Models\DataMapper\ForgotPassword;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+
 
 class ForgotPasswordController extends Controller
 {
 
-	/**
-	 * ForgotPasswordController constructor.
-	 * @param ForgotPasswordModel $forgotPasswordModel
-	 */
-	public function __construct(ForgotPasswordModel $forgotPasswordModel)
+
+	public function __construct(ForgotPassword $forgotPassword)
 	{
-		$this->model = $forgotPasswordModel;
+		$this->model = $forgotPassword;
 
 	}
 

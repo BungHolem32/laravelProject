@@ -6,7 +6,7 @@
  * Time: 12:27
  */
 
-namespace app\Http\Models\DataMapper;
+namespace App\Http\Models\DataMapper;
 
 
 class User
@@ -30,7 +30,7 @@ class User
 			}
 		}
 	}
-r
+
 	public function login(){
 
 	}

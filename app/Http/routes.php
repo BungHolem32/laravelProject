@@ -32,8 +32,10 @@ Route::group(['prefix' => 'admin'], function (){
 
 	Route::get('login', ['as' => 'login-page', 'uses' => 'Crm\LoginController@index']);
 	Route::post('login', ['as' => 'login-validation', 'uses' => 'Crm\LoginController@login']);
-	Route::get('forgot-pass',['as'=>'forgot-password','uses'=>'Crm\ForgotPasswordController@index']);
-	Route::post('forgot-pass',['as'=>'send-email-forgot-pass','uses'=>'Crm\ForgotPasswordController@sendPasswordRestNotificationToEmail']);
+	Route::get('forgot-password',['as'=>'forgot-password','uses'=>'Crm\ForgotPasswordController@index']);
+	Route::post('forgot-password',['as'=>'send-email-forgot-pass','uses'=>'Crm\ForgotPasswordController@sendPasswordRestNotificationToEmail']);
+	Route::get('register',['as'=>'register-page','uses'=>'Crm\RegisterController@index']);
+	Route::post('register',['as'=>'add-user','uses'=>'Crm\RegisterController@addNewUserToDataBaseAndAutoConnectIt']);
 
 	Route::group(['middleware' => 'login-check'], function (){
 		Route::get('/',    ['as' => 'crm-dashboard', 'uses' => 'Crm\AdminController@dashboard']);

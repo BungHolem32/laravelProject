@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Crm;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Illuminate\Routing\Controller;
 
 class PagesController extends Controller
 {

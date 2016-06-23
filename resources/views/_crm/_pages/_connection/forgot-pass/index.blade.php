@@ -2,13 +2,13 @@
 @section('title',ucwords('forgot password'))
 
 @section('header')
-    <div class="container header-forgot-pass text-center">
+    <div class="container cms-header-forgot-pass text-center">
         <h2>{{ucwords('forgot password')}}</h2>
     </div>
 @stop
 
 @section('content')
-    <div class="form-wrapper forgot-password-wrapper container">
+    <div class="cms-form-wrapper forgot-password-wrapper container">
 
         {!! Form::open(array('class'=>'form-forgot-password','as'=>'forgot-password','route'=>'forgot-password' )) !!}
 

@@ -32,4 +32,20 @@ class LoginModel extends BaseModel
 		return $isPassValidation;
 	}
 
+	public function validateRequest($userInfo)
+	{
+		$isValid = null;
+
+		$validationFilters = [
+			'fname' => FILTER_SANITIZE_STRING,
+			'lname' => FILTER_SANITIZE_STRING,
+			'email' => FILTER_SANITIZE_EMAIL,
+			'country' => FILTER_SANITIZE_STRING,
+			'city' => FILTER_SANITIZE_STRING,
+			'address' => FILTER_SANITIZE_STRING
+		];
+
+		$isValid = filter_var_array($userInfo,$validationFilters);
+	}
+
 }

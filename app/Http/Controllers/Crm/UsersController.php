@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Crm;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Illuminate\Routing\Controller;
 
 
@@ -20,11 +18,7 @@ class UsersController extends Controller
             return view('_crm._pages.user.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create(Request $request)
     {
 
@@ -47,7 +41,6 @@ class UsersController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //

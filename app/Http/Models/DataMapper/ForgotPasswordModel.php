@@ -1,15 +1,17 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ilanv
- * Date: 23/06/2016
- * Time: 18:03
+ * User: ilan
+ * Date: 23/06/16
+ * Time: 22:59
  */
 
 namespace app\Http\Models\DataMapper;
 
 
-class ForgotPasswordModel
+use app\Http\Models\BaseModel;
+
+class ForgotPassword extends BaseModel
 {
 
 }
