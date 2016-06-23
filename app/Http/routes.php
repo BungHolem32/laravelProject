@@ -36,7 +36,8 @@ Route::group(['prefix' => 'admin'], function (){
 	Route::post('forgot-pass',['as'=>'send-email-forgot-pass','uses'=>'Crm\ForgotPasswordController@sendPasswordRestNotificationToEmail']);
 
 	Route::group(['middleware' => 'login-check'], function (){
-
+		Route::get('/',    ['as' => 'crm-dashboard', 'uses' => 'Crm\AdminController@dashboard']);
+		Route::get('home', ['as' => 'crm-dashboard', 'uses' => 'Crm\AdminController@dashboard']);
 		Route::resource('users', 'UsersController');
 		Route::resource('pages', 'PagesController');
 	});

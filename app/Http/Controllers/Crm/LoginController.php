@@ -7,7 +7,9 @@
  */
 
 namespace App\Http\Controllers\Crm;
-use app\Http\Models\DataMapper\LoginModel;
+
+use App\Http\Models\DataMapper\LoginModel;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class LoginController extends Controller
@@ -38,7 +40,6 @@ class LoginController extends Controller
 	protected function login(Request $request)
 	{
 		$isUserExist = null;
-
 		if (!empty($request)){
 			$inputs = $request->input('User');
 
@@ -50,9 +51,10 @@ class LoginController extends Controller
 			} else{
 				session('is-logged', false);
 				redirect()->route('login-page');
+				echo 'isn\'t logged';
 			}
 		}
 
 	}
-	
+
 }
