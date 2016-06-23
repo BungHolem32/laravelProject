@@ -11,31 +11,35 @@
 |
 */
 
-Route::group(['namespace' => 'Site'], function () {
+Route::group(['namespace' => 'Site'], function (){
 
-    Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-    Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
-    Route::get('about', ['as' => 'about', 'uses' => 'AboutController@index']);
-    Route::get('products', ['as' => 'products', 'uses' => 'ProductsController@index']);
-    Route::get('contact-us', ['as' => 'contact-us', 'uses' => 'ContactUsController@index']);
+	Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+	Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
+	Route::get('about', ['as' => 'about', 'uses' => 'AboutController@index']);
+	Route::get('products', ['as' => 'products', 'uses' => 'ProductsController@index']);
+	Route::get('contact-us', ['as' => 'contact-us', 'uses' => 'ContactUsController@index']);
 
 
-    Route::group(['prefix' => 'products'], function () {
-        Route::get('/', ['uses' => 'ProductsController@GetProducts']);
-        Route::get('{id}', ['uses' => 'ProductsController@GetProduct']);
-    });
+	Route::group(['prefix' => 'products'], function (){
+		Route::get('/', ['uses' => 'ProductsController@GetProducts']);
+		Route::get('{id}', ['uses' => 'ProductsController@GetProduct']);
+	});
 
 });
 
 
-Route::group(['prefix' => 'admin','namespace'=>'Crm'], function () {
+Route::group(['prefix' => 'admin'], function (){
 
-    Route::get('/', ['as' => 'login-page', 'uses' => 'AdminController@index']);
-    Route::post('/', ['as' => 'login-validation', 'uses' => 'AdminController@login']);
-    Route::get('/home',['as'=>'crm-dashboard','uses'=>'AdminController@dashboard']);
-    Route::resource('users', 'UsersController');
-    Route::resource('pages', 'PagesController');
+	Route::get('login', ['as' => 'login-page', 'uses' => 'Crm\LoginController@index']);
+	Route::post('login', ['as' => 'login-validation', 'uses' => 'Crm\LoginController@login']);
+	Route::get('forgot-pass',['as'=>'forgot-password','uses'=>'Crm\ForgotPasswordController@index']);
+	Route::post('forgot-pass',['as'=>'send-email-forgot-pass','uses'=>'Crm\ForgotPasswordController@sendPasswordRestNotificationToEmail']);
 
+	Route::group(['middleware' => 'login-check'], function (){
+
+		Route::resource('users', 'UsersController');
+		Route::resource('pages', 'PagesController');
+	});
 });
 
 

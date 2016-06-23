@@ -1,32 +1,35 @@
 <!doctype html>
-<html lang = "en">
+<html lang="en">
 <head>
     @include('_crm._layout._head')
-
-    @section('title')@show
+    <title>
+        @yield('title')
+    </title>
     @include('_crm._layout._top-script')
     @stack('top-script')
 </head>
 <body>
 
-<div class = "container-fluid">
+<div class="container-fluid wrapper">
 
-    <header class = "top-title col-md-6 padding-left container">
-        @section('header') @show
+    {{--HEADER TAG--}}
+    <header class="top-title col-md-12 padding-left">
+        <div class="container">
+            @section('header')
+            @show
+        </div>
     </header>
 
     {{--NAV BAR TAG--}}
-    <nav class = "cms-navigation">
-        @include('_crm._partials.nav-bar-crm')
-    </nav>
+    @yield('nav-bar')
 
     {{--MAIN CONTENT --}}
-    <main class = "cms-content">
+    <main class="cms-content ">
         @yield('content')
     </main>
 
     {{--FOOTER TAG--}}
-    <footer class = "cms-footer">
+    <footer class="cms-footer ">
         @section('footer')
         @show
     </footer>

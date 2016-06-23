@@ -15,7 +15,6 @@
 }
 
 
-
 //ASSIGN NO-PADDING TO LEFT AND RIGHT
 .without-padding(@counter,@padding) when (@counter>0) {
   @name: extract(@padding, @counter);
@@ -31,6 +30,18 @@
     padding:0;
   }
 }
+
+//PLACE HOLDER CREATION
+.placeholder-style(@text-align:center,@text-transform:capitalize) {
+  ::-webkit-input-placeholder,
+  :-moz-placeholder,
+  ::-moz-placeholder,
+  :-ms-input-placeholder {
+    text-align     : @text-align;
+    text-transform : @text-transform;
+  }
+}
+
 
 
 

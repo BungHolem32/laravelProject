@@ -6,7 +6,7 @@
  * Time: 22:57
  */
 
-namespace App\Http\Models;
+namespace App\Http\Models\DataMapper;
 
 
 use Illuminate\Support\Facades\DB;

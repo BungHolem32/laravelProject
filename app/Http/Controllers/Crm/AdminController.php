@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Crm;
 
-use App\Http\Models\AdminModel;
-use App\Http\Requests;
+use App\Http\Models\DataMapper\AdminModel;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Routing\Controller ;
 
-class AdminController extends BaseController
+class AdminController extends Controller
 {
-
 	protected $model;
 
 	public function __construct(AdminModel $model)
@@ -17,37 +15,13 @@ class AdminController extends BaseController
 		$this->model = $model;
 	}
 
-
-	protected function index()
-
+	/**
+	 * @param Request $request
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function dashboard(Request $request)
 	{
-		return view('_crm._pages.login.index');
-	}
-
-
-	protected function login(Request $request)
-	{
-
-		$isUserExist = null;
-
-		if (!empty($request)) {
-			$inputs = $request->input('User');
-			$isUserExist = $this->model->isParamExist('CRMLARAVEL.crmLaravel_users', 'email', $inputs['email']);
-
-			if ($isUserExist) {
-				$isLoginCurrent = $this->model->isValidLogin('CRMLARAVEL.crmLaravel_users', ['email', 'password'], $inputs);
-
-				if ($isLoginCurrent) {
-					return redirect()->route('crm-dashboard');
-
-				}
-			}
-		}
-	}
-
-	protected function dashboard(Request $request){
-
 		return view('_crm._pages.main.index');
-
 	}
+	
 }

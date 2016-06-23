@@ -18,8 +18,10 @@
         {!! Form::password('',['class'=>'form-control','name'=>'User[password]' ,'required'=>'required']) !!}
     </div>
 
+
     <div class="form-group submit">
         {!! Form::submit('Click Me',['name'=>'submit','class'=>'login-button-submit btn-primary btn']) !!}
+        <a href="{{url('/admin/forgot-pass')}}" class="text-capitalize pull-right">forgot password</a>
     </div>
 
     {!! Form::close()!!}

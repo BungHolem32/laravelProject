@@ -11,7 +11,6 @@ namespace app\Http\Models;
 
 use App\Http\Models\Service\DBService;
 use Illuminate\Database\Eloquent\Model as Model;
-use Illuminate\Support\Facades\DB;
 
 
 /**

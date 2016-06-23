@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Crm;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Routing\Controller;
 
 
-class UsersController extends BaseController
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -1,19 +1,6 @@
 @import "vendor/twbs/bootstrap/less/bootstrap.less";
 
-@default-size: 20px;
-
-@padding-default: @default-size;
-@font-size: @default-size;
-
-.padd(@elem:1,@until,@locations) when (@elem<@until) {
-  @pos: extract(@locations, @elem);
-
-  .padding-@{pos} {
-      padding-@{pos}: @default-size;
-  }
-
-  .padd(@elem+1,@until,@locations)
-}
-
-
+@default-size : 20px;
+@padding-default : @default-size;
+@font-size : @default-size;
 
