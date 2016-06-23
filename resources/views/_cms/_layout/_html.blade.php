@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang = "en">
 <head>
-    @include('_crm._layout._head')
+    @include('_cms._layout._head')
 
     @section('title')@show
-    @include('_crm._layout._top-script')
+    @include('_cms._layout._top-script')
     @stack('top-script')
 </head>
 <body>
@@ -16,8 +16,8 @@
     </header>
 
     {{--NAV BAR TAG--}}
-    <nav class = "cms-navigation">
-        @include('_crm._partials.nav-bar-crm')
+    <nav class = "cms-navigation uk-navbar">
+        @include('_cms._partials.nav-bar-crm')
     </nav>
 
     {{--MAIN CONTENT --}}
@@ -32,7 +32,7 @@
     </footer>
 </div>
 {{--BOTTOM SCRIPT--}}
-@include('_crm._layout._bottom-script')
+@include('_cms._layout._bottom-script')
 @stack('bottom-scripts')
 </body>
 </html>

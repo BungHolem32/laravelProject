@@ -21,7 +21,7 @@ class AdminController extends BaseController
 	protected function index()
 
 	{
-		return view('_crm._pages.login.index');
+		return view('_cms._pages.login.index');
 	}
 
 
@@ -47,7 +47,7 @@ class AdminController extends BaseController
 
 	protected function dashboard(Request $request){
 
-		return view('_crm._pages.main.index');
+		return view('_cms._pages.main.index');
 
 	}
 }
