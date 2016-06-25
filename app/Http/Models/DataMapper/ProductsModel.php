@@ -8,7 +8,6 @@
 
 namespace App\Http\Models\DataMapper;
 
-
 use Illuminate\Support\Facades\DB;
 
 
@@ -19,7 +18,7 @@ class ProductsModel extends BaseModel
         parent::__construct();
     }
 
-    public function getProducts()
+    public function getAllProducts()
     {
         $products = null;
         $products = DB::select('select * from `TiPiCRM-Products`');
@@ -31,7 +30,7 @@ class ProductsModel extends BaseModel
         }
     }
 
-    public function getProduct($id)
+    public function getOneProduct($id)
     {
         $product = null;
         $product = DB::select('SELECT * FROM `TiPiCRM-Products` WHERE id= ?',[$id]);

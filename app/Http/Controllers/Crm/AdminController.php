@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Crm;
 
-use app\Http\Models\DataMapper\AdminModel;
+use App\Http\Models\DataMapper\AdminModel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -10,6 +10,10 @@ class AdminController extends Controller
 {
 	protected $model;
 
+	/**
+	 * AdminController constructor.
+	 * @param AdminModel $model
+     */
 	public function __construct(AdminModel $model)
 	{
 		$this->model = $model;

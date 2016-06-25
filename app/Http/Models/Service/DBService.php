@@ -15,26 +15,38 @@ use Doctrine\DBAL\DriverManager;
 
 /**
  * @property \Doctrine\DBAL\Connection connect
+ * @property Configuration config
  */
 class DBService implements DBInterface
 {
 
 
+    public function __construct($connectionParams = null)
+    {
+        $this->config = new Configuration();
 
-	public function __construct($connectionParams = null)
-	{
-		$config = new Configuration();
+        if (is_null($connectionParams)) {
+            $connectionParams = array(
+                'dbname' => 'laravelCrm',
+                'user' => 'root',
+                'password' => '',
+                'host' => 'localhost',
+                'driver' => 'pdo_mysql',
+            );
+        } else {
+            foreach ($connectionParams as $name => $value) {
+                $connectionParams[$name] = $value;
+            }
+        }
+        $this->connect = DriverManager::getConnection($connectionParams, $this->config);
 
-		if (is_null($connectionParams)) {
-			$connectionParams = array(
-				'dbname' => 'laravelCrm',
-				'user' => 'root',
-				'password' => '',
-				'host' => '127.0.0.1',
-				'driver' => 'pdo_mysql',
-			);
-		}
-		$this->connect =  DriverManager::getConnection($connectionParams, $config);
+    }
 
-	}
+    public function changeConnectionParams($connectionParams)
+    {
+        foreach ($connectionParams as $name => $value) {
+            $connectionParams[$name] = $value;
+        }
+        $this->connect = DriverManager::getConnection($connectionParams, $this->config);
+    }
 }

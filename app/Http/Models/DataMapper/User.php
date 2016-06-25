@@ -7,14 +7,20 @@
  */
 
 namespace App\Http\Models\DataMapper;
+use Illuminate\Support\Facades\Session;
+
 
 
 class User
 {
 	protected $uid;
-	protected $name;
-	protected $pass;
-	protected $mail;
+	protected $fname;
+	protected $lname;
+	protected $country;
+	protected $city;
+	protected $address;
+	protected $password;
+	protected $email;
 	protected $theme;
 	protected $signature;
 	protected $created;
@@ -24,11 +30,15 @@ class User
 	public function setConfiguration(array $userConfiguration = null)
 	{
 		if (is_array($userConfiguration) && in_array(!null, $userConfiguration)){
+
 			foreach ($userConfiguration as $name => $userInfo){
 				$this->$name = $userInfo;
-				session([$name]);
+				Session::push('user.'.$name,$userInfo);
 			}
 		}
+
+		Session::flash('message','thanks for your registration ,you\'le be redirect to the site');
+		return $this;
 	}
 
 	public function login(){

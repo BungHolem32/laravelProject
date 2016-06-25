@@ -16,7 +16,7 @@ class LoginCheck
 {
 	public function handle($request, Closure $next)
 	{
-		$isLogged = false;
+		$isLogged = true;
 		if($isLogged)
 			return $next($request);
 
