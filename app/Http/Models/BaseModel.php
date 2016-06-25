@@ -16,21 +16,22 @@ use Illuminate\Database\Eloquent\Model as Model;
 
 /**
  * @property DBService DBservice
+ * @property User user
  */
 class BaseModel extends Model
 {
 
-	/**
-	 * BaseModel constructor.
-	 * @param DBService $DBService
-	 * @param User $user
-	 */
-	public function __construct(DBService $DBService, User $user)
-	{
-		parent::__construct();
-		$this->DBservice = $DBService;
-		$this->user = $user;
+    /**
+     * BaseModel constructor.
+     * @param DBService $DBService
+     * @param User $user
+     */
+    public function __construct(DBService $DBService, User $user)
+    {
+        parent::__construct();
+        $this->DBservice = $DBService;
+        $this->user = $user;
 
 
-	}
+    }
 }

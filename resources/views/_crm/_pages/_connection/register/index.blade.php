@@ -24,12 +24,12 @@
         </div>
 
         <div class = "form-group firstName">
-            {!! Form::label('fname','first name',['class'=>'text-capitalize']) !!}
-            {!! Form::text('fname','',array('class'=>'form-control','name'=>'user[fname]','required' => 'required' )) !!}
+            {!! Form::label('fName','first name',['class'=>'text-capitalize']) !!}
+            {!! Form::text('fName','',array('class'=>'form-control','name'=>'user[fName]','required' => 'required' )) !!}
         </div>
         <div class = "form-group lastName">
-            {!! Form::label('lname','last name',['class'=>'text-capitalize']) !!}
-            {!! Form::text('lname','',array('class'=>'form-control','name'=>'user[lname]','required' => 'required' )) !!}
+            {!! Form::label('lName','last name',['class'=>'text-capitalize']) !!}
+            {!! Form::text('lName','',array('class'=>'form-control','name'=>'user[lName]','required' => 'required' )) !!}
         </div>
         <div class = "form-group address">
             {!! Form::label('address','address',['class'=>'text-capitalize']) !!}
@@ -45,8 +45,8 @@
         </div>
 
         <div class = "form-group user-name">
-            {!! Form::label('user-name','user name',['class'=>'text-capitalize']) !!}
-            {!! Form::text('country','',array('class'=>'form-control','name'=>'user[user-name]','required' => 'required' )) !!}
+            {!! Form::label('userName','user name',['class'=>'text-capitalize']) !!}
+            {!! Form::text('userName','',array('class'=>'form-control','name'=>'user[userName]','required' => 'required' )) !!}
         </div>
 
         <div class = "form-group password">

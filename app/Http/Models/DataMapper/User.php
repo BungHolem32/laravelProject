@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Session;
 class User
 {
 	protected $uid;
-	protected $fname;
-	protected $lname;
+	protected $userName;
+	protected $fName;
+	protected $lName;
 	protected $country;
 	protected $city;
 	protected $address;
@@ -32,16 +33,24 @@ class User
 		if (is_array($userConfiguration) && in_array(!null, $userConfiguration)){
 
 			foreach ($userConfiguration as $name => $userInfo){
-				$this->$name = $userInfo;
-				Session::push('user.'.$name,$userInfo);
-			}
+
+                if($name=='password'){
+                    $this->password = $this->saltPassword($userInfo);
+                }
+
+                $this->$name = $userInfo;
+                Session::push('user.'.$name,$userInfo);
+            }
 		}
 
 		Session::flash('message','thanks for your registration ,you\'le be redirect to the site');
 		return $this;
 	}
 
-	public function login(){
+    private function saltPassword($password)
+    {
+        $password = sha1(md5($password.'createSaltHash'));
+        return $password;
+    }
 
-	}
 }

@@ -19,7 +19,6 @@ class RegisterController extends Controller
     /**
      * RegisterController constructor.
      * @param RegisterModel $registerModel
-     * @param ParameterModel $parameterModel
      * @internal param ParameterService $parameterService
      */
     public function __construct(RegisterModel $registerModel)
@@ -62,10 +61,10 @@ class RegisterController extends Controller
 
             /*IF THE INPUTS VALID*/
             if (!empty($validInput)) {
-
                 /*3-ADD REQUEST TO THE DATABASE*/
                 $isUserAdded = $this->model->addNewUserToDatabase($validInput);
-                dd($isUserAdded);
+                
+                
             }
         } else {
             redirect()->route('register-page');
@@ -88,7 +87,7 @@ class RegisterController extends Controller
     {
         $isEmailExist = null;
 
-        $table = $table ? $table : 'laravelCrm_users';
+        $table = $table ? $table : 'laravelCrmUsers ';
         $column = $column ? $column : 'email';
 
         $table = $this->model->validateInput($table);

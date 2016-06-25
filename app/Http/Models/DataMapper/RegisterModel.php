@@ -9,8 +9,8 @@
 namespace app\Http\Models\DataMapper;
 
 
-
 use App\Http\Models\BaseModel;
+
 
 class RegisterModel extends BaseModel
 {
@@ -23,15 +23,17 @@ class RegisterModel extends BaseModel
     public function validateRequest($userInfo)
     {
         $isValid = null;
+        $validationFilters = null;
 
-        $validationFilters = [
-            'email' => FILTER_SANITIZE_EMAIL,
-            'fname' => FILTER_SANITIZE_STRING,
-            'lname' => FILTER_SANITIZE_STRING,
-            'address' => FILTER_SANITIZE_STRING,
-            'city' => FILTER_SANITIZE_STRING,
-            'country' => FILTER_SANITIZE_STRING,
-        ];
+        foreach ($userInfo as $key => $val) {
+
+            /*input email*/
+            if ($key == 'email')
+                $validationFilters[$key] = array('filter' => ['FILTER_SANITIZE_EMAIL', 'FILTER_VALIDATE_EMAIL']);
+
+            /*other inputs string*/
+            $validationFilters[$key] = 'FILTER_SANITIZE_STRING';
+        }
 
         $isValid = filter_var_array($userInfo, $validationFilters);
 
@@ -47,8 +49,7 @@ class RegisterModel extends BaseModel
 
         $isUserAdded = null;
         $this->user->setConfiguration($userInfo);
-        dd($this->user);
-        
+
     }
 
 
@@ -74,17 +75,16 @@ class RegisterModel extends BaseModel
     {
         $isUserExist = null;
 
-
         $query = $this->DBservice->connect->createQueryBuilder()
             ->select($column)
             ->from($table)
             ->where("{$column} = ?")
             ->setParameter(0, $value);
 
-        $query =$query->execute();
+
+        $query = $query->execute();
 
         $result = $query->fetchAll();
-
 
         if (count($result) > 0) {
             $isUserExist = true;
