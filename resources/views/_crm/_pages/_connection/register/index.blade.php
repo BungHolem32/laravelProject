@@ -48,10 +48,17 @@
             {!! Form::label('userName','user name',['class'=>'text-capitalize']) !!}
             {!! Form::text('userName','',array('class'=>'form-control','name'=>'user[userName]','required' => 'required' )) !!}
         </div>
-
+        <div class = "form-group createAt">
+            {!! Form::label('createdAt','createAt',['class'=>'text-capitalize sr-only']) !!}
+            {!! Form::hidden('createdAt','',array('class'=>'form-control','name'=>'user[createdAt]','required' => 'required','type'=>'hidden' )) !!}
+        </div>
+        <div class = "form-group isMember">
+            {!! Form::label('isMember','isMember',['class'=>'text-capitalize sr-only']) !!}
+            {!! Form::hidden('isMember','',array('class'=>'form-control','name'=>'user[isMember]','required' => 'required', 'type'=>'hidden')) !!}
+        </div>
         <div class = "form-group password">
             {!! Form::label('password','password',['class'=>'text-capitalize']) !!}
-            {!! Form::password('password',array('class'=>'form-control','name'=>'user[password]','required' => 'required' )) !!}
+            {!! Form::password('password',array('class'=>'form-control','name'=>'user[password]','required' => 'required')) !!}
         </div>
 
         <div class = "form-group submit">

@@ -5,9 +5,12 @@
 @stop
 
 @section('header')
-    <h2>Welcome to CMS </h2>
+    <h2 class="header-dashboard-title">Welcome to CMS </h2>
     <div class="clearfix"></div>
 @stop
 
 @section('content')
+    @if(session('feedback'))
+        {{session('feedback')}}
+    @endif
 @endsection

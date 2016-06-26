@@ -10,15 +10,16 @@
 </head>
 <body>
 
-<div class="container-fluid wrapper">
+<div class="container-fluid wrapper no-padding">
 
     {{--HEADER TAG--}}
-    <header class="top-title col-md-12 padding-left">
-        <div class="container">
+    <header class="top-title col-md-12">
+        <div class="container text-center">
             @section('header')
             @show
         </div>
     </header>
+    <div class="clearfix"></div>
 
     {{--NAV BAR TAG--}}
     @yield('nav-bar')

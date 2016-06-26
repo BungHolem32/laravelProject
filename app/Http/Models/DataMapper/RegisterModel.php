@@ -8,13 +8,14 @@
 
 namespace app\Http\Models\DataMapper;
 
-
 use App\Http\Models\BaseModel;
 
-
+/**
+ * @property mixed model
+ * @property array userInfo
+ */
 class RegisterModel extends BaseModel
 {
-
 
     /**
      * @param $userInfo
@@ -25,7 +26,7 @@ class RegisterModel extends BaseModel
         $isValid = null;
         $validationFilters = null;
 
-        foreach ($userInfo as $key => $val) {
+        foreach ($userInfo as $key => $val){
 
             /*input email*/
             if ($key == 'email')
@@ -41,17 +42,28 @@ class RegisterModel extends BaseModel
     }
 
 
-    /**
-     * @param $userInfo
-     */
     public function addNewUserToDatabase($userInfo)
     {
-
         $isUserAdded = null;
-        $this->user->setConfiguration($userInfo);
+        $this->userInfo = $this->user->setConfiguration($userInfo);
 
+        $queryUserStatement = "INSERT INTO laravelcrmuser VALUES ('',";
+        foreach ($this->userInfo as $name => $val){
+            if ($name == 'uId'){
+                continue;
+            } elseif ($name == 'password'){
+                $queryUserStatement .= "'" . $val . "'" . ')';
+            } else{
+                $queryUserStatement .= "'" . $val . "'" . ',';
+            }
+        }
+        $isUserAdded = $this->DBservice->connect->query($queryUserStatement);
+
+        if ($isUserAdded){
+            \Session::flash('feedback', 'user registered');
+        }
+        return $isUserAdded;
     }
-
 
     /**
      * @param $input
@@ -61,7 +73,6 @@ class RegisterModel extends BaseModel
     {
         $cleanInput = null;
         $cleanInput = filter_var($input, FILTER_SANITIZE_STRING);
-
         return $cleanInput;
     }
 
@@ -83,13 +94,11 @@ class RegisterModel extends BaseModel
 
 
         $query = $query->execute();
-
         $result = $query->fetchAll();
 
-        if (count($result) > 0) {
+        if (count($result) > 0){
             $isUserExist = true;
         }
         return $isUserExist;
-
     }
 }

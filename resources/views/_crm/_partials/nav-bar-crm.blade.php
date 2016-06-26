@@ -1,15 +1,15 @@
-{{--*/ $menuTabs = ['return to site', 'user managment', 'page managment']; /*--}}
-<nav class="navbar navbar-light  cms-navigation">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <ul class="nav navbar-nav nav-bar-crm-ul">
+{{--*/ $menuTabs = [ 'user managment', 'page managment','cms managment','return to site']; /*--}}
+<nav class="navbar   cms-navigation">
+    <ul class="container">
         @foreach($menuTabs as $menu)
-            <li class = "nav-bar-crm-li text-capitalize nav-item">
-                <a class="nav-link" href="#">Home <span class="sr-only">{{$menu}}</span></a>
+            <li class="nav-bar-crm-li text-capitalize nav-item text-center col-xs-3 list-unstyled">
+                @if($menu == 'return to site' )
+                    <a class="nav-link" href="/">{{$menu}}</a>
+                @else
+                    <a class="nav-link" href="/{{$menu}}">{{$menu}}</a>
+                @endif
             </li>
         @endforeach
     </ul>
-    <form class="form-inline pull-xs-right">
-        <input class="form-control" type="text" placeholder="Search">
-        <button class="btn btn-success-outline" type="submit">Search</button>
-    </form>
+
 </nav>

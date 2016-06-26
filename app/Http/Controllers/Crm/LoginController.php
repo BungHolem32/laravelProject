@@ -43,7 +43,7 @@ class LoginController extends Controller
 		if (!empty($request)){
 			$inputs = $request->input('User');
 
-			$isLoginCurrent = $this->model->isValidLogin('laravelCrm.laravelCrm_users', ['email', 'password'], $inputs);
+			$isLoginCurrent = $this->model->isValidLogin('laravelCrm.laravelCrmUsers', ['email', 'password'], $inputs);
 
 			if ($isLoginCurrent){
 				session('is-logged', true);
