@@ -82,7 +82,8 @@ class RegisterController extends Controller
     {
         $isEmailExist = null;
 
-        $table = $table ? $table : 'laravelCrmUser ';
+        
+        $table = $table ? $table : 'laravelCrmUser';
         $column = $column ? $column : 'email';
 
         $table = $this->model->validateInput($table);

@@ -47,7 +47,7 @@ class RegisterModel extends BaseModel
         $isUserAdded = null;
         $this->userInfo = $this->user->setConfiguration($userInfo);
 
-        $queryUserStatement = "INSERT INTO laravelcrmuser VALUES ('',";
+        $queryUserStatement = "INSERT INTO laravelCrmUser VALUES ('',";
         foreach ($this->userInfo as $name => $val){
             if ($name == 'uId'){
                 continue;

@@ -2,7 +2,7 @@
 <nav class="navbar   cms-navigation">
     <ul class="container">
         @foreach($menuTabs as $menu)
-            <li class="nav-bar-crm-li text-capitalize nav-item text-center col-xs-3 list-unstyled">
+            <li class="nav-bar-crm-li text-uppercase nav-item text-center col-xs-3 list-unstyled">
                 @if($menu == 'return to site' )
                     <a class="nav-link" href="/">{{$menu}}</a>
                 @else
