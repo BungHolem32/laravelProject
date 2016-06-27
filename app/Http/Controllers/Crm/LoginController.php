@@ -39,14 +39,16 @@ class LoginController extends Controller
 	 */
 	protected function login(Request $request)
 	{
+		/**/
 		$isUserExist = null;
+		/*enter if there request*/
 		if (!empty($request)){
+
 			$inputs = $request->input('User');
-
-			$isLoginCurrent = $this->model->isValidLogin('laravelCrm.laravelCrmUsers', ['email', 'password'], $inputs);
-
+			$isLoginCurrent = $this->model->isValidLogin('laravelCrm.laravelCrmUser', ['email', 'password'], $inputs);
+			
 			if ($isLoginCurrent){
-				session('is-logged', true);
+					
 				return redirect()->route('crm-dashboard');
 			} else{
 				session('is-logged', false);

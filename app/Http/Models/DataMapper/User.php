@@ -24,6 +24,7 @@ class User
         'email' => null,
         'createdAt' => null,
         'isMember' => false,
+        'isLoggedIn' => false,
         'password' => null,
 
     ];
@@ -39,6 +40,7 @@ class User
 
                 if ($name == 'createdAt') $this->userInfo[$name] = date("Y-m-d H:i:s");
                 elseif ($name == 'isMember') $this->userInfo[$name] = 1;
+                elseif ($name == 'isLoggedIn') $this->userInfo[$name] = true;
                 elseif ($name == 'password') $this->userInfo[$name] = $this->saltPassword($userInfo);
                 else{
                     $this->userInfo[$name] = $userInfo;
@@ -51,7 +53,7 @@ class User
         return $this->userInfo;
     }
 
-    private
+    public 
     function saltPassword($password)
     {
         $password = sha1(md5($password . 'createSaltHash'));

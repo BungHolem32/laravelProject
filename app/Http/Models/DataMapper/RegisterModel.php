@@ -52,12 +52,15 @@ class RegisterModel extends BaseModel
             if ($name == 'uId'){
                 continue;
             } elseif ($name == 'password'){
-                $queryUserStatement .= "'" . $val . "'" . ')';
+                $queryUserStatement .= "'" . $name . "'" . ')';
             } else{
-                $queryUserStatement .= "'" . $val . "'" . ',';
+                $queryUserStatement .= "'" . $name . "'" . ',';
             }
         }
+
+        dd($queryUserStatement);
         $isUserAdded = $this->DBservice->connect->query($queryUserStatement);
+
 
         if ($isUserAdded){
             \Session::flash('feedback', 'user registered');
@@ -100,5 +103,11 @@ class RegisterModel extends BaseModel
             $isUserExist = true;
         }
         return $isUserExist;
+    }
+
+    public function array_insert($array, $values, $offset)
+    {
+        return array_slice($array, 0, $offset, true) + $values + array_slice($array, $offset, NULL, true);
+        
     }
 }

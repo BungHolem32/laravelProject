@@ -9,6 +9,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Models\DataMapper\User;
 use Closure;
 
 
@@ -16,7 +17,7 @@ class LoginCheck
 {
 	public function handle($request, Closure $next)
 	{
-		$isLogged = true;
+		$isLogged = session('userInfo.isLoggedIn');
 		if($isLogged)
 			return $next($request);
 

@@ -15,13 +15,15 @@ class LoginModel extends BaseModel
 	public function isValidLogin($table, array $columns, array $value)
 	{
 		$isPassValidation = null;
+
+		$password = $this->user->saltPassword($value['password']);
 		$query = $this->DBservice->connect->createQueryBuilder()
 			->select("{$columns[0]}, {$columns[1]}")
 			->from($table)
 			->where($columns[0] . ' = ?')
 			->andWhere($columns[1] . ' = ?')
 			->setParameter(0, $value['email'])
-			->setParameter(1, $value['password']);
+			->setParameter(1, $password);
 
 		$query = $query->execute();
 		$result = $query->fetchAll();
