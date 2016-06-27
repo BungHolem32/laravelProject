@@ -6841,16 +6841,16 @@ body .cms-login-wrapper .login-submit {
   width: 100%;
   font-size: 26px;
 }
-.container-fluid .top-title {
+.container-fluid.dashboard-page .top-title {
   background: #dadada;
   box-shadow: inset 0px -3px 3px 0px white;
   padding: 15px;
   color: #020217;
 }
-.container-fluid .header-dashboard-title {
+.container-fluid.dashboard-page .header-dashboard-title {
   font-size: 44px;
 }
-.container-fluid .cms-navigation {
+.container-fluid.dashboard-page .cms-navigation {
   padding-top: 20px !important;
   background-color: #4b929e;
   box-shadow: 0 2.4px 3.9px 2.9px #666666;
@@ -6859,40 +6859,42 @@ body .cms-login-wrapper .login-submit {
   border-top: solid #000000;
   max-height: 90px;
 }
-.container-fluid .cms-navigation.navbar {
+.container-fluid.dashboard-page .cms-navigation.navbar {
   padding: 20px 0;
   font-size: 30px;
   border-radius: 0;
   background-color: black;
   border-bottom: 1px solid #8c8c8c;
 }
-.container-fluid .cms-navigation.navbar .nav-bar-crm-li .nav-link {
+.container-fluid.dashboard-page .cms-navigation.navbar .nav-bar-crm-li .nav-link {
   color: #b9b9b9;
   text-decoration: none;
   letter-spacing: 1px;
   transition: all 0.3s;
 }
-.container-fluid .cms-navigation.navbar .nav-bar-crm-li .nav-link:hover {
+.container-fluid.dashboard-page .cms-navigation.navbar .nav-bar-crm-li .nav-link:hover {
   color: #ffffff;
   zoom: 1.03;
   font-weight: bold;
 }
-.container-fluid .cms-content .user-info-wrapper.container {
-  height: 200px;
-  width: 300px;
-  border: 1px solid gray;
-  position: absolute;
-  right: 20px;
-  top: 0;
-  background: white;
-  border-radius: 15px;
-  box-shadow: inset 1px 1px 10px 2px darkgray;
+@media (min-width: 640px) {
+  .container-fluid.dashboard-page .cms-content .user-info-wrapper.container {
+    height: 200px;
+    width: 300px;
+    border: 1px solid gray;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    background: white;
+    border-radius: 15px;
+    box-shadow: inset 1px 1px 10px 2px darkgray;
+  }
 }
-.container-fluid .cms-content .user-info-wrapper.container .user-info .content {
+.container-fluid.dashboard-page .cms-content .user-info-wrapper.container .user-info .content {
   padding-left: 50px;
   letter-spacing: 1px;
 }
-.container-fluid .cms-content .user-info-wrapper.container .user-info .content .log-out {
+.container-fluid.dashboard-page .cms-content .user-info-wrapper.container .user-info .content .log-out {
   margin-top: 0;
 }
 body {

@@ -47,7 +47,7 @@ Route::group(['prefix' => 'cms'], function () {
 
     Route::group(['middleware' => 'login-check'], function () {
         Route::get('/', ['as' => 'crm-dashboard', 'uses' => 'Crm\AdminController@dashboard']);
-        Route::get('home', ['as' => 'crm-dashboard', 'uses' => 'Crm\AdminController@dashboard']);
+        Route::get('dashboard', ['as' => 'crm-dashboard', 'uses' => 'Crm\AdminController@dashboard']);
         Route::resource('users', 'UsersController');
         Route::resource('pages', 'PagesController');
     });

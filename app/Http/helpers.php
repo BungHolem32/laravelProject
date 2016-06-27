@@ -8,7 +8,7 @@ if (!function_exists('AddArrayKeysInSpecificPosition')){
     }
 }
 
-if (!function_exists('AddArrayKeysInSpecificPosition')){
+if (!function_exists('getUrlLastSlug')){
     function getUrlLastSlug($siteUrl)
     {
         $slug = strstr($siteUrl,'/');

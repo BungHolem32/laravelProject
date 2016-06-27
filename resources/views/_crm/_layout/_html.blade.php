@@ -10,8 +10,10 @@
 </head>
 <body>
 
-{{getUrlLastSlug(\Illuminate\Support\Facades\Request::path())}}
-<div class="container-fluid wrapper no-padding">
+{{--REVEAL THE PAGE ROUTE AND ADD IT TO THE CONTAINER CLASS--}}
+{{--*/ $page = getUrlLastSlug(\Illuminate\Support\Facades\Request::path()) /*--}}
+
+<div class="container-fluid wrapper no-padding {{$page}}-page">
 
     {{--HEADER TAG--}}
     <header class="top-title col-md-12">

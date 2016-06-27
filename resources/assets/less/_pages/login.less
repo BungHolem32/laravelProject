@@ -1,15 +1,19 @@
 body {
 
-  .cms-login-wrapper {
-    &.container {
-      width: @container-width-form;
-      .box-form;
-    }
+  .container-fluid {
+    &.login-page {
 
-    .login-submit{
-      width:100%;
-      font-size:@default-size*1.3;
+      .cms-login-wrapper {
+        &.container {
+          width: @container-width-form;
+          .box-form;
+        }
+
+        .login-submit {
+          width: 100%;
+          font-size: @default-size*1.3;
+        }
+      }
     }
   }
-
 }

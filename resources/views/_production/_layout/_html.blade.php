@@ -21,7 +21,11 @@
     @stack('top-script')
 </head>
 <body>
-<div class="wrapper container-fluid no-padding">
+
+{{--REVEAL THE PAGE ROUTE AND ADD IT TO THE CONTAINER CLASS--}}
+{{--*/ $page = \Illuminate\Support\Facades\Request::path(); /*--}}
+
+<div class="wrapper container-fluid no-padding {{$page}}-page">
     {{--HEADER--}}
     <header class="header-part-wrapper container">
         @include('_production._partials._header')
