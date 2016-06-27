@@ -28,10 +28,11 @@ Route::group(['namespace' => 'Site'], function () {
 });
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'cms'], function () {
 
     Route::get('login', ['as' => 'login-page', 'uses' => 'Crm\LoginController@index']);
     Route::post('login', ['as' => 'login-validation', 'uses' => 'Crm\LoginController@login']);
+    Route::get('logout',['as'=>'logout','uses'=>'Crm\LogOutController@index']);
 
     Route::get('forgot-password', ['as' => 'forgot-password', 'uses' => 'Crm\ForgotPasswordController@index']);
     Route::post('forgot-password', [

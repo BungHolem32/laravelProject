@@ -1,5 +1,5 @@
 @extends('_crm._layout._html')
-
+@section('title','cms dashboard')
 @section('nav-bar')
     @include('_crm._partials.nav-bar-crm')
 @stop
@@ -18,9 +18,10 @@
             <div class="content">
                 <h4 class="user-role text-capitalize"><strong>role:</strong> admin</h4>
                 <h4 class="user-email text-capitalize"><strong>email: </strong> {{session('userInfo.email')}}</h4>
-                <h4 class="user-email text-capitalize"><strong>balance: </strong> 4554$</h4>
                 <h4 class="status text-capitalize"><strong>status:</strong> approved </h4>
+                <h3 class="log-out pull-right text-uppercase"><a href="{{url('cms/logout')}}">log-out</a></h3>
             </div>
+
         </div>
     </section>
     <div class="clearfix"></div>

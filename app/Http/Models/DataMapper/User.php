@@ -34,30 +34,27 @@ class User
 
     public function setConfiguration(array $userConfiguration = null)
     {
-        if (is_array($userConfiguration) && in_array(!null, $userConfiguration)){
+        if (is_array($userConfiguration) && in_array(!null, $userConfiguration)) {
 
-            foreach ($userConfiguration as $name => $userInfo){
+            foreach ($userConfiguration as $name => $userInfo) {
 
                 if ($name == 'createdAt') $this->userInfo[$name] = date("Y-m-d H:i:s");
                 elseif ($name == 'isMember') $this->userInfo[$name] = 1;
                 elseif ($name == 'isLoggedIn') $this->userInfo[$name] = true;
                 elseif ($name == 'password') $this->userInfo[$name] = $this->saltPassword($userInfo);
-                else{
+                else {
                     $this->userInfo[$name] = $userInfo;
                 }
             }
         }
-
-        /*set Session */
-        $isSessionSet = session::put('userInfo', $this->userInfo);;
         return $this->userInfo;
     }
 
-    public 
-    function saltPassword($password)
+    public function saltPassword($password)
     {
         $password = sha1(md5($password . 'createSaltHash'));
         return $password;
     }
+
 
 }

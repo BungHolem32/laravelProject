@@ -1,8 +1,8 @@
 @extends('_crm._layout._html')
-
+@section('title',ucwords('login page'))
 <div class = "cms-login-wrapper container">
 
-    <h2 class = "form-title text-capitalize">admin login</h2>
+    <h2 class = "form-title text-uppercase">cms login</h2>
     {!! Form::open(['class'=>'login-form form-default']) !!}
 
     {{--EMAIL INPUT--}}
@@ -20,10 +20,10 @@
 
     {{--SUBMIT BUTTON--}}
     <div class = "form-group submit">
-        {!! Form::submit('click me!',['name'=>'submit','class'=>'login-submit btn-primary  btn text-uppercase']) !!}
+        {!! Form::submit('enter cms!',['name'=>'submit','class'=>'login-submit btn-primary  btn text-uppercase']) !!}
     </div>
 
-    <div class="form-group">
+    <div class="form-group forgot-password">
         <a href = "{{url('/admin/forgot-pass')}}" class = "text-capitalize pull-right">forgot password?</a>
     </div>
 

@@ -45,25 +45,25 @@ class RegisterModel extends BaseModel
     public function addNewUserToDatabase($userInfo)
     {
         $isUserAdded = null;
+
+
+        /*1-CREATE NEW USER WITH THE NEW DATA*/
         $this->userInfo = $this->user->setConfiguration($userInfo);
 
-        $queryUserStatement = "INSERT INTO laravelCrmUser VALUES ('',";
-        foreach ($this->userInfo as $name => $val){
-            if ($name == 'uId'){
-                continue;
-            } elseif ($name == 'password'){
-                $queryUserStatement .= "'" . $name . "'" . ')';
-            } else{
-                $queryUserStatement .= "'" . $name . "'" . ',';
-            }
-        }
+        /*2-CREATE QUERY*/
+        $queryUserStatement = $this->createDynamicQuery();
 
-        dd($queryUserStatement);
+        /*3-EXECUTE THE QUERY*/
         $isUserAdded = $this->DBservice->connect->query($queryUserStatement);
 
+        /*4-CHECK IF THE QUERY WAS INSERT*/
+        if (!empty($isUserAdded)){
 
-        if ($isUserAdded){
-            \Session::flash('feedback', 'user registered');
+            /*set userInfo into the */
+            $this->userInfo['isLoggedIn'] = 1;
+            \session::put('userInfo', $this->userInfo);
+            \session::flash('feedback', 'user registered');
+
         }
         return $isUserAdded;
     }
@@ -105,9 +105,21 @@ class RegisterModel extends BaseModel
         return $isUserExist;
     }
 
-    public function array_insert($array, $values, $offset)
+    private function createDynamicQuery()
     {
-        return array_slice($array, 0, $offset, true) + $values + array_slice($array, $offset, NULL, true);
-        
+        $queryUserStatement = "INSERT INTO laravelCrmUser VALUES ('',";
+
+        foreach ($this->userInfo as $name => $val){
+            if ($name == 'uId'){
+                continue;
+            }
+            elseif ($name == 'password'){
+                $queryUserStatement .= "'" . $val . "'" . ')';
+            } else{
+                $queryUserStatement .= "'" . $val . "'" . ',';
+            }
+        }
+
     }
+
 }

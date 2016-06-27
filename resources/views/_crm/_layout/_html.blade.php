@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @include('_crm._layout._head')
-    <title>
+    <title >
         @yield('title')
     </title>
     @include('_crm._layout._top-script')
@@ -10,6 +10,7 @@
 </head>
 <body>
 
+{{getUrlLastSlug(\Illuminate\Support\Facades\Request::path())}}
 <div class="container-fluid wrapper no-padding">
 
     {{--HEADER TAG--}}
