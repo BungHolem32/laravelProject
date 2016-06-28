@@ -160,7 +160,8 @@ return [
 		App\Providers\RouteServiceProvider::class,
 		Collective\Html\HtmlServiceProvider::class,
 		App\Providers\MyProviders\DbProvider::class,
-		App\Providers\MyProviders\ParameterProvider::class
+		App\Providers\MyProviders\ParameterProvider::class,
+		App\Providers\MyProviders\DbORMProvider::class
 
     ],
 
