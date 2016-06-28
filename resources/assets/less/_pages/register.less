@@ -1,44 +1,47 @@
 body {
 
-  .cms-register-header-wrapper {
+  .container-fluid{
 
-    @media (min-width: 640px) {
-      &.container {
-        width: @container-width-form;
-        margin-top: @default-size*1.5;
+    &.register-page{
+      .cms-register-header-wrapper {
+
+        @media (min-width : 640px) {
+          &.container {
+            //width      : @container-width-form;
+            margin-top : @default-size*1.5;
+          }
+        }
+      }
+
+      .cms-register-wrapper {
+        .box-form;
+
+        &.container {
+          //width       : @container-width-form;
+          padding-top : @default-size*2;
+        }
+
+        .register-btn {
+          width     : 100%;
+          font-size : @default-size*1.3;
+        }
+
+        label {
+          font-size : @default-size;
+        }
+
+        .form-group {
+          &:last-of-type {
+            //margin-top : @default-size*2;
+          }
+
+          .form-control {
+            height    : @default-size*2.5;
+            font-size : @default-size*1.5;
+          }
+        }
       }
     }
-
   }
 
-  .cms-register-wrapper {
-
-    .box-form;
-
-    &.container {
-      width: @container-width-form;
-      padding-top: @default-size*2;
-    }
-
-    .register-btn {
-      width: 100%;
-      font-size: @default-size*1.3;
-    }
-
-    label {
-      font-size: @default-size;
-    }
-
-    .form-group {
-      &:last-of-type {
-        margin-top: @default-size*2;
-      }
-
-      .form-control {
-        height: @default-size*2.5;
-        font-size:@default-size*1.5;
-      }
-    }
-
-  }
 }

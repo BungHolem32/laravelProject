@@ -14,7 +14,6 @@ use Illuminate\Routing\Controller;
  */
 class RegisterController extends Controller
 {
-
     /**
      * RegisterController constructor.
      * @param RegisterModel $registerModel
@@ -31,7 +30,6 @@ class RegisterController extends Controller
         return view('_crm._pages._connection.register.index')->with('class', __CLASS__);
     }
 
-
     public function addNewUserToDataBaseAndAutoConnectIt(Request $request, $table = null, $column = null)
     {
         $data = null;
@@ -45,15 +43,16 @@ class RegisterController extends Controller
 
             /*ASSIGN VARIABLE FOR VALIDATION*/
             $user = $request->input('user');
+            $user = AddArrayKeysInSpecificPosition($user,array('isLoggedIn'=>1),count($user)-1);
 
             /*2-CHECK IF THE REQUEST IS VALID*/
             $validInput = $this->model->validateRequest($user);
 
             /*IF THE INPUTS VALID*/
             if (!empty($validInput)){
-
                 /*3-ADD REQUEST TO THE DATABASE*/
                 $isUserAdded = $this->model->addNewUserToDatabase($validInput);
+
 
                 /*IF USER ADDED*/
                 if ($isUserAdded){
@@ -69,8 +68,7 @@ class RegisterController extends Controller
             return redirect()->route('register-page')->with('feedback', 'this email already exist');
         }
     }
-
-
+    
     /**
      * @param null $table
      * @param null $column
@@ -86,8 +84,8 @@ class RegisterController extends Controller
         $table = $table ? $table : 'laravelCrmUser';
         $column = $column ? $column : 'email';
 
-        $table = $this->model->validateInput($table);
-        $column = $this->model->validateInput($column);
+        $table = validateInput($table);
+        $column = validateInput($column);
 
         /*CHECK IF THE EMAIL EXIST*/
         $isEmailExist = $this->model->isParamExist($table, $column, $value);

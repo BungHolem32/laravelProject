@@ -8,7 +8,6 @@
 
 namespace app\Http\Models\DataMapper;
 
-
 use app\Http\Models\BaseModel;
 
 class ForgotPassword extends BaseModel

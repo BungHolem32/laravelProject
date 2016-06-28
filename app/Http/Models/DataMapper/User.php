@@ -40,7 +40,7 @@ class User
 
                 if ($name == 'createdAt') $this->userInfo[$name] = date("Y-m-d H:i:s");
                 elseif ($name == 'isMember') $this->userInfo[$name] = 1;
-                elseif ($name == 'isLoggedIn') $this->userInfo[$name] = true;
+                elseif ($name == 'isLoggedIn') $this->userInfo[$name] = 0;
                 elseif ($name == 'password') $this->userInfo[$name] = $this->saltPassword($userInfo);
                 else {
                     $this->userInfo[$name] = $userInfo;

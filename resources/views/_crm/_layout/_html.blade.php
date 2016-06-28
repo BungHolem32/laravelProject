@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     @include('_crm._layout._head')
-    <title >
+    <title>
         @yield('title')
     </title>
     @include('_crm._layout._top-script')
-    @stack('top-script')
+    @stack('top-scripts')
 </head>
 <body>
 
@@ -40,6 +40,7 @@
 </div>
 {{--BOTTOM SCRIPT--}}
 @include('_crm._layout._bottom-script')
-@stack('bottom-scripts')
+@section('bottom-scripts')
+    @show
 </body>
 </html>

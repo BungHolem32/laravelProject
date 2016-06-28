@@ -9,6 +9,7 @@
 namespace app\Http\Models\DataMapper;
 
 use App\Http\Models\BaseModel;
+use Illuminate\Support\Facades\Session;
 
 /**
  * @property mixed model
@@ -16,6 +17,8 @@ use App\Http\Models\BaseModel;
  */
 class RegisterModel extends BaseModel
 {
+
+    protected $userInfo;
 
     /**
      * @param $userInfo
@@ -46,12 +49,11 @@ class RegisterModel extends BaseModel
     {
         $isUserAdded = null;
 
-
         /*1-CREATE NEW USER WITH THE NEW DATA*/
         $this->userInfo = $this->user->setConfiguration($userInfo);
 
         /*2-CREATE QUERY*/
-        $queryUserStatement = $this->createDynamicQuery();
+        $queryUserStatement = createDynamicQuery();
 
         /*3-EXECUTE THE QUERY*/
         $isUserAdded = $this->DBservice->connect->query($queryUserStatement);
@@ -59,26 +61,19 @@ class RegisterModel extends BaseModel
         /*4-CHECK IF THE QUERY WAS INSERT*/
         if (!empty($isUserAdded)){
 
-            /*set userInfo into the */
+            /*SET USER-INFO INTO THE */
             $this->userInfo['isLoggedIn'] = 1;
-            \session::put('userInfo', $this->userInfo);
-            \session::flash('feedback', 'user registered');
 
+            /*ADD USER TO THE SESSION*/
+            Session::put('userInfo', $this->userInfo);
+            Session::flash('feedback', 'user registered');
         }
         return $isUserAdded;
     }
 
-    /**
-     * @param $input
-     * @return mixed|null
-     */
-    public function validateInput($input)
-    {
-        $cleanInput = null;
-        $cleanInput = filter_var($input, FILTER_SANITIZE_STRING);
-        return $cleanInput;
-    }
 
+
+    /*IS PARAM EXIST*/
     /**
      * @param $table
      * @param $column
@@ -104,22 +99,4 @@ class RegisterModel extends BaseModel
         }
         return $isUserExist;
     }
-
-    private function createDynamicQuery()
-    {
-        $queryUserStatement = "INSERT INTO laravelCrmUser VALUES ('',";
-
-        foreach ($this->userInfo as $name => $val){
-            if ($name == 'uId'){
-                continue;
-            }
-            elseif ($name == 'password'){
-                $queryUserStatement .= "'" . $val . "'" . ')';
-            } else{
-                $queryUserStatement .= "'" . $val . "'" . ',';
-            }
-        }
-
-    }
-
 }
