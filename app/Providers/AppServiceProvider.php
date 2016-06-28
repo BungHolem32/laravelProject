@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('urls',['home','register','about','products','contact-us','other']);
+        view()->share('urlList',['home','about','products','contact-us','register','cms-login']);
     }
 
     /**

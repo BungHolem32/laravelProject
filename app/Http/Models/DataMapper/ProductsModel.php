@@ -6,34 +6,46 @@
  * Time: 22:57
  */
 
-namespace App\Http\Models\DataMapper;
+namespace app\Http\Models\DataMapper;
 
-use Illuminate\Support\Facades\DB;
-
+use App\Http\Models\BaseModel;
 
 class ProductsModel extends BaseModel
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
+    /*GET ALL PRODUCTS*/
     public function getAllProducts()
     {
+        $query = null;
         $products = null;
-        $products = DB::select('select * from `TiPiCRM-Products`');
+        $query = $this->DBservice->connect->createQueryBuilder()
+            ->select('*')
+            ->from('laravelCrmProducts')->execute();
+        $products = $query->fetchAll();
 
-        if ($products){
-            return $products;
-        } else{
-            return 'theres no products';
+        if (!$products) {
+            abort(403, 'products didn\'t found');
         }
+        return $products;
+
     }
 
+    /*GET ONE PRODUCT*/
     public function getOneProduct($id)
     {
         $product = null;
-        $product = DB::select('SELECT * FROM `TiPiCRM-Products` WHERE id= ?',[$id]);
-        return $product[0];
+        $query = $this->DBservice->connect->createQueryBuilder()
+            ->select('*')
+            ->from('laravelCrmProducts')
+            ->where('id = ?')
+            ->setParameter(0, $id)
+            ->execute();
+        $products = $query->fetchAll();
+
+        if (!$products) {
+            abort(403, 'product didn\'t found');
+        }
+        return $product;
     }
+
 }

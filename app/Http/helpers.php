@@ -52,4 +52,3 @@ if (function_exists('insetDynamicTable')){
         return $queryUserStatement;
     }
 }
-

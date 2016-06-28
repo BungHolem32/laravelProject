@@ -1,34 +1,38 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace app\Http\Controllers\Site;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
-use App\Http\Models\ProductsModel;
-use Illuminate\Support\Facades\DB;
-
+use App\Http\Models\DataMapper\ProductsModel;
 use App\Http\Requests;
+use Illuminate\Routing\Controller;
 
-class ProductsController extends BaseController
+/**
+ * @property ProductsModel model
+ */
+class ProductsController extends Controller
 {
     protected $products = null;
 
-    public function __construct()
+    public function __construct(ProductsModel $productsModel)
     {
-        $this->model = new ProductsModel();
+        $this->model = $productsModel;
         return view('_production._pages.products.index');
     }
 
 
-    public function getProducts()
+    public function getAllProducts()
     {
-        $products = $this->model->getProducts();
-        return view('_production._pages.products.index')->with('products',$products);
+        $products = $this->model->getAllProducts();
+        dd($products);
+        return view('_production._pages.products.index')->with('products', $products);
     }
 
-    public function getProduct($id){
-        $product  = null;
-        $product = $this->model->getProduct($id);
-        return view('_production._pages.products.index')->with('product',$product);
+    public function getOneProduct($id)
+    {
+        $product = null;
+        $product = $this->model->getOneProduct($id);
+        return view('_production._pages.products.index')->with('product', $product);
     }
+
+
 }
