@@ -19,7 +19,6 @@ use Illuminate\Routing\Controller;
 class ForgotPasswordController extends Controller
 {
 
-
 	public function __construct(ForgotPassword $forgotPassword)
 	{
 

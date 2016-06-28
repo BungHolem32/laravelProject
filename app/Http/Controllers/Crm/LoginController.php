@@ -26,8 +26,7 @@ class LoginController extends Controller
     {
         $this->model = $loginModel;
     }
-
-
+    
     /**
      * LoginController constructor.
      */
@@ -43,9 +42,9 @@ class LoginController extends Controller
      */
     protected function login(Request $request)
     {
-        /**/
         $isUserExist = null;
-        /*enter if there request*/
+
+        /*ENTER IF THERE REQUEST*/
         if (!empty($request)) {
 
             $inputs = $request->input('User');
@@ -53,20 +52,20 @@ class LoginController extends Controller
 
             if ($isLoginCurrent) {
 
-                /*get the user by its email*/
+                /*GET THE USER BY ITS EMAIL*/
                 $user = $this->model->getUserByParameter($inputs['email'], 'laravelCrm.laravelCrmUser');
 
-                /*put the user on the session*/
+                /*PUT THE USER ON THE SESSION*/
                 Session::put('userInfo', $user);
 
-                /*redirect to the home screen crm*/
+                /*REDIRECT TO THE HOME SCREEN CRM*/
                 return redirect()->route('crm-dashboard');
             }
 
             else {
 
-                redirect()->route('login-page');
                 Session::flash('feedback','check your details, and try again');
+                return redirect()->route('login-page');
             }
         }
 

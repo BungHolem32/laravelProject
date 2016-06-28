@@ -31,16 +31,15 @@ if (!function_exists('validateInput')){
 
 /*DYNAMIC QUERY BUILDER INSERTION*/
 if (function_exists('insetDynamicTable')){
-    
+
     function createDynamicQuery($table = null)
     {
         if ($table){
             $validTable = validateInput($table);
             $queryUserStatement = "INSERT INTO $validTable VALUES ('',";
         }
-
         $queryUserStatement = "INSERT INTO `laravelcrmuser` VALUES ('',";
-        
+
         foreach ($this->userInfo as $name => $val){
             if ($name == 'uId'){
                 continue;
@@ -53,3 +52,4 @@ if (function_exists('insetDynamicTable')){
         return $queryUserStatement;
     }
 }
+
