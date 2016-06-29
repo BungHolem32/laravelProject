@@ -13,6 +13,7 @@
 
         {!! Form::open(array('class'=>'form-forgot-password','as'=>'forgot-password','route'=>'forgot-password' )) !!}
 
+        {{ csrf_field() }}
         {{--EMAIL TAG--}}
         <div class="form-group email-input">
             {!! Form::label('email','email address',['class'=>'text-capitalize sr-only']) !!}

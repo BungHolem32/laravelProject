@@ -37,21 +37,29 @@ Route::group($middleware, function (){
 
     Route::group(['prefix' => 'cms'], function (){
 
+        /*login & logout*/
         Route::get('login', ['as' => 'login-page', 'uses' => 'Crm\LoginController@index']);
         Route::post('login', ['as' => 'login-validation', 'uses' => 'Crm\LoginController@login']);
         Route::get('logout', ['as' => 'logout', 'uses' => 'Crm\LogOutController@index']);
 
+        /*forgot password*/
         Route::get('forgot-password', ['as' => 'forgot-password', 'uses' => 'Crm\ForgotPasswordController@index']);
         Route::post('forgot-password', [
             'as' => 'send-email-forgot-pass',
             'uses' => 'Crm\ForgotPasswordController@sendPasswordRestNotificationToEmail'
         ]);
 
+        /*reset password*/
+        Route::get('resetPassword', ['as'=>'reset-pass-page','uses'=>'Crm\ResetPasswordController@index']);
+        Route::get('resetPassword/{what}', ['as'=>'change-pass' , 'uses'=>'Crm\ResetPasswordController@reset']);
+
+        /*register*/
         Route::get('register', ['as' => 'register-page', 'uses' => 'Crm\RegisterController@index']);
         Route::post('register',
             ['as' => 'add-user', 'uses' => 'Crm\RegisterController@addNewUserToDataBaseAndAutoConnectIt']);
 //    Route::post('register/step-2',['uses'=>'Crm\RegisterController@addNewUserToDataBaseAndAutoConnectIt']);
 
+        /**/
         Route::group(['middleware' => 'login-check'], function (){
             Route::get('/', ['as' => 'crm-dashboard', 'uses' => 'Crm\AdminController@dashboard']);
             Route::get('dashboard', ['as' => 'crm-dashboard', 'uses' => 'Crm\AdminController@dashboard']);

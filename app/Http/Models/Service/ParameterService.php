@@ -13,7 +13,7 @@ use App\Http\Models\Interfaces\ParameterInterface;
 /**
  * @property DBService Dbservice
  */
-class ParameterService  implements ParameterInterface
+class ParameterService implements ParameterInterface
 {
     /**
      * @param DBService $DBService
@@ -84,5 +84,19 @@ class ParameterService  implements ParameterInterface
 
 
         return $isPassValidation;
+    }
+
+    public function getTableBy($table, $column, $val)
+    {
+        $results = $this->Dbservice->connect->createQueryBuilder()
+            ->select('*')
+            ->from($table)
+            ->where($column . '=?')
+            ->setParameter(0, $val)
+            ->execute()
+            ->fetchAll();
+
+        return $results;
+
     }
 }

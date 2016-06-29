@@ -9,11 +9,12 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Artisan;
+use Illuminate\Support\Facades\Artisan;
 
 class ClearCacheMiddleware
 {
     public function handle($request, Closure $next)
+
     {
         Artisan::call('view:clear');
         return $next($request);

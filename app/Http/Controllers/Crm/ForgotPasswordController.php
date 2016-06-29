@@ -47,7 +47,7 @@ class ForgotPasswordController extends Controller
         $this->email = $request->input('email');
 
         /*check if the user exist*/
-        $isEmailExist = $this->model->isParamExistWrapper($this->email);
+        $isEmailExist = $this->model->CheckIfThere($this->email);
         
         /*return to the page with error*/
         if(empty($isEmailExist)){
