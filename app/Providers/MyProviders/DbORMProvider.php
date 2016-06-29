@@ -14,7 +14,7 @@ class DbORMProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('urls',['home','register','about','products','contact-us','other']);
+
     }
 
     /**
@@ -25,7 +25,7 @@ class DbORMProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('App\\Http\\Models\\Interfaces\\DBORMInterface',function($app){
-            return $app->make('App\\Http\\Models\\Service\\DBORMInterface');
+            return $app->make('App\\Http\\Models\\Service\\DBORMService');
         });
     }
 }

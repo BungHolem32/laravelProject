@@ -6780,19 +6780,26 @@ body .main-content .products-page-wrapper .product {
   border-radius: 5px;
   padding: 10px 20px;
 }
-body .cms-header-forgot-pass.container {
-  width: 600px;
+body .forgot-password-page .cms-content .forgot-password-wrapper .form-forgot-password .form-group .form-control {
+  font-size: 24px !important;
+  height: 50px;
 }
-body .cms-forgot-password-wrapper.container {
-  width: 600px;
-}
-body .cms-forgot-password-wrapper .form-group .submit-btn {
+body .forgot-password-page .cms-content .forgot-password-wrapper .form-forgot-password .form-group .submit-btn {
   width: 100%;
+  background: #828882;
+  color: white;
+  font-size: 25px;
 }
-body .cms-forgot-password-wrapper ::-webkit-input-placeholder,
-body .cms-forgot-password-wrapper :-moz-placeholder,
-body .cms-forgot-password-wrapper ::-moz-placeholder,
-body .cms-forgot-password-wrapper :-ms-input-placeholder {
+body .forgot-password-page .cms-content .forgot-password-wrapper .feedback {
+  padding-top: 60px;
+}
+body .forgot-password-page .container {
+  width: 600px;
+}
+body .forgot-password-page ::-webkit-input-placeholder,
+body .forgot-password-page :-moz-placeholder,
+body .forgot-password-page ::-moz-placeholder,
+body .forgot-password-page :-ms-input-placeholder {
   text-align: center;
   text-transform: capitalize;
 }

@@ -8,36 +8,72 @@
 
 namespace App\Http\Controllers\Crm;
 
-use App\Http\Models\DataMapper\ForgotPassword;
+use App\Http\Models\DataMapper\ForgotPasswordModel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 
 /**
- * @property ForgotPassword model
+ * @property  isEmailExist
+ * @property ForgotPasswordModel model
+ * @property void isEmailExist
+ * @property array|string email
+ * @property void isTokenBeenReset
  */
 class ForgotPasswordController extends Controller
 {
 
-	public function __construct(ForgotPassword $forgotPassword)
-	{
+    /**
+     * ForgotPasswordController constructor.
+     * @param ForgotPasswordModel $forgoPasswordModel
+     */
+    public function __construct(ForgotPasswordModel $forgoPasswordModel)
+    {
+        $this->model = $forgoPasswordModel;
 
-		$this->model = $forgotPassword;
+    }
 
-	}
+    public function index()
+    {
+        return view('_crm._pages._connection.forgot-pass.index');
+    }
 
-	public function index()
-	{
-		return view('_crm._pages._connection.forgot-pass.index');
-	}
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function sendPasswordRestNotificationToEmail(Request $request)
+    {
+        $this->email = $request->input('email');
 
-	public function sendPasswordRestNotificationToEmail(Request $request)
-	{
-		
-		// check if user exit 
-		//create reset token in the database
-		//create link from token
-		//send link to user email
-	}
+        /*check if the user exist*/
+        $isEmailExist = $this->model->isParamExistWrapper($this->email);
+        
+        /*return to the page with error*/
+        if(empty($isEmailExist)){
+            return redirect()->route('forgot-password')->with('feedback','the email address didn\'t found');
+        }
+
+        /*create new Token*/
+        $isTokenBeenReset = $this->model->createResetToken($this->email);
+
+        /*if token created update the user table with the new tempPass*/
+        if(!empty($isTokenBeenReset)){
+            $isRandomUpdated = $this->model->updateRandomPassword($this->email,$isTokenBeenReset);
+            
+            if(!empty($isRandomUpdated)){
+                
+            }
+        }
+        
+        
+        
+        
+        
+        // check if user exit
+        //create reset token in the database
+        //create link from token
+        //send link to user email
+    }
 
 }

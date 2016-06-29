@@ -30,7 +30,7 @@ if (!function_exists('validateInput')){
 }
 
 /*DYNAMIC QUERY BUILDER INSERTION*/
-if (function_exists('insetDynamicTable')){
+if (!function_exists('insetDynamicTable')){
 
     function createDynamicQuery($table = null)
     {
@@ -52,3 +52,20 @@ if (function_exists('insetDynamicTable')){
         return $queryUserStatement;
     }
 }
+
+/*CREATE RANDOM TOKEN*/
+if (!function_exists('CreateRandomToken')){
+    function CreateRandomToken($param)
+    {
+        $salt = null;
+        if (!empty($param)){
+            $salt = sha1(md5($param) . 'createRandomHash');
+        }
+        return $salt;
+    }
+
+    ;
+}
+
+
+
