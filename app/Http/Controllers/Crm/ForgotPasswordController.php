@@ -38,6 +38,7 @@ class ForgotPasswordController extends Controller
         return view('_crm._pages._connection.forgot-pass.index');
     }
 
+    
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -48,32 +49,23 @@ class ForgotPasswordController extends Controller
 
         /*check if the user exist*/
         $isEmailExist = $this->model->CheckIfThere($this->email);
-        
+
         /*return to the page with error*/
-        if(empty($isEmailExist)){
-            return redirect()->route('forgot-password')->with('feedback','the email address didn\'t found');
+        if (empty($isEmailExist)){
+            return redirect()->route('forgot-password')->with('feedback', 'the email address didn\'t found');
         }
 
         /*create new Token*/
         $isTokenBeenReset = $this->model->createResetToken($this->email);
 
         /*if token created update the user table with the new tempPass*/
-        if(!empty($isTokenBeenReset)){
-            $isRandomUpdated = $this->model->updateRandomPassword($this->email,$isTokenBeenReset);
-            
-            if(!empty($isRandomUpdated)){
+        if (!empty($isTokenBeenReset)){
+            $isRandomUpdated = $this->model->updateRandomPassword($this->email, $isTokenBeenReset);
+
+            if (!empty($isRandomUpdated)){
                 
             }
         }
-        
-        
-        
-        
-        
-        // check if user exit
-        //create reset token in the database
-        //create link from token
-        //send link to user email
     }
 
 }

@@ -23,7 +23,6 @@ class ForgotPasswordModel extends BaseModel
     public function CheckIfThere($email)
     {
         $this->email = $email;
-
         $isEmailExist = null;
         $isEmailExist = $this->param->isParamExist('laravelCrmUser', 'email', $email);
         return $isEmailExist;
@@ -34,8 +33,16 @@ class ForgotPasswordModel extends BaseModel
      */
     public function createResetToken()
     {
-        $isTokenCreated = CreateRandomToken();
-        return $isTokenCreated;
+        
+        $salt = createSaltPass($this->email);
+
+        if (!empty($salt)){
+
+            $isTokenEncrypted = EncryptBase64($salt);
+            $isTokenDycrpted = DecryptBase64($isTokenEncrypted);
+
+            dd($isTokenEncrypted);
+        }
     }
 
     /**
@@ -43,7 +50,8 @@ class ForgotPasswordModel extends BaseModel
      * @param $token
      * @return \Doctrine\DBAL\Driver\Statement|int|null
      */
-    public function updateRandomPassword($email, $token)
+    public
+    function updateRandomPassword($email, $token)
     {
         $isUpdated = null;
         $isUpdated = $this->DBservice->connect->createQueryBuilder()
@@ -57,15 +65,19 @@ class ForgotPasswordModel extends BaseModel
                 )
             )->execute();
 
-        if ($isUpdated) {
+        /**/
+        if ($isUpdated){
 
-            $this->sendResetPasswordEmailToUser();
+            if (!empty($isUpdated)){
+                $this->sendResetPasswordEmailToUser();
+            }
+
+            return $isUpdated;
         }
-
-        return $isUpdated;
     }
 
-    private function sendResetPasswordEmailToUser()
+    private
+    function sendResetPasswordEmailToUser()
     {
 
         /*TRANSPORT CONFIGURATIONS*/
@@ -77,7 +89,7 @@ class ForgotPasswordModel extends BaseModel
         $mailer = \Swift_Mailer::newInstance($transport);
 
         /*CREATE MESSAGE*/
-        $message = $this->createMessage();
+        $message = $this->messageCreation();
 
 
         /*MASSAGE CLASS*/
@@ -90,18 +102,18 @@ class ForgotPasswordModel extends BaseModel
 
         /*SEND THE MAIL */
         $isSent = $mailer->send($message);
-        
-        if($isSent){
-            
+
+        if ($isSent){
+
         }
-        
     }
 
 
     /**
      * @return string
      */
-    private function MessageCreation()
+    private
+    function messageCreation()
     {
         $user = $this->param->getTableBy('laravelCrmUser', 'email', $this->email);
 

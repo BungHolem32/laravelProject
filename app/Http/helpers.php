@@ -1,7 +1,7 @@
 <?php
 
 /*ADD ARRAY KEYS IN SPECIFIC POSITION*/
-if (!function_exists('AddArrayKeysInSpecificPosition')) {
+if (!function_exists('AddArrayKeysInSpecificPosition')){
     function AddArrayKeysInSpecificPosition($array, $values, $offset)
     {
         if (!empty($array) && !empty($values) && !empty($offset))
@@ -10,7 +10,7 @@ if (!function_exists('AddArrayKeysInSpecificPosition')) {
 }
 
 /*GET URL FOR LAST SLUG*/
-if (!function_exists('getUrlLastSlug')) {
+if (!function_exists('getUrlLastSlug')){
     function getUrlLastSlug($siteUrl)
     {
         $slug = strstr($siteUrl, '/');
@@ -20,7 +20,7 @@ if (!function_exists('getUrlLastSlug')) {
 }
 
 /*INPUT VALIDATION*/
-if (!function_exists('validateInput')) {
+if (!function_exists('validateInput')){
     function validateInput($input)
     {
         $cleanInput = null;
@@ -30,22 +30,22 @@ if (!function_exists('validateInput')) {
 }
 
 /*DYNAMIC QUERY BUILDER INSERTION*/
-if (!function_exists('insetDynamicTable')) {
+if (!function_exists('insetDynamicTable')){
 
     function createDynamicQuery($table = null)
     {
-        if ($table) {
+        if ($table){
             $validTable = validateInput($table);
             $queryUserStatement = "INSERT INTO $validTable VALUES ('',";
         }
         $queryUserStatement = "INSERT INTO `laravelcrmuser` VALUES ('',";
 
-        foreach ($this->userInfo as $name => $val) {
-            if ($name == 'uId') {
+        foreach ($this->userInfo as $name => $val){
+            if ($name == 'uId'){
                 continue;
-            } elseif ($name == 'password') {
+            } elseif ($name == 'password'){
                 $queryUserStatement .= "'" . $val . "'" . ')';
-            } else {
+            } else{
                 $queryUserStatement .= "'" . $val . "'" . ',';
             }
         }
@@ -54,16 +54,32 @@ if (!function_exists('insetDynamicTable')) {
 }
 
 /*CREATE RANDOM TOKEN*/
-if (!function_exists('CreateRandomToken')) {
-    function CreateRandomToken()
+if (!function_exists('createSaltPass')){
+    function createSaltPass($email)
     {
         $salt = null;
-        $salt = openssl_random_pseudo_bytes(10);
-
+        $salt = $email.'-'.sha1('some shitty sold for base64 encryption').'-'. date("m.d.y");
         return $salt;
     }
+}
 
-    ;
+
+if (!function_exists('EncryptBase64')){
+    function EncryptBase64($string)
+    {
+        $isEncoded = null;
+        $isEncoded = base64_encode($string.);
+        return $isEncoded;
+    }
+}
+
+if (!function_exists('DecryptBase64')){
+    function DecryptBase64($string)
+    {
+        $isDecrypted = null;
+        $isDecrypted = base64_decode($string);
+        return $isDecrypted;
+    }
 }
 
 
