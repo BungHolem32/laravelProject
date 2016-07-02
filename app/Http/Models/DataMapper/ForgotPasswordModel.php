@@ -53,7 +53,8 @@ class ForgotPasswordModel extends BaseModel
     function updateRandomPassword($email, $token)
     {
         $isUpdated = null;
-        $isUpdated = $this->DBservice->connect->createQueryBuilder()
+        $isUpdated = $this->DBservice->connect;
+        $result = $isUpdated->createQueryBuilder()
             ->update('laravelCrmUser', 'users')
             ->set('tokenPass', '?')
             ->where('email= ?')
@@ -64,16 +65,13 @@ class ForgotPasswordModel extends BaseModel
                 )
             )->execute();
 
-        
 
-        if ($isUpdated) {
+        /*send token to email*/
+        $this->sendResetPasswordEmailToUser();
 
-            if (!empty($isUpdated)) {
-                $this->sendResetPasswordEmailToUser();
-            }
 
-            return $isUpdated;
-        }
+        return $isUpdated;
+
     }
 
     private

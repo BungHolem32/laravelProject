@@ -9,7 +9,7 @@
 namespace app\Http\Controllers\Cms;
 
 
-use app\Http\Models\DataMapper\ResetPassWordModel;
+use app\Http\Models\DataMapper\ResetPasswordModel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 

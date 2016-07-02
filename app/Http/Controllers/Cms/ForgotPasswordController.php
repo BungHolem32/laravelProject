@@ -63,6 +63,7 @@ class ForgotPasswordController extends Controller
             $isRandomUpdated = $this->model->updateRandomPassword($this->email, $resetToken);
 
             if (!empty($isRandomUpdated)){
+                
             }
 
         }
