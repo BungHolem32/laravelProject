@@ -91,11 +91,11 @@ if (!function_exists('createEncryptEncode')) {
 if (!function_exists('getDecryptUserInfo')) {
     function getDecryptUserInfo($encryptedData)
     {
+        
         $decode = null;
         $pass = 'myOwnToken';
         $method = 'aes128';
         $iv = "1234567812345678";
-
         $decode = openssl_decrypt($encryptedData, $method, $pass, true, $iv);
 
         return $decode;

@@ -8,13 +8,16 @@
 
 namespace App\Http\Models\DataMapper;
 
-use app\Http\Models\BaseModel;
+
+use App\Http\Models\BaseModel;
 
 class ResetPasswordModel extends BaseModel
 {
     
     public function getUserInfo($token)
+
     {
+        $tok = getDecryptUserInfo(')w„‚èk¥?é;¯Hy Ð,@ü“‚ƒQŽuyoñeÈ @');
         $user = $this->param->getTableBy('laravelCrmUser', 'tokenPass', $token);
         return $user;
     }

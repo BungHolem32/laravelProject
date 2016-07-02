@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-            return view('_crm._pages.user.index');
+            return view('cms.pages.main.users.index');
     }
 
     

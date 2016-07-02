@@ -34,7 +34,7 @@ class ForgotPasswordController extends Controller
 
     public function index()
     {
-        return view('_crm._pages._connection.forgot-pass.index');
+        return view('cms.pages._connection.forgot-pass.index');
     }
 
 
@@ -62,7 +62,7 @@ class ForgotPasswordController extends Controller
             $isRandomUpdated = $this->model->updateRandomPassword($this->email, $resetToken);
 
             if (!empty($isRandomUpdated)) {
-                return redirect()->route('crm-dashboard')->with('feedback','password been reset check your mail for more info');
+                return redirect()->route('login-page')->with('feedback','password been reset check your mail for more info');
             }
         }
     }

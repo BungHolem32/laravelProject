@@ -6,10 +6,10 @@
  * Time: 00:01
  */
 
-namespace App\Http\Controllers\Cms;
+namespace app\Http\Controllers\Cms;
 
 
-use app\Http\Models\DataMapper\ResetPasswordModel;
+use App\Http\Models\DataMapper\ResetPasswordModel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -18,7 +18,6 @@ use Illuminate\Routing\Controller;
  */
 class ResetPasswordController extends  Controller
 {
-
 
     /**
      * ResetPasswordController constructor.
@@ -31,13 +30,16 @@ class ResetPasswordController extends  Controller
     }
 
     public function index(){
-        return view('_crm._pages._connection.reset-pass.index');
+        return view('cms.pages._connection.reset-pass.index');
     }
 
 
     public function reset(Request $request,$token){
-        
+
+//        $url = $request->fullUrl();
+//        $url = str_replace('rd/','',strstr($url,'rd/'));
+
         $user = $this->model->getUserInfo($token);
-        dd($user);
+        
     }
-}
+}   

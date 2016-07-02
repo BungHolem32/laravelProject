@@ -38,33 +38,35 @@ Route::group($middleware, function () {
 
     Route::group(['prefix' => 'cms'], function () {
 
-        /*login & logout*/
-        Route::get('login', ['as' => 'login-page', 'uses' => 'Cms\LoginController@index']);
-        Route::post('login', ['as' => 'login-validation', 'uses' => 'Cms\LoginController@login']);
-        Route::get('logout', ['as' => 'logout', 'uses' => 'Cms\LogOutController@index']);
+        Route::group(['namespace' => 'Cms'], function () {
+            /*login & logout*/
+            Route::get('login', ['as' => 'login-page', 'uses' => 'LoginController@index']);
+            Route::post('login', ['as' => 'login-validation', 'uses' => 'LoginController@login']);
+            Route::get('logout', ['as' => 'logout', 'uses' => 'LogOutController@index']);
 
-        /*forgot password*/
-        Route::get('forgot-password', ['as' => 'forgot-password', 'uses' => 'Cms\ForgotPasswordController@index']);
-        Route::post('forgot-password', [
-            'as' => 'send-email-forgot-pass',
-            'uses' => 'Cms\ForgotPasswordController@sendPasswordRestNotificationToEmail'
-        ]);
+            /*forgot password*/
+            Route::get('forgot-password', ['as' => 'forgot-password', 'uses' => 'ForgotPasswordController@index']);
+            Route::post('forgot-password', [
+                'as' => 'send-email-forgot-pass',
+                'uses' => 'ForgotPasswordController@sendPasswordRestNotificationToEmail'
+            ]);
 
-        /*reset password*/
-        Route::get('resetPassword', ['as' => 'reset-pass-page', 'uses' => 'Cms\ResetPasswordController@index']);
-        Route::get('resetPassword/{what}', ['as' => 'change-pass', 'uses' => 'Cms\ResetPasswordController@reset']);
+            /*reset password*/
+            Route::get('resetPassword', ['as' => 'reset-pass-page', 'uses' => 'ResetPasswordController@index']);
+            Route::get('resetPassword/{url}', ['as' => 'change-pass', 'uses' => 'ResetPasswordController@reset'])->where('name','*');
 
-        /*register*/
-        Route::get('register', ['as' => 'register-page', 'uses' => 'Cms\RegisterController@index']);
-        Route::post('register',
-            ['as' => 'add-user', 'uses' => 'Cms\RegisterController@addNewUserToDataBaseAndAutoConnectIt']);
+            /*register*/
+            Route::get('register', ['as' => 'register-page', 'uses' => 'RegisterController@index']);
+            Route::post('register',
+                ['as' => 'add-user', 'uses' => 'RegisterController@addNewUserToDataBaseAndAutoConnectIt']);
 
-        /**/
-        Route::group(['middleware' => 'login-check'], function () {
-            Route::get('/', ['as' => 'crm-dashboard', 'uses' => 'Cms\AdminController@dashboard']);
-            Route::get('dashboard', ['as' => 'crm-dashboard', 'uses' => 'Cms\AdminController@dashboard']);
-            Route::resource('users', 'UsersController');
-            Route::resource('pages', 'PagesController');
+            /**/
+            Route::group(['middleware' => 'login-check'], function () {
+                Route::get('/', function(){ return redirect('/cms/dashboard');});
+                Route::get('dashboard', ['as' => 'cms-dashboard', 'uses' => 'AdminController@dashboard']);
+                Route::resource('user-management', 'UsersController');
+                Route::resource('page-management', 'PagesController');
+            });
         });
     });
 });
@@ -72,6 +74,6 @@ Route::group($middleware, function () {
 Route::get('/{catchall}', function () {
     return view('errors.503');
 });
-Route::get('/cms/{catchall}', function () {
+Route::get('/Cms/{catchall}', function () {
     return view('errors.503');
 });

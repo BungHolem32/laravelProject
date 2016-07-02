@@ -16,7 +16,7 @@ class HomeController extends BaseController
     protected function index()
 
     {
-        return view("_production._pages.home.index");
+        return view("production.pages.home.index");
     }
 
     

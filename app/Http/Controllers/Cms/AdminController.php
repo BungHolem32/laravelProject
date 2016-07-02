@@ -25,7 +25,9 @@ class AdminController extends Controller
 	 */
 	public function dashboard(Request $request)
 	{
-		return view('_crm._pages.main.index');
+		return view('cms.pages.main.index');
 	}
+	
+
 	
 }

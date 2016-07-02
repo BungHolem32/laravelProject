@@ -54,3 +54,19 @@
 
 .without-padding(2,@locations);
 .with-padding(1,5,@locations);
+
+.full-width{
+  width:100%;
+}
+
+.margin(@pos,@times) when (@times>0){
+  @position:extract(@pos,@times);
+
+  .margin-@{position}{
+  margin-@{position}:@default-size;
+}
+  .margin(@pos,@times - 1);
+}
+
+@pos:left,right,top,bottom;
+.margin(@pos,4);

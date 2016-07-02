@@ -6754,6 +6754,21 @@ button.close {
 .padding-bottom {
   padding-bottom: 20px;
 }
+.full-width {
+  width: 100%;
+}
+.margin-bottom {
+  margin-bottom: 20px;
+}
+.margin-top {
+  margin-top: 20px;
+}
+.margin-right {
+  margin-right: 20px;
+}
+.margin-left {
+  margin-left: 20px;
+}
 body .nav-bar-wrapper {
   background: #034054;
 }
@@ -6842,16 +6857,16 @@ body .container-fluid.login-page .cms-login-wrapper .login-submit {
   width: 100%;
   font-size: 26px;
 }
-.container-fluid.dashboard-page .top-title {
+.container-fluid .top-title {
   background: #dadada;
   box-shadow: inset 0px -3px 3px 0px white;
   padding: 15px;
   color: #020217;
 }
-.container-fluid.dashboard-page .header-dashboard-title {
+.container-fluid .header-title {
   font-size: 44px;
 }
-.container-fluid.dashboard-page .cms-navigation {
+.container-fluid .cms-navigation {
   padding-top: 20px !important;
   background-color: #4b929e;
   box-shadow: 0 2.4px 3.9px 2.9px #666666;
@@ -6860,26 +6875,26 @@ body .container-fluid.login-page .cms-login-wrapper .login-submit {
   border-top: solid #000000;
   max-height: 90px;
 }
-.container-fluid.dashboard-page .cms-navigation.navbar {
+.container-fluid .cms-navigation.navbar {
   padding: 20px 0;
-  font-size: 30px;
+  font-size: 28px;
   border-radius: 0;
   background-color: black;
   border-bottom: 1px solid #8c8c8c;
 }
-.container-fluid.dashboard-page .cms-navigation.navbar .nav-bar-crm-li .nav-link {
+.container-fluid .cms-navigation.navbar .nav-bar-crm-li .nav-link {
   color: #b9b9b9;
   text-decoration: none;
   letter-spacing: 1px;
   transition: all 0.3s;
 }
-.container-fluid.dashboard-page .cms-navigation.navbar .nav-bar-crm-li .nav-link:hover {
+.container-fluid .cms-navigation.navbar .nav-bar-crm-li .nav-link:hover {
   color: #ffffff;
-  zoom: 1.03;
+  zoom: 1.01;
   font-weight: bold;
 }
 @media (min-width: 640px) {
-  .container-fluid.dashboard-page .cms-content .user-info-wrapper.container {
+  .container-fluid .cms-content .user-info-wrapper.container {
     height: 200px;
     width: 300px;
     border: 1px solid gray;
@@ -6891,12 +6906,17 @@ body .container-fluid.login-page .cms-login-wrapper .login-submit {
     box-shadow: inset 1px 1px 10px 2px darkgray;
   }
 }
-.container-fluid.dashboard-page .cms-content .user-info-wrapper.container .user-info .content {
+.container-fluid .cms-content .user-info-wrapper.container .user-info .content {
   padding-left: 50px;
   letter-spacing: 1px;
 }
-.container-fluid.dashboard-page .cms-content .user-info-wrapper.container .user-info .content .log-out {
+.container-fluid .cms-content .user-info-wrapper.container .user-info .content .log-out {
   margin-top: 0;
+}
+body .page-management-page .cms-content .container .row .jumbotron {
+  padding: 40px;
+  border: 1px solid #30aeae;
+  box-shadow: 1px 3px 3px 3px #c5c5c5;
 }
 body {
   font-family: 'Shadows Into Light', cursive;

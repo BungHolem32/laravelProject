@@ -27,7 +27,7 @@ class RegisterController extends Controller
 
     public function index()
     {
-        return view('_crm._pages._connection.register.index')->with('class', __CLASS__);
+        return view('cms.pages._connection.register.index')->with('class', __CLASS__);
     }
 
     public function addNewUserToDataBaseAndAutoConnectIt(Request $request, $table = null, $column = null)

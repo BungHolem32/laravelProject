@@ -16,7 +16,7 @@ class ProductsController extends Controller
     public function __construct(ProductsModel $productsModel)
     {
         $this->model = $productsModel;
-        return view('_production._pages.products.index');
+        return view('production.pages.products.index');
     }
 
 
@@ -24,14 +24,14 @@ class ProductsController extends Controller
     {
         $products = $this->model->getAllProducts();
         dd($products);
-        return view('_production._pages.products.index')->with('products', $products);
+        return view('production.pages.products.index')->with('products', $products);
     }
 
     public function getOneProduct($id)
     {
         $product = null;
         $product = $this->model->getOneProduct($id);
-        return view('_production._pages.products.index')->with('product', $product);
+        return view('production.pages.products.index')->with('product', $product);
     }
 
 

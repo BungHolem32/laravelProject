@@ -32,7 +32,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('_crm._pages._connection.login.index');
+        return view('cms.pages._connection.login.index');
     }
 
 
@@ -59,7 +59,7 @@ class LoginController extends Controller
                 Session::put('userInfo', $user);
 
                 /*REDIRECT TO THE HOME SCREEN CRM*/
-                return redirect()->route('crm-dashboard');
+                return redirect()->route('cms-dashboard');
             }
 
             else {

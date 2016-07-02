@@ -10,6 +10,6 @@ use App\Http\Requests;
 class ContactUsController extends BaseController
 {
     public function index(){
-        return view('_production._pages.contact_us.index');
+        return view('production.pages.contact_us.index');
     }
 }
