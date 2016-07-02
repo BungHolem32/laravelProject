@@ -17,6 +17,7 @@ use Illuminate\Routing\Controller;
  * @property void isEmailExist
  * @property array|string email
  * @property void isTokenBeenReset
+ * @property ForgotPasswordModel model
  */
 class ForgotPasswordController extends Controller
 {
@@ -36,7 +37,7 @@ class ForgotPasswordController extends Controller
         return view('_crm._pages._connection.forgot-pass.index');
     }
 
-    
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -49,22 +50,20 @@ class ForgotPasswordController extends Controller
         $isEmailExist = $this->model->CheckIfThere($this->email);
 
         /*return to the page with error*/
-        if (empty($isEmailExist)){
+        if (empty($isEmailExist)) {
             return redirect()->route('forgot-password')->with('feedback', 'the email address didn\'t found');
         }
 
         /*create new Token*/
-        $resetToken = $this->model->createResetToken($this->email);
+        $resetToken = $this->model->createResetToken();
 
         /*if token created update the user table with the new tempPass*/
-        if (!empty($resetToken)){
+        if (!empty($resetToken)) {
             $isRandomUpdated = $this->model->updateRandomPassword($this->email, $resetToken);
 
-            if (!empty($isRandomUpdated)){
-                
+            if (!empty($isRandomUpdated)) {
+                return redirect()->route('crm-dashboard')->with('feedback','password been reset check your mail for more info');
             }
-
         }
     }
-
 }

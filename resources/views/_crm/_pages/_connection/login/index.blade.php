@@ -41,6 +41,13 @@
 
         </div>
         {!! Form::close()!!}
+
+
+        @if(!empty(Session::get('feedback')))
+            <h2 class="text-center feedback">
+                {{Session::get('feedback')}}
+            </h2>
+        @endif
     </div>
 
 @stop

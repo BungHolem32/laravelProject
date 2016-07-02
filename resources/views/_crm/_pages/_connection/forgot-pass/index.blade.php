@@ -22,7 +22,7 @@
 
         {{--SUBMIT TAG--}}
         <div class="form-group submit">
-            {!! Form::submit('click me',['class'=>'btn  pull-right submit-btn text-uppercase','name'=>'submit']) !!}
+            {!! Form::submit('click me',['class'=>'btn  pull-right submit-btn text-uppercase btn-info','name'=>'submit']) !!}
         </div>
 
         {!! Form::close() !!}

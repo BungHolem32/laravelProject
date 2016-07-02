@@ -6,14 +6,13 @@
  * Time: 00:24
  */
 
-namespace app\Http\Models\DataMapper;
+namespace App\Http\Models\DataMapper;
 
 use app\Http\Models\BaseModel;
 
 class ResetPasswordModel extends BaseModel
 {
-
-
+    
     public function getUserInfo($token)
     {
         $user = $this->param->getTableBy('laravelCrmUser', 'tokenPass', $token);

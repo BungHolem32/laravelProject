@@ -6,7 +6,7 @@
  * Time: 00:01
  */
 
-namespace app\Http\Controllers\Cms;
+namespace App\Http\Controllers\Cms;
 
 
 use app\Http\Models\DataMapper\ResetPasswordModel;

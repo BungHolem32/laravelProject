@@ -12,6 +12,7 @@
     "gulp-composer": "^0.4.0",
     "gulp-watch": "^4.3.6",
     "gulp-watch-less": "^1.0.1",
+    "inflight": "^1.0.5",
     "laravel-elixir": "^5.0.0"
   },
   "dependencies": {

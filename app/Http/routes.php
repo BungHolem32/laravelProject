@@ -58,7 +58,6 @@ Route::group($middleware, function () {
         Route::get('register', ['as' => 'register-page', 'uses' => 'Cms\RegisterController@index']);
         Route::post('register',
             ['as' => 'add-user', 'uses' => 'Cms\RegisterController@addNewUserToDataBaseAndAutoConnectIt']);
-//    Route::post('register/step-2',['uses'=>'Cms\RegisterController@addNewUserToDataBaseAndAutoConnectIt']);
 
         /**/
         Route::group(['middleware' => 'login-check'], function () {
@@ -73,6 +72,6 @@ Route::group($middleware, function () {
 Route::get('/{catchall}', function () {
     return view('errors.503');
 });
-Route::get('/cms{catchall}', function () {
+Route::get('/cms/{catchall}', function () {
     return view('errors.503');
 });
