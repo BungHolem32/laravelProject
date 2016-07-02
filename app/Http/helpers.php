@@ -68,7 +68,7 @@ if (!function_exists('EncryptBase64')){
     function EncryptBase64($string)
     {
         $isEncoded = null;
-        $isEncoded = base64_encode($string.);
+        $isEncoded = base64_encode($string);
         return $isEncoded;
     }
 }
