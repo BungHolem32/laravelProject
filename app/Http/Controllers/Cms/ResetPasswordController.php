@@ -22,11 +22,11 @@ class ResetPasswordController extends  Controller
 
     /**
      * ResetPasswordController constructor.
-     * @param ResetPassWordModel $resetPassWordModel
+     * @param ResetPasswordModel $resetPasswordModel
      */
-    public function __construct(ResetPassWordModel $resetPassWordModel)
+    public function __construct(ResetPasswordModel $resetPasswordModel)
     {
-        $this->model = $resetPassWordModel;
+        $this->model = $resetPasswordModel;
         
     }
 

@@ -14,8 +14,6 @@ use Illuminate\Routing\Controller;
 
 
 /**
- * @property  isEmailExist
- * @property ForgotPasswordModel model
  * @property void isEmailExist
  * @property array|string email
  * @property void isTokenBeenReset
