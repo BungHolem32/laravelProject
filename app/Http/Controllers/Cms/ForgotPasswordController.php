@@ -6,7 +6,7 @@
  * Time: 18:07
  */
 
-namespace App\Http\Controllers\Crm;
+namespace app\Http\Controllers\Cms;
 
 use App\Http\Models\DataMapper\ForgotPasswordModel;
 use Illuminate\Http\Request;
@@ -56,15 +56,15 @@ class ForgotPasswordController extends Controller
         }
 
         /*create new Token*/
-        $isTokenBeenReset = $this->model->createResetToken($this->email);
+        $resetToken = $this->model->createResetToken($this->email);
 
         /*if token created update the user table with the new tempPass*/
-        if (!empty($isTokenBeenReset)){
-            $isRandomUpdated = $this->model->updateRandomPassword($this->email, $isTokenBeenReset);
+        if (!empty($resetToken)){
+            $isRandomUpdated = $this->model->updateRandomPassword($this->email, $resetToken);
 
             if (!empty($isRandomUpdated)){
-                
             }
+
         }
     }
 

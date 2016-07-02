@@ -13,6 +13,7 @@ use App\Http\Models\BaseModel;
 
 /**
  * @property mixed email
+ * @property void userTokken
  */
 class ForgotPasswordModel extends BaseModel
 {
@@ -33,16 +34,14 @@ class ForgotPasswordModel extends BaseModel
      */
     public function createResetToken()
     {
-        
-        $salt = createSaltPass($this->email);
+        $userInfo = createSaltPass($this->email);
 
-        if (!empty($salt)){
+        if (!empty($userInfo)) {
 
-            $isTokenEncrypted = EncryptBase64($salt);
-            $isTokenDycrpted = DecryptBase64($isTokenEncrypted);
+            $this->userTokken = createEncryptUserInfo($userInfo);
 
-            dd($isTokenEncrypted);
         }
+        return $this->userTokken;
     }
 
     /**
@@ -65,10 +64,11 @@ class ForgotPasswordModel extends BaseModel
                 )
             )->execute();
 
-        /**/
-        if ($isUpdated){
+        
 
-            if (!empty($isUpdated)){
+        if ($isUpdated) {
+
+            if (!empty($isUpdated)) {
                 $this->sendResetPasswordEmailToUser();
             }
 
@@ -103,8 +103,7 @@ class ForgotPasswordModel extends BaseModel
         /*SEND THE MAIL */
         $isSent = $mailer->send($message);
 
-        if ($isSent){
-
+        if ($isSent) {
         }
     }
 
@@ -121,7 +120,7 @@ class ForgotPasswordModel extends BaseModel
         $message = '';
         $message .= '<h2> hi ' . $user[0]['fName'] . ' ' . $user[0]['lName'] . ' whats up </h2>';
         $message .= '<p>please click on the link to reset your password</p>';
-        $message .= '<a href="http://localhost:8000/cms/resetPassword/' . $user[0]['tokenPass'] . '">Reset Password</a>';
+        $message .= '<a href="http://localhost:8000/cms/resetPassword/' . $this->userTokken . '">Reset Password</a>';
 
         return $message;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Crm;
+namespace app\Http\Controllers\Cms;
 
 use App\Http\Models\DataMapper\ParameterModel;
 use App\Http\Models\DataMapper\RegisterModel;

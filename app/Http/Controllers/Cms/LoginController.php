@@ -6,7 +6,7 @@
  * Time: 17:51
  */
 
-namespace App\Http\Controllers\Crm;
+namespace app\Http\Controllers\Cms;
 
 use App\Http\Models\DataMapper\LoginModel;
 use Illuminate\Http\Request;

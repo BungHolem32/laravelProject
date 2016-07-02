@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Crm;
+namespace app\Http\Controllers\Cms;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
