@@ -40,7 +40,7 @@
 
         $('input[class$=btn]').on('click', function (e) {
             e.preventDefault();
-            redirect
+            window.location.assign('/cms/page-management/create');
         })
 
 

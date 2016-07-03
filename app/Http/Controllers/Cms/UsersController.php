@@ -22,7 +22,6 @@ class UsersController extends Controller
     public function create(Request $request)
     {
 
-
     }
 
     /**
