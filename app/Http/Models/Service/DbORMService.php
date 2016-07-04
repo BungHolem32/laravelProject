@@ -8,6 +8,7 @@
 
 namespace App\Http\Models\Service;
 
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 use App\Http\Models\Interfaces\DBInterface;
@@ -17,6 +18,9 @@ class DbORMService implements DBInterface
     protected $entityManager;
 
 
+    /**
+     * DbORMService constructor.
+     */
     public function __construct()
     {
 
@@ -35,6 +39,7 @@ class DbORMService implements DBInterface
 
         // obtaining the entity manager
         $entityManager = EntityManager::create($conn, $config);
-        return \Doctrine\ORM\Tools\Console\ConsoleRunner::createHelperSet($entityManager);
+
+        return ConsoleRunner::createHelperSet($entityManager);
     }
 }

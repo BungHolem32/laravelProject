@@ -24,8 +24,8 @@ class DbORMProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('App\\Http\\Models\\Interfaces\\DBORMInterface',function($app){
-            return $app->make('App\\Http\\Models\\Service\\DBORMInterface');
+        $this->app->bind('App\\Http\\Models\\Interfaces\\DbORMInterface',function($app){
+            return $app->make('App\\Http\\Models\\Service\\DbORMService');
         });
     }
 }
