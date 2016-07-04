@@ -1,4 +1,4 @@
-@extends('cms.layout._html')
+@extends('cms.layout.htmls._html-unconnected')
 @section('title',ucwords('forgot password'))
 
 @section('header')

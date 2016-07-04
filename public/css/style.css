@@ -6795,6 +6795,9 @@ body .main-content .products-page-wrapper .product {
   border-radius: 5px;
   padding: 10px 20px;
 }
+body .forgot-password-page .cms-header-forgot-pass {
+  color: white;
+}
 body .forgot-password-page .cms-content .forgot-password-wrapper .form-forgot-password .form-group .form-control {
   font-size: 24px !important;
   height: 50px;
@@ -6817,6 +6820,10 @@ body .forgot-password-page :-ms-input-placeholder {
   text-align: center;
   text-transform: capitalize;
 }
+body .container-fluid.register-page .cms-register-header-wrapper {
+  color: white;
+  font-size: 30px;
+}
 @media (min-width: 640px) {
   body .container-fluid.register-page .cms-register-header-wrapper.container {
     margin-top: 30px;
@@ -6835,14 +6842,15 @@ body .container-fluid.register-page .cms-register-wrapper.container {
 }
 body .container-fluid.register-page .cms-register-wrapper .register-btn {
   width: 100%;
-  font-size: 26px;
+  font-size: 30px;
+  padding: 10px;
 }
 body .container-fluid.register-page .cms-register-wrapper label {
   font-size: 20px;
 }
 body .container-fluid.register-page .cms-register-wrapper .form-group .form-control {
   height: 50px;
-  font-size: 30px;
+  font-size: 20px;
 }
 body .container-fluid.login-page .cms-login-wrapper.container {
   width: 600px;
@@ -6920,5 +6928,5 @@ body .page-management-page .cms-content .container .row .jumbotron {
 }
 body {
   font-family: 'Shadows Into Light', cursive;
-  background: #dadada;
+  background: #1d424d;
 }

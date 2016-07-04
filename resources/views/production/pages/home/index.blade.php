@@ -2,5 +2,5 @@
 @section('title','Home Page')
 
 @section('content')
-        @lang('whats up')
+
 @stop

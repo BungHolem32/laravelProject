@@ -1,4 +1,4 @@
-@extends('cms.layout._html')
+@extends('cms.layout.htmls._html-unconnected')
 
 @section('title',ucwords('login page'))
 
@@ -28,7 +28,7 @@
 
         {{--SUBMIT BUTTON--}}
         <div class="form-group submit">
-            {!! Form::submit('enter cms!',['name'=>'submit','class'=>'login-submit btn-primary  btn text-uppercase']) !!}
+            {!! Form::submit('enter cms!',['name'=>'submit','class'=>'login-submit btn-info  btn text-uppercase']) !!}
         </div>
 
         <div class="form-group forgot-password">

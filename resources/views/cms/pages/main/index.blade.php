@@ -1,4 +1,4 @@
-@extends('cms.layout._html')
+@extends('cms.layout.htmls._html-connected')
 @section('title','cms dashboard')
 
 @section('header')
