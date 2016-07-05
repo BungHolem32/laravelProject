@@ -3,52 +3,55 @@
 
   //header title
   .top-title {
-    background: #dadada;
-    box-shadow: inset 0px -3px 3px 0px white;
     padding: 15px;
     color: #020217;
   }
 
   .header-title {
     font-size: @default-size*2.2;
+    margin-top: 3em;
+    color: white;
+    text-shadow: 1px 1px 1px lightgray;
   }
 
   //nav bar wrapper
   .cms-navigation {
-    padding-top: @default-size !important;
-    background-color: #4b929e;
-    box-shadow: 0 2.4px 3.9px 2.9px #666666;
-    border-radius: 0;
-    border: 0 #e7e7e7;
-    border-top: solid rgb(0, 0, 0);
-    max-height: 90px;
+    padding-top: 20px !important;
+    //background: url('/img/roughcloth.png');
+    background: #edf8d4;
 
     //nav-bar-wrapper
     &.navbar {
-      padding: @default-size 0;
-      font-size: @default-size*1.4;
+      padding: 20px 0;
+      font-size: 30px;
       border-radius: 0;
-      background-color: black;
-      border-bottom: 1px solid #8c8c8c;
+      //border-bottom: 1px solid #8c8c8c;
+      box-shadow: 1px 1px 1px 1px #ade0ac;
 
-      //nav bar list element
-      .nav-bar-crm-li {
+      .container {
+        margin-bottom: 0;
 
-        //nav-bar href
-        .nav-link {
-          color: #b9b9b9;
-          text-decoration: none;
-          letter-spacing: 1px;
-          transition: all 0.3s;;
+        //nav bar list element
+        .nav-bar-crm-li {
 
-          //on hover
-          &:hover {
-            color: #ffffff;
-            zoom: 1.01;
-            font-weight: bold;
+          //nav-bar href
+          .nav-link {
+            color: black;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 600ms ease;
+            opacity: 0.5;
+
+            //on hover
+            &:hover {
+              opacity: 1;
+              text-shadow: 1px 1px 1px gray;
+            }
           }
         }
+
       }
+
     }
   }
 
@@ -68,13 +71,17 @@
           position: absolute;
           right: @default-size;
           top: 0;
-          background: white;
+          //background: white;
+          background: #f0f8e0;
           border-radius: @default-size/4*3;
           box-shadow: inset 1px 1px @default-size/2 2px darkgray;
         }
 
         .user-info {
           header {
+            h1 {
+              text-shadow: 1px 1px 1px darkgray;
+            }
           }
           .content {
             padding-left: @default-size/2*5;

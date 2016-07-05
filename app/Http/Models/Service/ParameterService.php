@@ -33,7 +33,7 @@ class ParameterService implements ParameterInterface
         $isUserExist = null;
 
         $params = array(
-            'dbname' => 'laravelCrm',
+            'dbname' => 'laravelCMS',
             'user' => 'root',
             'password' => '',
             'host' => 'localhost',

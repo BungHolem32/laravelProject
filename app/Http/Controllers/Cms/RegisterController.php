@@ -14,6 +14,12 @@ use Illuminate\Routing\Controller;
  */
 class RegisterController extends Controller
 {
+
+    protected $dbUser = 'laravelCMS.laravelCMSUser';
+    protected $db = 'laravelCMS';
+
+
+
     /**
      * RegisterController constructor.
      * @param RegisterModel $registerModel
@@ -81,7 +87,7 @@ class RegisterController extends Controller
         $isEmailExist = null;
 
         
-        $table = $table ? $table : 'laravelCrmUser';
+        $table = $table ? $table : $this->dbUser;
         $column = $column ? $column : 'email';
 
         $table = validateInput($table);

@@ -18,9 +18,15 @@ use Illuminate\Support\Facades\Session;
  */
 class LoginController extends Controller
 {
+
+    protected $host = 'laravelCMS';
+    protected $dbUser = 'laravelCMS.laravelCMSUser';
+
+
     /**
      * LoginController constructor.
      * @param LoginModel $loginModel
+
      */
     public function __construct(LoginModel $loginModel)
     {
@@ -48,12 +54,12 @@ class LoginController extends Controller
         if (!empty($request)) {
 
             $inputs = $request->input('User');
-            $isLoginCurrent = $this->model->isValidLogin('laravelCrm.laravelCrmUser', ['email', 'password'], $inputs);
+            $isLoginCurrent = $this->model->isValidLogin($this->dbUser, ['email', 'password'], $inputs);
 
             if ($isLoginCurrent) {
 
                 /*GET THE USER BY ITS EMAIL*/
-                $user = $this->model->getUserByParameter($inputs['email'], 'laravelCrm.laravelCrmUser');
+                $user = $this->model->getUserByParameter($inputs['email'], $this->dbUser);
 
                 /*PUT THE USER ON THE SESSION*/
                 Session::put('userInfo', $user);

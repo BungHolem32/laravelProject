@@ -25,7 +25,7 @@ class DbORMService implements DBInterface
             'driver' => 'pdo_mysql',
             'user' => 'root',
             'password' => '',
-            'dbname' => 'laravelCrm',
+            'dbname' => 'laravelCMS',
         );
 
         $isDevMode = true;

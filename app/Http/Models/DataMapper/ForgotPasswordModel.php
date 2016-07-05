@@ -25,7 +25,7 @@ class ForgotPasswordModel extends BaseModel
     {
         $this->email = $email;
         $isEmailExist = null;
-        $isEmailExist = $this->param->isParamExist('laravelCrmUser', 'email', $email);
+        $isEmailExist = $this->param->isParamExist('laravelCMSUser', 'email', $email);
         return $isEmailExist;
     }
 
@@ -55,7 +55,7 @@ class ForgotPasswordModel extends BaseModel
         $isUpdated = null;
         $isUpdated = $this->DBservice->connect;
         $result = $isUpdated->createQueryBuilder()
-            ->update('laravelCrmUser', 'users')
+            ->update('laravelCMSUser', 'users')
             ->set('tokenPass', '?')
             ->where('email= ?')
             ->setParameters(
@@ -112,7 +112,7 @@ class ForgotPasswordModel extends BaseModel
     private
     function messageCreation()
     {
-        $user = $this->param->getTableBy('laravelCrmUser', 'email', $this->email);
+        $user = $this->param->getTableBy('laravelCMSUser', 'email', $this->email);
 
         /*MESSAGE BUILD*/
         $message = '';

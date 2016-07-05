@@ -27,9 +27,9 @@ class DBService implements DBInterface
 
         if (is_null($connectionParams)) {
             $connectionParams = array(
-                'dbname' => 'laravelCrm',
+                'dbname' => 'laravelCMS',
                 'user' => 'root',
-                'password' => '',
+                'password' => 'ilanvac',
                 'host' => '127.0.0.1',
                 'driver' => 'pdo_mysql',
             );

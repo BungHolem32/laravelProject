@@ -6725,14 +6725,6 @@ button.close {
     display: none !important;
   }
 }
-.box-form {
-  border: 1px solid gray;
-  border-radius: 5px;
-  padding: 20px 40px;
-  margin-top: 20px;
-  background: #eee;
-  box-shadow: inset 1px 1px 4px 6px #ccc;
-}
 .no-padding-right {
   padding-right: 0;
 }
@@ -6754,9 +6746,6 @@ button.close {
 .padding-bottom {
   padding-bottom: 20px;
 }
-.full-width {
-  width: 100%;
-}
 .margin-bottom {
   margin-bottom: 20px;
 }
@@ -6768,6 +6757,20 @@ button.close {
 }
 .margin-left {
   margin-left: 20px;
+}
+.box-form {
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 20px 40px;
+  margin-top: 20px;
+  background: #eee;
+  box-shadow: inset 0 0 2px 2px;
+}
+.full-width {
+  width: 100%;
+}
+.shadow {
+  text-shadow: 1px 1px 1px darkgray;
 }
 body .nav-bar-wrapper {
   background: #034054;
@@ -6835,7 +6838,7 @@ body .container-fluid.register-page .cms-register-wrapper {
   padding: 20px 40px;
   margin-top: 20px;
   background: #eee;
-  box-shadow: inset 1px 1px 4px 6px #ccc;
+  box-shadow: inset 0 0 2px 2px;
 }
 body .container-fluid.register-page .cms-register-wrapper.container {
   padding-top: 40px;
@@ -6859,47 +6862,45 @@ body .container-fluid.login-page .cms-login-wrapper.container {
   padding: 20px 40px;
   margin-top: 20px;
   background: #eee;
-  box-shadow: inset 1px 1px 4px 6px #ccc;
+  box-shadow: inset 0 0 2px 2px;
 }
 body .container-fluid.login-page .cms-login-wrapper .login-submit {
   width: 100%;
   font-size: 26px;
 }
 .container-fluid .top-title {
-  background: #dadada;
-  box-shadow: inset 0px -3px 3px 0px white;
   padding: 15px;
   color: #020217;
 }
 .container-fluid .header-title {
   font-size: 44px;
+  margin-top: 3em;
+  color: white;
+  text-shadow: 1px 1px 1px lightgray;
 }
 .container-fluid .cms-navigation {
   padding-top: 20px !important;
-  background-color: #4b929e;
-  box-shadow: 0 2.4px 3.9px 2.9px #666666;
-  border-radius: 0;
-  border: 0 #e7e7e7;
-  border-top: solid #000000;
-  max-height: 90px;
+  background: #edf8d4;
 }
 .container-fluid .cms-navigation.navbar {
   padding: 20px 0;
-  font-size: 28px;
+  font-size: 30px;
   border-radius: 0;
-  background-color: black;
-  border-bottom: 1px solid #8c8c8c;
+  box-shadow: 1px 1px 1px 1px #ade0ac;
 }
-.container-fluid .cms-navigation.navbar .nav-bar-crm-li .nav-link {
-  color: #b9b9b9;
+.container-fluid .cms-navigation.navbar .container {
+  margin-bottom: 0;
+}
+.container-fluid .cms-navigation.navbar .container .nav-bar-crm-li .nav-link {
+  color: black;
   text-decoration: none;
   letter-spacing: 1px;
-  transition: all 0.3s;
+  transition: all 600ms ease;
+  opacity: 0.5;
 }
-.container-fluid .cms-navigation.navbar .nav-bar-crm-li .nav-link:hover {
-  color: #ffffff;
-  zoom: 1.01;
-  font-weight: bold;
+.container-fluid .cms-navigation.navbar .container .nav-bar-crm-li .nav-link:hover {
+  opacity: 1;
+  text-shadow: 1px 1px 1px gray;
 }
 @media (min-width: 640px) {
   .container-fluid .cms-content .user-info-wrapper.container {
@@ -6909,10 +6910,13 @@ body .container-fluid.login-page .cms-login-wrapper .login-submit {
     position: absolute;
     right: 20px;
     top: 0;
-    background: white;
+    background: #f0f8e0;
     border-radius: 15px;
     box-shadow: inset 1px 1px 10px 2px darkgray;
   }
+}
+.container-fluid .cms-content .user-info-wrapper.container .user-info header h1 {
+  text-shadow: 1px 1px 1px darkgray;
 }
 .container-fluid .cms-content .user-info-wrapper.container .user-info .content {
   padding-left: 50px;
@@ -6921,12 +6925,27 @@ body .container-fluid.login-page .cms-login-wrapper .login-submit {
 .container-fluid .cms-content .user-info-wrapper.container .user-info .content .log-out {
   margin-top: 0;
 }
-body .page-management-page .cms-content .container .row .jumbotron {
-  padding: 40px;
-  border: 1px solid #30aeae;
-  box-shadow: 1px 3px 3px 3px #c5c5c5;
+body .page-management-page .cms-content .popup .create-page-wrapper,
+body .page-management-page .cms-content .popup .edit-page-wrapper,
+body .page-management-page .cms-content .popup .delete-page-wrapper {
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  -ms-transition: opacity 400ms ease-in;
+  -o-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+}
+body .page-management-page .cms-content .popup .create-page-wrapper:target,
+body .page-management-page .cms-content .popup .edit-page-wrapper:target,
+body .page-management-page .cms-content .popup .delete-page-wrapper:target {
+  opacity: 1;
+}
+body .page-management-page .cms-content .popup .close {
+  position: absolute;
+  right: 2%;
+  top: 2%;
 }
 body {
   font-family: 'Shadows Into Light', cursive;
-  background: #1d424d;
+  background: url('/img/black-Linen.png');
 }
