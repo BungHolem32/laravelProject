@@ -1,0 +1,41 @@
+//NAV-BAR WRAPPER
+.nav-bar-wrapper {
+  background : #fdfdfd;
+
+  //NAV-BAR FIRST ELEMENT
+  .nav-bar-li-element {
+    transition : all 0.7s;
+    cursor     : pointer;
+
+    a {
+      color       : black;
+      font-size   : @default-size/2*2.8;
+      font-weight : bold;
+      opacity     : 0.5;
+
+      &:after {
+        content      : "";
+        height       : 100%;
+        border-right : 1px solid #6b6a6a;
+        padding-left : 20px;
+      }
+    }
+
+    &:hover {
+
+      a {
+        text-decoration : none;
+        opacity         : 1;
+      }
+    }
+
+    &:last-of-type {
+      .nav-link {
+        &:after {
+          border-right : none;
+        }
+      }
+    }
+  }
+
+}

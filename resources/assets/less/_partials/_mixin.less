@@ -1,20 +1,19 @@
-@locations: left, right, top, bottom;
+@locations : left, right, top, bottom;
 
 //ASSIGN DEFAULT PADDING TO ALL SIDES
 .with-padding(@elem:1,@until,@locations) when (@elem<@until) {
-  @pos: extract(@locations, @elem);
+  @pos : extract(@locations, @elem);
 
   .padding-@{pos} {
     padding-@{pos}: @default-size;
   }
 
   .with-padding(@elem+1, @until, @locations)
-
 }
 
 //ASSIGN NO-PADDING TO LEFT AND RIGHT
 .without-padding(@counter,@padding) when (@counter>0) {
-  @name: extract(@padding, @counter);
+  @name : extract(@padding, @counter);
   .no-padding-@{name} {
     padding-@{name}: 0;
   }
@@ -24,7 +23,7 @@
 //WHEN NO PADDING FOR ALL SIDES
 .without-padding(@counter,@padding) when (@counter<=0) {
   .no-padding {
-    padding: 0;
+    padding : 0;
   }
 }
 
@@ -34,8 +33,8 @@
   :-moz-placeholder,
   ::-moz-placeholder,
   :-ms-input-placeholder {
-    text-align: @text-align;
-    text-transform: @text-transform;
+    text-align     : @text-align;
+    text-transform : @text-transform;
   }
 }
 
@@ -43,7 +42,7 @@
 .with-padding(1, 5, @locations);
 
 .margin(@pos,@times) when (@times>0) {
-  @position: extract(@pos, @times);
+  @position : extract(@pos, @times);
 
   .margin-@{position} {
     margin-@{position}: @default-size;
@@ -51,23 +50,40 @@
   .margin(@pos, @times - 1);
 }
 
-@pos: left, right, top, bottom;
+@pos : left, right, top, bottom;
 .margin(@pos, 4);
 
 //box form
 .box-form {
-  border: 1px solid gray;
-  border-radius: @default-size/4;
-  padding: @default-size @default-size*2;
-  margin-top: @default-size;
-  background: #eee;
-  box-shadow: inset 0 0 2px 2px;
+  border        : 1px solid gray;
+  border-radius : @default-size/4;
+  padding       : @default-size @default-size*2;
+  margin-top    : @default-size;
+  background    : #eeeeee;
+  box-shadow    : inset 0 0 11px 3px gray;
 }
 
 .full-width {
-  width: 100%;
+  width : 100%;
 }
 
 .shadow {
-  text-shadow: 1px 1px 1px darkgray;
+  text-shadow : 1px 1px 1px darkgray;
+}
+
+//nav-bar-main (class .nav-bar-wrapper).
+@import "../_pages/_partial/nav-bar-main";
+
+//nav-bar-cms (class .nav-bar-cms).
+@import "../_pages/_partial/nav-bar-cms";
+
+
+//user-info
+.user-info-wrapper {
+  @import "../_pages/_partial/user-info";
+}
+
+.defaultFontStyle {
+  color       : white;
+  text-shadow : 1px 1px 1px gray;
 }

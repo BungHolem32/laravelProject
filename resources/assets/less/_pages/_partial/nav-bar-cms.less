@@ -1,0 +1,55 @@
+//nav bar wrapper
+.nav-bar-cms {
+  //background: url('/img/roughcloth.png');
+  //background: #edf8d4;
+  background : #fdfdfd;
+  border: 0;
+
+  //nav-bar-wrapper
+  &.navbar {
+    font-size     : 28px;
+    border-radius : 0;
+    min-height    : auto;
+    //border-bottom: 1px solid #8c8c8c;
+
+    .container {
+      margin-bottom : 0;
+
+      //nav bar list element
+      .nav-bar-crm-li {
+
+        //nav-bar href
+        .nav-link {
+          color           : black;
+          text-decoration : none;
+          letter-spacing  : 1px;
+          transition      : all 600ms ease;
+          opacity         : 0.5;
+
+          //on hover
+          &:hover {
+            opacity     : 1;
+            text-shadow : 1px 1px 1px gray;
+          }
+
+          &:after {
+            content      : "";
+            height       : 100%;
+            border-right : 1px solid #6b6a6a;
+            padding-left : 20px;
+          }
+
+        }
+        &:last-of-type {
+          .nav-link {
+            &:after {
+              border-right : none;
+            }
+          }
+        }
+      }
+
+    }
+
+  }
+}

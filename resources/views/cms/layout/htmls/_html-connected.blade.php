@@ -26,7 +26,7 @@
     <div class="clearfix"></div>
 
     {{--NAV BAR TAG--}}
-    @include('cms._partials.nav-bar-crm')
+    @include('cms._partials.nav-bar-cms')
     @yield('nav-bar')
 
     {{--MAIN CONTENT --}}

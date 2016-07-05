@@ -43,7 +43,7 @@
         {!! Form::close()!!}
 
     </div>
-    <div class="feedback-wrapper">
+    <div class="feedback-wrapper defaultFontStyle">
         @if(!empty(Session::get('feedback')))
             <h2 class="text-center feedback">
                 {{Session::get('feedback')}}

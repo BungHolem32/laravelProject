@@ -52,6 +52,7 @@ class ForgotPasswordModel extends BaseModel
     public
     function updateRandomPassword($email, $token)
     {
+
         $isUpdated = null;
         $isUpdated = $this->DBservice->connect;
         $result = $isUpdated->createQueryBuilder()

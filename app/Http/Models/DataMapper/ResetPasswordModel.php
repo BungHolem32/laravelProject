@@ -10,15 +10,27 @@ namespace App\Http\Models\DataMapper;
 
 
 use App\Http\Models\BaseModel;
+use Illuminate\Support\Facades\Session;
 
 class ResetPasswordModel extends BaseModel
 {
-    
-    public function getUserInfo($token)
 
+    public function unTokenAndReturnArray($token)
     {
-        $tok = getDecryptUserInfo(')w„‚èk¥?é;¯Hy Ð,@ü“‚ƒQŽuyoñeÈ @');
-        $user = $this->param->getTableBy('laravelCrmUser', 'tokenPass', $token);
+        $token = getDecryptUserInfo($token);
+        $info = explode(' ', $token);
+        return $info;
+    }
+
+    public function checkIfExpire($tokenDate)
+    {
+        return $tokenDate == date("m.d.y");
+    }
+
+    public function getUserInfo($email)
+    {
+        $user = $this->param->getTableBy('laravelCMS.laravelCMSUser', 'email', $email);
+        \Session::put('userInfo', $user[0]);
         return $user;
     }
 }

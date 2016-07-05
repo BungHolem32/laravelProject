@@ -1,7 +1,7 @@
 <?php
 
 /*ADD ARRAY KEYS IN SPECIFIC POSITION*/
-if (!function_exists('AddArrayKeysInSpecificPosition')) {
+if (!function_exists('AddArrayKeysInSpecificPosition')){
     function AddArrayKeysInSpecificPosition($array, $values, $offset)
     {
         if (!empty($array) && !empty($values) && !empty($offset))
@@ -10,7 +10,7 @@ if (!function_exists('AddArrayKeysInSpecificPosition')) {
 }
 
 /*GET URL FOR LAST SLUG*/
-if (!function_exists('getUrlLastSlug')) {
+if (!function_exists('getUrlLastSlug')){
     function getUrlLastSlug($siteUrl)
     {
         $slug = strstr($siteUrl, '/');
@@ -20,7 +20,7 @@ if (!function_exists('getUrlLastSlug')) {
 }
 
 /*INPUT VALIDATION*/
-if (!function_exists('validateInput')) {
+if (!function_exists('validateInput')){
     function validateInput($input)
     {
         $cleanInput = null;
@@ -30,22 +30,22 @@ if (!function_exists('validateInput')) {
 }
 
 /*DYNAMIC QUERY BUILDER INSERTION*/
-if (!function_exists('insetDynamicTable')) {
+if (!function_exists('insetDynamicTable')){
 
     function createDynamicQuery($table = null)
     {
-        if ($table) {
+        if ($table){
             $validTable = validateInput($table);
             $queryUserStatement = "INSERT INTO $validTable VALUES ('',";
         }
-        $queryUserStatement = "INSERT INTO `laravelcrmuser` VALUES ('',";
+        $queryUserStatement = "INSERT INTO `laravelcmsuser` VALUES ('',";
 
-        foreach ($this->userInfo as $name => $val) {
-            if ($name == 'uId') {
+        foreach ($this->userInfo as $name => $val){
+            if ($name == 'uId'){
                 continue;
-            } elseif ($name == 'password') {
+            } elseif ($name == 'password'){
                 $queryUserStatement .= "'" . $val . "'" . ')';
-            } else {
+            } else{
                 $queryUserStatement .= "'" . $val . "'" . ',';
             }
         }
@@ -54,17 +54,17 @@ if (!function_exists('insetDynamicTable')) {
 }
 
 /*CREATE RANDOM TOKEN*/
-if (!function_exists('createSaltPass')) {
+if (!function_exists('createSaltPass')){
     function createSaltPass($email)
     {
         $salt = null;
-        $salt = $email . '-' . date("m.d.y");
+        $salt = $email . ' ' . date("m.d.y");
         return $salt;
     }
 }
 
 /*CREATE RANDOM TOKEN*/
-if (!function_exists('createTokenKey')) {
+if (!function_exists('createTokenKey')){
     function createTokenKey()
     {
 
@@ -73,7 +73,7 @@ if (!function_exists('createTokenKey')) {
 }
 
 
-if (!function_exists('createEncryptEncode')) {
+if (!function_exists('createEncryptEncode')){
     function createEncryptUserInfo($userInfo)
     {
         $encode = null;
@@ -83,28 +83,28 @@ if (!function_exists('createEncryptEncode')) {
 
         $encode = openssl_encrypt($userInfo, $method, $pass, true, $iv);
 
-        return $encode;
+        $urlEncode = urlencode($encode);
+        return $urlEncode;
     }
 }
 
 
-if (!function_exists('getDecryptUserInfo')) {
+if (!function_exists('getDecryptUserInfo')){
     function getDecryptUserInfo($encryptedData)
     {
-        
+
         $decode = null;
         $pass = 'myOwnToken';
         $method = 'aes128';
         $iv = "1234567812345678";
         $decode = openssl_decrypt($encryptedData, $method, $pass, true, $iv);
-
         return $decode;
     }
 }
 
 
 /*ENCRYPT BASE 64*/
-if (!function_exists('EncryptBase64')) {
+if (!function_exists('EncryptBase64')){
     function EncryptBase64($string)
     {
         $isEncoded = null;
@@ -114,7 +114,7 @@ if (!function_exists('EncryptBase64')) {
 }
 
 /*DECRYPT  BASE 64*/
-if (!function_exists('DecryptBase64')) {
+if (!function_exists('DecryptBase64')){
     function DecryptBase64($string)
     {
         $isDecrypted = null;

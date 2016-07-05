@@ -16,7 +16,7 @@ use Illuminate\Routing\Controller;
 /**
  * @property ResetPassWordModel model
  */
-class ResetPasswordController extends  Controller
+class ResetPasswordController extends Controller
 {
 
     /**
@@ -26,20 +26,38 @@ class ResetPasswordController extends  Controller
     public function __construct(ResetPasswordModel $resetPasswordModel)
     {
         $this->model = $resetPasswordModel;
-        
+
     }
 
-    public function index(){
-        return view('cms.pages._connection.reset-pass.index');
+    public function index()
+    {
+        return view('cms.pages._connection.pass.reset-pass.index');
     }
 
 
-    public function reset(Request $request,$token){
+    public function reset($token)
+    {
+        /*get the */
+        $resetInfo = $this->model->unTokenAndReturnArray($token);
 
-//        $url = $request->fullUrl();
-//        $url = str_replace('rd/','',strstr($url,'rd/'));
+        if (!empty($resetInfo)){
 
-        $user = $this->model->getUserInfo($token);
-        
+            $date = $resetInfo[1];
+            $isValid = $this->model->checkIfExpire($date);
+
+            if ($isValid){
+                $email = $resetInfo[0];
+                $userInfo = $this->model->getUserInfo($email);
+                if ($userInfo){
+                    return redirect()->route('change-password');
+                }
+            }
+        }
+    }
+
+
+    public function changePassword()
+    {
+        return view('cms.pages._connection.pass.change-pass.index');
     }
 }   

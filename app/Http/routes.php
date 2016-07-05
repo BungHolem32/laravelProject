@@ -53,7 +53,8 @@ Route::group($middleware, function () {
 
             /*reset password*/
             Route::get('resetPassword', ['as' => 'reset-pass-page', 'uses' => 'ResetPasswordController@index']);
-            Route::get('resetPassword/{url}', ['as' => 'change-pass', 'uses' => 'ResetPasswordController@reset'])->where('name','*');
+            Route::get('resetPassword/{url}', ['as' => 'token-verify', 'uses' => 'ResetPasswordController@reset'])->where('name','*');
+            Route::get('changePassword',['as'=>'change-password','uses'=>'ResetPasswordController@changePassword']);
 
             /*register*/
             Route::get('register', ['as' => 'register-page', 'uses' => 'RegisterController@index']);

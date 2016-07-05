@@ -3,97 +3,26 @@
 
   //header title
   .top-title {
-    padding: 15px;
-    color: #020217;
+    padding : 15px;
+    color   : #020217;
   }
 
   .header-title {
-    font-size: @default-size*2.2;
-    margin-top: 3em;
-    color: white;
-    text-shadow: 1px 1px 1px lightgray;
+    font-size   : @default-size*2.2;
+    margin-top  : 3em;
+    color       : white;
+    text-shadow : 1px 1px 1px lightgray;
   }
 
-  //nav bar wrapper
-  .cms-navigation {
-    padding-top: 20px !important;
-    //background: url('/img/roughcloth.png');
-    background: #edf8d4;
-
-    //nav-bar-wrapper
-    &.navbar {
-      padding: 20px 0;
-      font-size: 30px;
-      border-radius: 0;
-      //border-bottom: 1px solid #8c8c8c;
-      box-shadow: 1px 1px 1px 1px #ade0ac;
-
-      .container {
-        margin-bottom: 0;
-
-        //nav bar list element
-        .nav-bar-crm-li {
-
-          //nav-bar href
-          .nav-link {
-            color: black;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: all 600ms ease;
-            opacity: 0.5;
-
-            //on hover
-            &:hover {
-              opacity: 1;
-              text-shadow: 1px 1px 1px gray;
-            }
-          }
-        }
-
-      }
-
-    }
+  .navbar {
+    &:extend(.nav-bar-cms);
   }
 
   //main tag
   .cms-content {
 
-    //user-info wrapper (side-right tab)
-    .user-info-wrapper {
-
-      //container size
-      &.container {
-
-        @media (min-width: 640px) {
-          height: 200px;
-          width: 300px;
-          border: 1px solid gray;
-          position: absolute;
-          right: @default-size;
-          top: 0;
-          //background: white;
-          background: #f0f8e0;
-          border-radius: @default-size/4*3;
-          box-shadow: inset 1px 1px @default-size/2 2px darkgray;
-        }
-
-        .user-info {
-          header {
-            h1 {
-              text-shadow: 1px 1px 1px darkgray;
-            }
-          }
-          .content {
-            padding-left: @default-size/2*5;
-            letter-spacing: 1px;
-
-            .log-out {
-              margin-top: 0;
-            }
-          }
-        }
-      }
-    }
+    //user Info Tag
+    .user-info-wrapper;
   }
 
 }
