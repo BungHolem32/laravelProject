@@ -33,4 +33,21 @@ class ResetPasswordModel extends BaseModel
         \Session::put('userInfo', $user[0]);
         return $user;
     }
+
+    public function updatePassword($email, $newPassword)
+    {
+        
+        $password = saltPassword($newPassword);
+
+        $query = $this->DBservice->connect->createQueryBuilder()
+            ->update('laravelCMSUser')
+            ->set('password', '?')
+            ->where("email = ?")
+            ->setParameters(array(
+                0 => $password,
+                1 => $email))
+            ->execute();
+
+
+    }
 }

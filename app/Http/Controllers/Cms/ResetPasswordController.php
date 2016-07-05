@@ -12,9 +12,11 @@ namespace app\Http\Controllers\Cms;
 use App\Http\Models\DataMapper\ResetPasswordModel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Session;
 
 /**
  * @property ResetPassWordModel model
+ * @property  email
  */
 class ResetPasswordController extends Controller
 {
@@ -40,24 +42,33 @@ class ResetPasswordController extends Controller
         /*get the */
         $resetInfo = $this->model->unTokenAndReturnArray($token);
 
-        if (!empty($resetInfo)){
+        if (!empty($resetInfo)) {
 
             $date = $resetInfo[1];
             $isValid = $this->model->checkIfExpire($date);
 
-            if ($isValid){
-                $email = $resetInfo[0];
-                $userInfo = $this->model->getUserInfo($email);
-                if ($userInfo){
-                    return redirect()->route('change-password');
+            if ($isValid) {
+                $this->email = $resetInfo[0];
+                $userInfo = $this->model->getUserInfo($this->email);
+
+                if ($userInfo) {
+                    return view('cms/changePassword');
                 }
             }
         }
     }
 
+    public function changeToNewPass(Request $request)
+    {
+
+        $newPassword = $request->input('password');
+        $email = $request->input('email');
+        $this->model->updatePassword($email, $newPassword);
+    }
 
     public function changePassword()
+
     {
-        return view('cms.pages._connection.pass.change-pass.index');
+        return view('cms.pages._connection.pass.change-pass.index')->with('userInfo', Session::get('userInfo'));
     }
 }   

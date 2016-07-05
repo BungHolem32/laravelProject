@@ -3,31 +3,32 @@
 //container size
 &.container {
 
-  @media (min-width : 640px) {
-    height        : 200px;
-    width         : 300px;
-    border        : 1px solid gray;
-    position      : absolute;
-    right         : @default-size;
-    top           : 0;
+  @media (min-width: 640px) {
+    height: 200px;
+    width: 300px;
+    border: 1px solid gray;
+    position: absolute;
+    right: @default-size;
+    top: 0;
     //background: white;
-    background    : #fdfdfd;
-    border-radius : @default-size/4*3;
-    box-shadow    : inset 1px 1px @default-size/2 2px darkgray;
+    background: #fdfdfd;
+    border-radius: @default-size/4*3;
+    box-shadow: inset 1px 1px @default-size/2 2px darkgray;
+    margin-top: @default-size/2;
   }
 
   .user-info {
     header {
       h1 {
-        text-shadow : 1px 1px 1px darkgray;
+        text-shadow: 1px 1px 1px darkgray;
       }
     }
     .content {
-      padding-left   : @default-size/2*5;
-      letter-spacing : 1px;
+      padding-left: @default-size/2*5;
+      letter-spacing: 1px;
 
       .log-out {
-        margin-top : 0;
+        margin-top: 0;
       }
     }
   }

@@ -34,7 +34,7 @@ class ForgotPasswordController extends Controller
 
     public function index()
     {
-        return view('cms.pages._connection.forgot-pass.index');
+        return view('cms.pages._connection.pass.forgot-pass.index');
     }
 
 

@@ -3,7 +3,7 @@
 
 @section('header')
     <div class="cms-header-forgot-pass text-center">
-        <h2 class="text-uppercase">{{ucwords('forgot password')}}</h2>
+        <h2 class="text-uppercase defaultFontStyle">{{ucwords('forgot password')}}</h2>
     </div>
 @stop
 

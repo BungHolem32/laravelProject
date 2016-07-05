@@ -1,0 +1,36 @@
+.cms-content {
+  .container {
+    width: @container-width-form;
+
+    .submit-btn-wrapper {
+      .submit-btn {
+        font-size: @default-size*1.5;
+      }
+    }
+    .form-control {
+      font-size: @default-size;
+      height: auto;
+    }
+
+    .wait {
+      display: none;
+      -webkit-transition: opacity 400ms ease-in;
+      -moz-transition: opacity 400ms ease-in;
+      -ms-transition: opacity 400ms ease-in;
+      -o-transition: opacity 400ms ease-in;
+      transition: opacity 400ms ease-in;
+
+      i {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        top: 46%;
+      }
+    }
+
+    .wait:target {
+      opacity: 1;
+    }
+  }
+}
