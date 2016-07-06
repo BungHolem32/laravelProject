@@ -16,7 +16,7 @@ class LoginModel extends BaseModel
     {
         $isPassValidation = null;
 
-        $password = $this->user->saltPassword($value['password']);
+        $password = saltPassword($value['password']);
         $query = $this->DBservice->connect->createQueryBuilder()
             ->select("{$columns[0]}, {$columns[1]}")
             ->from($table)

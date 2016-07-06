@@ -32,15 +32,17 @@ class ForgotPasswordModel extends BaseModel
     /**
      * @return null|string
      */
-    public function createResetToken()
+    public function createResetToken($email)
     {
-        $userInfo = createSaltPass($this->email);
+        $userInfo = createSaltPass($email);
 
         if (!empty($userInfo)) {
+            
 
             $this->userTokken = createEncryptUserInfo($userInfo);
 
         }
+
         return $this->userTokken;
     }
 
@@ -67,16 +69,13 @@ class ForgotPasswordModel extends BaseModel
             )->execute();
 
 
-        /*send token to email*/
-        $this->sendResetPasswordEmailToUser();
-
 
         return $isUpdated;
 
     }
 
-    private
-    function sendResetPasswordEmailToUser()
+    public
+    function sendResetPasswordEmailToUser($email,$resetToken)
     {
 
         /*TRANSPORT CONFIGURATIONS*/
@@ -88,7 +87,7 @@ class ForgotPasswordModel extends BaseModel
         $mailer = \Swift_Mailer::newInstance($transport);
 
         /*CREATE MESSAGE*/
-        $message = $this->messageCreation();
+        $message = $this->messageCreation($email,$resetToken);
 
 
         /*MASSAGE CLASS*/
@@ -102,8 +101,10 @@ class ForgotPasswordModel extends BaseModel
         /*SEND THE MAIL */
         $isSent = $mailer->send($message);
 
-        if ($isSent) {
+        if ($isSent == 1) {
+            $isSent = 'message sent';
         }
+        return $isSent;
     }
 
 
@@ -111,15 +112,15 @@ class ForgotPasswordModel extends BaseModel
      * @return string
      */
     private
-    function messageCreation()
+    function messageCreation($email,$resetToken)
     {
-        $user = $this->param->getTableBy('laravelCMSUser', 'email', $this->email);
+        $user = $this->param->getTableBy('laravelCMSUser', 'email', $email);
 
         /*MESSAGE BUILD*/
         $message = '';
         $message .= '<h2> hi ' . $user[0]['fName'] . ' ' . $user[0]['lName'] . ' whats up </h2>';
         $message .= '<p>please click on the link to reset your password</p>';
-        $message .= '<a href="http://localhost:8000/cms/resetPassword/' . $this->userTokken . '">Reset Password</a>';
+        $message .= '<a href="http://localhost:8000/cms/resetPassword/' . $resetToken . '">Reset Password</a>';
 
         return $message;
     }

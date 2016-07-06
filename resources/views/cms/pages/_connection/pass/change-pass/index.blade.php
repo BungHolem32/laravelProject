@@ -25,19 +25,22 @@
             </div>
         </div>
         {{Form::close()}}
+
+        <div class="feedback-wrapper">
+            <h2 class="text-center feedback defaultFontStyle"></h2>
+        </div>
     </div>
 
-    <div class="feedback-wrapper">
-        <h2 class="text-center feedback defaultFontStyle"></h2>
-    </div>
+
+
+
 @stop
 
-
-
+d
 @section('bottom-scripts')
 
-
-    <script>
+    {{--CHANGE PASSWORD CALL --}}
+    <script class="ajax-call-change-password">
         $('.submit-btn').on('click', function (e) {
 
             e.preventDefault();
@@ -46,6 +49,7 @@
             var email = '{{$userInfo['email']}}';
 
             if (currentPassword == validationPassword) {
+                $('.feedback').text('');
 
                 $.ajax({
                     url: '{{url('cms/changePassword/check')}}',
@@ -58,9 +62,23 @@
                     },
 
                     complete: function (data) {
-                        console.log(data);
                         $('.submit-btn').val('ClickMe');
                         $('.wait').hide();
+                        var response = data.responseText;
+
+                        if (response == 'alreadyExist') {
+                            $('.feedback').text('your password already used before , please create new one!');
+                            return;
+                        }
+
+
+                        if ((response) == 'PasswordChanged') {
+                            $('.feedback').text('your password been update successfully');
+                            setTimeout(function () {
+                                window.location.assign('{{url('cms/login')}}')
+                            }, 5000);
+
+                        }
                     }
                 });
 

@@ -58,19 +58,11 @@ if (!function_exists('createSaltPass')) {
     function createSaltPass($email)
     {
         $salt = null;
-        $salt = $email . ' ' . date("m.d.y");
+        $salt = $email . '*' . date("m.d.y");
         return $salt;
     }
 }
 
-/*CREATE RANDOM TOKEN*/
-if (!function_exists('createTokenKey')) {
-    function createTokenKey()
-    {
-
-
-    }
-}
 
 
 if (!function_exists('createEncryptEncode')) {
@@ -82,6 +74,7 @@ if (!function_exists('createEncryptEncode')) {
         $iv = "1234567812345678";
 
         $encode = openssl_encrypt($userInfo, $method, $pass, true, $iv);
+
 
         $urlEncode = urlencode($encode);
         return $urlEncode;

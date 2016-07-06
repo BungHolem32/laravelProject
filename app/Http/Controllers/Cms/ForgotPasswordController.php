@@ -55,14 +55,22 @@ class ForgotPasswordController extends Controller
         }
 
         /*create new Token*/
-        $resetToken = $this->model->createResetToken();
+        $resetToken = $this->model->createResetToken($this->email);
+
 
         /*if token created update the user table with the new tempPass*/
         if (!empty($resetToken)) {
-            $isRandomUpdated = $this->model->updateRandomPassword($this->email, $resetToken);
 
-            if (!empty($isRandomUpdated)) {
-                return redirect()->route('login-page')->with('feedback','password been reset check your mail for more info');
+//          $isRandomUpdated = $this->model->updateRandomPassword($this->email, $resetToken);
+
+            /*send token to email*/
+            $isEmailSent = $this->model->sendResetPasswordEmailToUser($this->email, $resetToken);
+
+
+            if ($isEmailSent == 'message sent') {
+                return redirect()->route('login-page')->with('feedback', 'password been reset check your mail for more info');
+            } else {
+                return view('cms.pages._connection.pass.forgot-pass.index')->with('feedback', 'message didn\'t sent , contact your administrator');
             }
         }
     }

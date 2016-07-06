@@ -9181,10 +9181,10 @@ body .container-fluid.login-page .cms-login-wrapper .login-submit {
   font-size: 44px;
   margin-top: 3em;
   color: white;
-  text-shadow: 1px 1pxl 1px lightgray;
+  text-shadow: 1px 1 pxl 1px lightgray;
 }
 @media (min-width: 640px) {
-  .container-fluid .cms-content.container {
+  .container-fluid .cms-content .user-info-wrapper.container {
     height: 200px;
     width: 300px;
     border: 1px solid gray;
@@ -9197,35 +9197,90 @@ body .container-fluid.login-page .cms-login-wrapper .login-submit {
     margin-top: 10px;
   }
 }
-.container-fluid .cms-content.container .user-info header h1 {
+.container-fluid .cms-content .user-info-wrapper.container .user-info header h1 {
   text-shadow: 1px 1px 1px darkgray;
 }
-.container-fluid .cms-content.container .user-info .content {
+.container-fluid .cms-content .user-info-wrapper.container .user-info .content {
   padding-left: 50px;
   letter-spacing: 1px;
 }
-.container-fluid .cms-content.container .user-info .content .log-out {
+.container-fluid .cms-content .user-info-wrapper.container .user-info .content .log-out {
   margin-top: 0;
 }
-body .page-management-page .cms-content .popup .create-page-wrapper,
-body .page-management-page .cms-content .popup .edit-page-wrapper,
-body .page-management-page .cms-content .popup .delete-page-wrapper {
+body .page-management-page .cms-content .container {
+  width: 1000px;
+}
+body .page-management-page .cms-content .container .row .link {
+  font-size: 30px;
+  text-decoration: none;
+  opacity: 0.5;
+  -webkit-transition: opacity 500ms ease-in;
+  -moz-transition: opacity 500ms ease-in;
+  -ms-transition: opacity 500ms ease-in;
+  -o-transition: opacity 500ms ease-in;
+  transition: opacity 500ms ease-in;
+}
+body .page-management-page .cms-content .container .row .link:hover {
+  color: white;
+  opacity: 1;
+}
+body .page-management-page .cms-content .create-page-wrapper,
+body .page-management-page .cms-content .edit-page-wrapper,
+body .page-management-page .cms-content .delete-page-wrapper {
   opacity: 0;
   -webkit-transition: opacity 400ms ease-in;
   -moz-transition: opacity 400ms ease-in;
   -ms-transition: opacity 400ms ease-in;
   -o-transition: opacity 400ms ease-in;
   transition: opacity 400ms ease-in;
+  display: none;
 }
-body .page-management-page .cms-content .popup .create-page-wrapper:target,
-body .page-management-page .cms-content .popup .edit-page-wrapper:target,
-body .page-management-page .cms-content .popup .delete-page-wrapper:target {
+body .page-management-page .cms-content .create-page-wrapper:target,
+body .page-management-page .cms-content .edit-page-wrapper:target,
+body .page-management-page .cms-content .delete-page-wrapper:target {
+  display: block;
   opacity: 1;
 }
-body .page-management-page .cms-content .popup .close {
-  position: absolute;
-  right: 2%;
-  top: 2%;
+body .page-management-page .cms-content .jumbotron {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+  padding-top: 200px;
+}
+body .page-management-page .cms-content .jumbotron .create-content-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  background: #e0dada none repeat scroll 0 0;
+  border-radius: 10px;
+  padding: 40px;
+  padding: 10px 30px;
+  box-shadow: inset 1px 1px 7px 6px #3e3e3e;
+}
+body .page-management-page .cms-content .jumbotron .create-content-wrapper .content-info {
+  display: none;
+}
+body .page-management-page .cms-content .jumbotron .create-content-wrapper .content-info:target {
+  display: block;
+}
+body .page-management-page .close-btn i {
+  font-size: 22px;
+  color: black;
+  opacity: 0.5;
+  -webkit-transition: all 1000ms ease;
+  -moz-transition: all 1000ms ease;
+  -ms-transition: all 1000ms ease;
+  -o-transition: all 1000ms ease;
+  transition: all 1000ms ease;
+  float: right;
+}
+body .page-management-page .close-btn i:hover {
+  opacity: 1;
 }
 .cms-content .container {
   width: 600px;
