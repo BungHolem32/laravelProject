@@ -130,7 +130,7 @@
 
         $('.create-btn').on('click',function(e){
             e.preventDefault();
-            $('.content-info').slideToggle('easing');
+            $('.content-info').slideToggle('easingd');
         })
 
 
