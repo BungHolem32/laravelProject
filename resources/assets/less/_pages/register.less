@@ -5,34 +5,36 @@ body {
     &.register-page {
 
       .cms-register-header-wrapper {
-        color: white;
-        font-size: @default-size*1.5;
+        color     : white;
+        font-size : @default-size*1.5;
 
-        @media (min-width: 640px) {
+        @media (min-width : 640px) {
           &.container {
-            //width      : @container-width-form;
-            margin-top: @default-size*1.5;
+            margin-top : @default-size*1.5;
           }
         }
       }
 
       .cms-register-wrapper {
-        .box-form;
+        width         : @container-width-form*1.5;
+        border-radius : @default-size/4;
+        padding       : @default-size @default-size*2;
+        margin-top    : @default-size;
 
         &.container {
           //width       : @container-width-form;
-          padding-top: @default-size*2;
+          padding-top : @default-size*2;
         }
 
         .register-btn {
-          width: 100%;
-          font-size: @default-size/2*3;
-
-          padding: @default-size/2;
+          width     : 100%;
+          font-size : @default-size/2*3;
+          padding   : @default-size/2;
+          border-radius:@default-size/4;
         }
 
         label {
-          font-size: @default-size;
+          font-size : @default-size;
         }
 
         .form-group {
@@ -41,8 +43,8 @@ body {
           }
 
           .form-control {
-            height: @default-size*2.5;
-            font-size: @default-size;
+            height    : @default-size*2.5;
+            font-size : @default-size;
           }
         }
       }

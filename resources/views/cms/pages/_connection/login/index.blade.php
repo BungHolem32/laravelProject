@@ -10,7 +10,7 @@
 
     <div class="cms-login-wrapper container">
 
-        <h2 class="form-title text-uppercase">cms login</h2>
+        <h2 class="form-title text-uppercase defaultFontStyle">cms login</h2>
         {!! Form::open(['class'=>'login-form form-default']) !!}
 
         {{--EMAIL INPUT--}}
@@ -32,12 +32,14 @@
         </div>
 
         <div class="form-group forgot-password">
-            <a href="{{route('forgot-password')}}" class="text-capitalize pull-right">forgot password?</a>
+            <a href="{{route('forgot-password')}}" class="text-capitalize pull-right defaultFontStyle">forgot
+                password?</a>
         </div>
 
         {{--A REF REGISTER--}}
         <div class="form-group register">
-            <a href="{{route('register-page')}}" class="text-capitalize pull-left text-success">new user? sign now!</a>
+            <a href="{{route('register-page')}}" class="text-capitalize pull-left text-success defaultFontStyle">new
+                user? sign now!</a>
 
         </div>
         {!! Form::close()!!}
