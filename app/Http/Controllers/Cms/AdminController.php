@@ -8,26 +8,23 @@ use Illuminate\Routing\Controller;
 
 class AdminController extends Controller
 {
-	protected $model;
+    protected $model;
 
-	/**
-	 * AdminController constructor.
-	 * @param AdminModel $model
+    /**
+     * AdminController constructor.
+     * @param AdminModel $model
      */
-	public function __construct(AdminModel $model)
-	{
-		$this->model = $model;
-	}
+    public function __construct(AdminModel $model)
+    {
+        $this->model = $model;
+    }
 
-	/**
-	 * @param Request $request
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	public function dashboard(Request $request)
-	{
-		return view('cms.pages.main.index');
-	}
-	
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function dashboard()
+    {
+        return view('cms.pages.main.index');
+    }
 
-	
 }

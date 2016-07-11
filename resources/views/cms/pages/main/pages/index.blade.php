@@ -13,66 +13,49 @@
     <div class="container categories-wrapper">
         <div class="row">
 
-            <a href="#create" class="create-link text-uppercase col-md-4 text-center link defaultFontStyle">create page</a>
+            <a href="#create" class="create-link text-uppercase col-md-4 text-center link defaultFontStyle">create
+                page</a>
             <a href="#edit" class="edit-link text-uppercase col-md-4 text-center link defaultFontStyle">edit page</a>
-            <a href="#delete" class="delete-link text-uppercase col-md-4 text-center link defaultFontStyle">delete page</a>
+            <a href="#delete" class="delete-link text-uppercase col-md-4 text-center link defaultFontStyle">delete
+                page</a>
         </div>
     </div>
 
-
-
-
     {{--CREATE PAGE--}}
-    <div id="create" class="create-page-wrapper col-md-offset-1 col-md-3 margin-right jumbotron">
 
+    <div class="create-popup">
         <div class="create-content-wrapper">
             <a href="#close" class="close-btn">
                 <i class="fa fa-times" aria-hidden="true"></i>
             </a>
 
-            <h2 class="title text-uppercase text-center">create page</h2>
-            <div class="form">
-                {{Form::open()}}
-                <div class="form-group">
-                    {{Form::text('page-name','',['placeholder'=>'page name','class'=>'col-md-12 form-group'])}}
-                </div>
-                <div class="form-group">
-                    {{Form::submit('add',['class'=>'text-uppercase center-block btn-info btn-lg create-btn form-group','required'=>'required'])}}
-                </div>
-                {{Form::close()}}
+            <h2 class="title text-uppercase text-center defaultFontStyle">create page</h2>
+            <div id="info-create" class="content-info">
 
-                <div id="info-create" class="content-info">
-                    <a href="close">X</a>
-                    <form action="">
-                        <div class="part-1 col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control">
-                            </div>
+                {{--CONTROLLER PART--}}
+                <div class="container">
+
+                    <div class="controller-n-url col-md-8 col-md-offset-2">
+
+                        {{--name--}}
+                        <div class="form-group">
+                            {{Form::text('name','',['class'=>'form-control name','name'=>'name','placeholder'=>'enter page name...'])}}
+
+
                         </div>
-                        <div class="part-2 col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control">
-                            </div>
+
+                        {{--url--}}
+                        <div class="form-group">
+                            {{Form::text('url','',['class'=>'form-control url','name'=>'url','placeholder'=>'set friendly url...'])}}
                         </div>
-                    </form>
+
+                        {{--submit-btn--}}
+                        <div class="form-group ">
+                            <a href="#create" class="createNewPageFirstStep">{{Form::submit('Create New Page',['class'=>'full-width form-control btn-warning controller-btn text-uppercase',
+                                                              'name'=>'pageMaze[head][create-new-btn]'])}}</a>
+                        </div>
+                    </div>
+
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -80,26 +63,12 @@
     </div>
 
 
+    <div id="create" class="create-page-wrapper col-md-offset-1 col-md-3 margin-right jumbotron">
+        @include('pages.content.default.edit')
+    </div>
     {{--EDIT PAGE--}}
     <div id="edit" class="edit-page-wrapper col-md-3 jumbotron margin-right">
-        <div class="create-content-wrapper">
-
-            <a href="#close" class="close-btn">
-                <i class="fa fa-times" aria-hidden="true"></i>
-            </a>
-
-            <h2 class="title text-uppercase text-center">edit page</h2>
-            <div class="form">
-                {{Form::open()}}
-                <div class="form-group">
-                    {{Form::select('page-selection',[''=>'select page'],[],['class'=>'col-md-12 form-control' ,'required'=>'required'])}}
-                </div>
-                <div class="form-group">
-                    {{Form::submit('edit',['class'=>'text-uppercase center-block btn-info btn-lg edit-btn form-control'])}}
-                </div>
-                {{Form::close()}}
-            </div>
-        </div>
+        @include('pages.content.default.edit')
     </div>
 
 
@@ -132,14 +101,51 @@
 
     <script>
 
-        //        $('input[class$=btn]').on('click', function (e) {
-        //            e.preventDefault();
-        //            window.location.assign('/cms/page-management/create');
-        //        })
+        (function () {
+            var pageManagement = {};
 
-        $('.create-btn').on('click', function(e){
+            Object.defineProperties(pageManagement, {
+                init: {
+                    value: function () {
+
+                    },
+                    enumerable: true,
+                    configurable: true
+                },
+                changeColorByValue: {
+                    value: function () {
+                        $('input').on('keyup', function () {
+                            var inputs = $('input[type="text"],textarea');
+                            for (index in inputs) {
+                                if ($(inputs[index]).val() != '') {
+                                    $(inputs[index]).css('border', '1px solid green');
+                                }
+                                else {
+                                    $(inputs[index]).css('border', '1px solid red');
+                                }
+                            }
+
+                        })
+                    }
+                }
+            });
+//            pageManagement.changeColorByValue();
+        })();
+
+
+        $('.create-btn').on('click', function (e) {
             e.preventDefault();
             $('.content-info').slideToggle('easing');
+        })
+
+        $('.createNewPageFirstStep').on('click', function () {
+            var url = $('.url').val().toLowerCase();
+            url = url.replace(' ', '-');
+            var name = $('.name').val().toLowerCase();
+
+
+            $('.friendlyUrl').val(url);
+            $('.pageName').val(name);
         })
 
 
