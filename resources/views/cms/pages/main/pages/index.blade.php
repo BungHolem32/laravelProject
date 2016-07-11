@@ -13,59 +13,19 @@
     <div class="container categories-wrapper">
         <div class="row">
 
-            <a href="#create" class="create-link text-uppercase col-md-4 text-center link defaultFontStyle">create
+            <a href="#create-popup" class="create-link text-uppercase col-md-4 text-center link defaultFontStyle">create
                 page</a>
-            <a href="#edit" class="edit-link text-uppercase col-md-4 text-center link defaultFontStyle">edit page</a>
-            <a href="#delete" class="delete-link text-uppercase col-md-4 text-center link defaultFontStyle">delete
+            <a href="#edit-popup" class="edit-link text-uppercase col-md-4 text-center link defaultFontStyle">edit page</a>
+            <a href="#delete-popup" class="delete-link text-uppercase col-md-4 text-center link defaultFontStyle">delete
                 page</a>
         </div>
     </div>
 
     {{--CREATE PAGE--}}
 
-    <div class="create-popup">
-        <div class="create-content-wrapper">
-            <a href="#close" class="close-btn">
-                <i class="fa fa-times" aria-hidden="true"></i>
-            </a>
+    @include('pages._partials._create-pop-up')
+    @include('pages.content.default.edit')
 
-            <h2 class="title text-uppercase text-center defaultFontStyle">create page</h2>
-            <div id="info-create" class="content-info">
-
-                {{--CONTROLLER PART--}}
-                <div class="container">
-
-                    <div class="controller-n-url col-md-8 col-md-offset-2">
-
-                        {{--name--}}
-                        <div class="form-group">
-                            {{Form::text('name','',['class'=>'form-control name','name'=>'name','placeholder'=>'enter page name...'])}}
-
-
-                        </div>
-
-                        {{--url--}}
-                        <div class="form-group">
-                            {{Form::text('url','',['class'=>'form-control url','name'=>'url','placeholder'=>'set friendly url...'])}}
-                        </div>
-
-                        {{--submit-btn--}}
-                        <div class="form-group ">
-                            <a href="#create" class="createNewPageFirstStep">{{Form::submit('Create New Page',['class'=>'full-width form-control btn-warning controller-btn text-uppercase',
-                                                              'name'=>'pageMaze[head][create-new-btn]'])}}</a>
-                        </div>
-                    </div>
-
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="create" class="create-page-wrapper col-md-offset-1 col-md-3 margin-right jumbotron">
-        @include('pages.content.default.edit')
-    </div>
     {{--EDIT PAGE--}}
     <div id="edit" class="edit-page-wrapper col-md-3 jumbotron margin-right">
         @include('pages.content.default.edit')

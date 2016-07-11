@@ -10,11 +10,11 @@ body {
             font-size: 30px;
             text-decoration: none;
             opacity: 0.5;
-            -webkit-transition: opacity 500ms ease-in;
-            -moz-transition: opacity 500ms ease-in;
-            -ms-transition: opacity 500ms ease-in;
-            -o-transition: opacity 500ms ease-in;
-            transition: opacity 500ms ease-in;
+            -webkit-transition: all 500ms ease-in;
+            -moz-transition: all 500ms ease-in;
+            -ms-transition: all 500ms ease-in;
+            -o-transition: all 500ms ease-in;
+            transition: all 500ms ease-in;
             &:hover {
               color: white;
               opacity: 1;
@@ -27,18 +27,19 @@ body {
       .edit-page-wrapper,
       .delete-page-wrapper {
         opacity: 0;
-        -webkit-transition: opacity 400ms ease-in;
-        -moz-transition: opacity 400ms ease-in;
-        -ms-transition: opacity 400ms ease-in;
-        -o-transition: opacity 400ms ease-in;
-        transition: opacity 400ms ease-in;
-        display: none;
+        -webkit-transition: all 400ms ease-in;
+        -moz-transition: all 400ms ease-in;
+        -ms-transition: all 400ms ease-in;
+        -o-transition: all 400ms ease-in;
+        transition: all 400ms ease-in;
+        opacity: 0;
+        z-index: -1;
       }
 
       .create-page-wrapper:target,
       .edit-page-wrapper:target,
       .delete-page-wrapper:target {
-        display: block;
+        z-index: 1;
         opacity: 1;
       }
 
@@ -68,12 +69,6 @@ body {
           }
 
           .content-info {
-            //display: none;
-
-            &:target {
-              display: block;
-
-            }
 
             .page-content {
               border-right: 1px solid rgb(204, 204, 204);
@@ -113,25 +108,49 @@ body {
         bottom: 0;
         top: 0;
         background: rgba(0, 0, 0, 0.8) none repeat scroll 0% 0%;
+        opacity: 0;
+        -webkit-transition: opacity 500ms ease;
+        -moz-transition: opacity 500ms ease;
+        -ms-transition: opacity 500ms ease;
+        -o-transition: opacity 500ms ease;
+        transition: opacity 500ms ease;
+        z-index: -100000;
+
+        &:target {
+          opacity: 1;
+          z-index: 10;
+        }
 
         .create-content-wrapper {
           margin-top: 30em;
 
-          .content-info {
+          .inner-content {
+            width: 35%;
+            margin: 0px auto;
+            background: rgb(245, 245, 245) none repeat scroll 0px 0px;
+            border-radius: 10px;
+            padding: 10px 30px;
+            box-shadow: 1px 1px 7px 6px rgb(62, 62, 62) inset;
 
-            .container {
-              width: 1000px;
+            .content-info {
 
-              .controller-n-url {
+              .container {
+                width: 1000px;
 
+                .controller-n-url {
+
+                }
               }
             }
+
           }
+
         }
       }
 
     }
 
+    //close btn
     .close-btn {
       i {
         font-size: 22px;
@@ -151,10 +170,10 @@ body {
     }
   }
 
-  :required{
-    border:1px solid #ffd300;
+  :required {
+    border: 1px solid #ffd300;
   }
-  :optional{
-    border:1px solid green  ;
+  :optional {
+    border: 1px solid green;
   }
 }

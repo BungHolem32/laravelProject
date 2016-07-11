@@ -1,35 +1,39 @@
 //user-info wrapper (side-right tab)
 
 //container size
-&.container {
+&.container,
+&.container-fluid {
 
   @media (min-width: 640px) {
-    height: 200px;
-    width: 300px;
-    border: 1px solid gray;
-    position: absolute;
-    right: @default-size;
-    top: 0;
-    //background: white;
-    background: #fdfdfd;
-    border-radius: @default-size/4*3;
-    box-shadow: inset 1px 1px @default-size/2 2px darkgray;
-    margin-top: @default-size/2;
+
   }
 
   .user-info {
+    border: 1px solid gray;
+    background: #fdfdfd;
+    border-radius: @default-size/2*1.5;
+    box-shadow: inset 1px 1px 10px 2px darkgray;
+    margin-top: @default-size/2;
+    min-width: @default-size/2*25;
+
     header {
       h1 {
         text-shadow: 1px 1px 1px darkgray;
       }
     }
+
     .content {
-      padding-left: @default-size/2*5;
+      padding-left: @default-size/2*1.5;
       letter-spacing: 1px;
 
+      @media (min-width: 640px) {
+        padding-left: @default-size/2*5;
+      }
+
       .log-out {
-        margin-top: 0;
+        margin-bottom: 1em;
       }
     }
   }
 }
+

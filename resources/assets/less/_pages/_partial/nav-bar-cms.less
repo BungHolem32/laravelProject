@@ -2,48 +2,73 @@
 .nav-bar-cms {
   //background: url('/img/roughcloth.png');
   //background: #edf8d4;
-  background : #fdfdfd;
+  background: #fdfdfd;
   border: 0;
 
   //nav-bar-wrapper
   &.navbar {
-    font-size     : 28px;
-    border-radius : 0;
-    min-height    : auto;
+    font-size: 28px;
+    border-radius: 0;
+    min-height: initial;
     //border-bottom: 1px solid #8c8c8c;
 
     .container {
-      margin-bottom : 0;
+      margin-bottom: 0;
+      padding: 0;
+
+      @media (min-width: 768px) {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
 
       //nav bar list element
       .nav-bar-crm-li {
+        padding-right: 0;
+        border-bottom: 1px solid gray;
+
+        @media (min-width: 768px) {
+          font-size: @default-size/2*3;
+          border-bottom: none;
+        }
+
+        @media (min-width: 990px) {
+          font-size: @default-size/2*2.5;
+          border-bottom: none;
+        }
+
+        @media (min-width: 1200px) {
+          font-size: @default-size/2*2.8;
+          border-bottom: none;
+        }
 
         //nav-bar href
         .nav-link {
-          color           : black;
-          text-decoration : none;
-          letter-spacing  : 1px;
-          transition      : all 600ms ease;
-          opacity         : 0.5;
+          color: black;
+          text-decoration: none;
+          letter-spacing: 1px;
+          transition: all 600ms ease;
+          opacity: 0.5;
 
           //on hover
           &:hover {
-            opacity     : 1;
-            text-shadow : 1px 1px 1px gray;
+            opacity: 1;
+            text-shadow: 1px 1px 1px gray;
           }
 
-          &:after {
-            content      : "";
-            height       : 100%;
-            border-right : 1px solid #6b6a6a;
-            padding-left : 20px;
-          }
+          //&:after {
+          //  content      : "";
+          //  height       : 100%;
+          //  border-right : 1px solid #6b6a6a;
+          //  padding-left : 20px;
+          //}
 
         }
         &:last-of-type {
           .nav-link {
             &:after {
-              border-right : none;
+              border-right: none;
             }
           }
         }

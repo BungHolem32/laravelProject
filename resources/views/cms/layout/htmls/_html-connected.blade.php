@@ -15,6 +15,10 @@
 
 <div class="container-fluid wrapper no-padding {{$page}}-page">
 
+    @include('cms._partials.account-info')
+
+
+
     {{--HEADER TAG--}}
     <header class="top-title col-md-12">
         <div class="container text-center">
@@ -31,7 +35,6 @@
 
     {{--MAIN CONTENT --}}
     <main class="cms-content ">
-        @include('cms._partials.account-info')
         @yield('content')
     </main>
 
