@@ -63,8 +63,6 @@ if (!function_exists('createSaltPass')) {
     }
 }
 
-
-
 if (!function_exists('createEncryptEncode')) {
     function createEncryptUserInfo($userInfo)
     {
@@ -115,7 +113,6 @@ if (!function_exists('DecryptBase64')) {
         return $isDecrypted;
     }
 }
-
 
 if (!function_exists('saltPassword')) {
     function saltPassword($password)
