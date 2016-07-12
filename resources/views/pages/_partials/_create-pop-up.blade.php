@@ -16,17 +16,17 @@
 
                     {{--NAME--}}
                     <div class="form-group">
-                        {{Form::text('name','',['class'=>'form-control name','name'=>'name','placeholder'=>'enter page name...'])}}
+                        {{Form::text('name','',['class'=>'form-control name','name'=>'name','placeholder'=>'enter page name...','required'=>'required'])}}
                     </div>
 
                     {{--URL--}}
                     <div class="form-group">
-                        {{Form::text('url','',['class'=>'form-control url','name'=>'url','placeholder'=>'set friendly url...'])}}
+                        {{Form::text('url','',['class'=>'form-control url','name'=>'url','placeholder'=>'set friendly url...','required'=>'required'])}}
                     </div>
 
                     {{--SUBMIT BTN--}}
-                    <div class="form-group ">
-                        <a href="#create" class="createNewPageFirstStep">{{Form::submit('Create New Page',['class'=>'full-width form-control btn-warning controller-btn text-uppercase',
+                    <div class="form-group submit-name-n-url">
+                        <a href="#create" class="createNewPageFirstStep">{{Form::submit('Create New Page',['class'=>'full-width form-control btn-warning submit-name-n-url text-uppercase',
                                                               'name'=>'pageMaze[head][create-new-btn]'])}}</a>
                     </div>
 

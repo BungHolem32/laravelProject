@@ -7,64 +7,76 @@
         </a>
 
         <h2 class="title text-uppercase text-center">create/edit page</h2>
+
         <div class="form">
 
             <div id="info-create" class="content-info">
-                <form action="">
 
-                    {{--CONTROLLER PART--}}
-                    <div class="col-md-4 pull-right">
+                {{--CONTROLLER PART--}}
+                <aside class="col-md-4 pull-right">
 
-                        <div class="controller-n-url">
+                    <div class="controller-n-url">
 
-                            {{--controller--}}
-                            <div class="form-group col-md-6 no-padding-right">
+                        {{ Form::open(['url'=>'#','action'=>'POST']) }}
 
-                                <label for="controller" class="text-capitalize">controller</label>
+                        {{--controller--}}
+                        <div class="form-group col-md-6 no-padding-right">
 
-                                <select name="controller" id="controller"
-                                        class="form-control text-capitalize full-width controller-input">
-                                    <option value="">Select Controller</option>
+                            <label for="controller" class="text-capitalize">controller</label>
 
-                                    @include('pages._partials._controller-select-box')
+                            <select name="controller" id="controller"
+                                    class="form-control text-capitalize full-width controller-input">
+                                <option value="">Select Controller</option>
 
-                                </select>
+                                @include('pages._partials._controller-select-box')
 
-                            </div>
-
-                            {{--url--}}
-                            <div class="form-group col-md-6 no-padding-right">
-                                {{Form::label('url')}}
-                                {{Form::text('url','',['class'=>'form-control friendlyUrl','name'=>'url','placeholder'=>'set friendly url...'])}}
-                            </div>
-
-                            {{--submit-btn--}}
-                            <div class="form-group col-md-12 no-padding-right">
-                                {{Form::submit('Update Controller',['class'=>'full-width form-control btn-warning controller-btn text-uppercase','name'=>'pageMaze[head][controller-btn]'])}}
-                            </div>
+                            </select>
                         </div>
 
-                        {{--scripts and head title--}}
-                        <div class="form-group col-md-12">
-                            <h2 class="text-uppercase">head & Scripts</h2>
+                        {{--url--}}
+                        <div class="form-group col-md-6 no-padding-right">
+                            {{Form::label('url')}}
+                            {{Form::text('url','',['class'=>'form-control friendlyUrl','name'=>'url','placeholder'=>'set friendly url...'])}}
                         </div>
 
+                        {{--submit-btn--}}
                         <div class="form-group col-md-12 no-padding-right">
-                            {{Form::label('title')}}
-                            {{Form::text('title','',['class'=>'form-control','placeholder'=>'write the page title...','name'=>'pageMaze[head][title]'])}}
-
+                            {{Form::submit('Update Controller',['class'=>'full-width form-control btn-warning controller-btn text-uppercase','name'=>'pageMaze[head][controller-btn]'])}}
                         </div>
 
-                        <div class="form-group text-capitalize col-md-12 no-padding-right">
-                            {{Form::label('Css Tags')}}
-                            {{Form::textarea('css','',['class'=>'form-control','placeholder'=>'add css tag / meta / description and more...','name'=>'pageMaze[head][css]'])}}
-                        </div>
+                        {{Form::close()}}
 
-                        <div class="form-group text-capitalize col-md-12 no-padding-right">
-                            {{Form::label('Script tags')}}
-                            {{Form::textarea('script','',['class'=>'form-control','placeholder'=>'add script tag / google analyst etc ... ','name'=>'pageMaze[head][script]','rows'=>'6' ,'required'=>'required'])}}
-                        </div>
                     </div>
+
+                    {{--scripts and head title--}}
+                    <div class="form-group col-md-12">
+                        <h2 class="text-uppercase">head & Scripts</h2>
+                    </div>
+
+                    {{Form::open()}}
+
+                    <div class="form-group col-md-12 no-padding-right">
+                        {{Form::label('title')}}
+                        {{Form::text('title','',['class'=>'form-control','placeholder'=>'write the page title...','name'=>'pageMaze[head][title]'])}}
+
+                    </div>
+
+                    <div class="form-group text-capitalize col-md-12 no-padding-right">
+                        {{Form::label('Css Tags')}}
+                        {{Form::textarea('css','',['class'=>'form-control','placeholder'=>'add css tag / meta / description and more...','name'=>'pageMaze[head][css]'])}}
+                    </div>
+
+                    <div class="form-group text-capitalize col-md-12 no-padding-right">
+                        {{Form::label('Script tags')}}
+                        {{Form::textarea('script','',['class'=>'form-control','placeholder'=>'add script tag / google analyst etc ... ','name'=>'pageMaze[head][script]','rows'=>'10' ,'required'=>'required'])}}
+                    </div>
+
+                    {{Form::close()}}
+
+                </aside>
+
+
+                {{Form::open()}}
 
                     <div class="col-md-8 page-content">
 
@@ -74,23 +86,23 @@
                         </div>
 
 
-                        <div class="form-group ">
+                        <div class="form-group">
                             {{Form::label('header')}}
                             {{Form::text('header','',['class'=>'form-control','placeholder'=>'describe your content in few word...','name'=>'pageMaze[content][header]','required'=>'required'])}}
 
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group">
                             {{Form::label('body')}}
                             {{Form::textarea('body','',['class'=>'form-control','placeholder'=>'put the page content here...','name'=>'pageMaze[content][body]'])}}
 
                         </div>
-                        <div class="form-group ">
+                        <div class="form-group">
                             {{Form::label('footer')}}
                             {{Form::textarea('footer','',['class'=>'form-control','placeholder'=>'bottom-text','name'=>'pageMaze[content][footer]'])}}
 
                         </div>
-                        <div class="form-group ">
+                        <div class="form-group">
                             {{Form::label('other shit')}}
                             {{Form::text('shit','',['class'=>'form-control','placeholder'=>'bottom-text','name'=>'pageMaze[content][shit]'])}}
 
@@ -99,12 +111,27 @@
                         <div class="form-group">
                             {{Form::submit('add',['class'=>'text-uppercase center-block btn-info btn-lg create-btn form-group full-width','required'=>'required'])}}
                         </div>
-
                     </div>
-                    <div class="clearfix"></div>
-                </form>
+
+                {{Form::close()}}
+
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
 </div>
 
+
+
+
+@section('bottom-scripts')
+
+    <script>
+        $('.controller-btn').on('click',function(e){
+            e.prevenetDefault();
+            console.log(123);
+        })
+
+    </script>
+
+@stop

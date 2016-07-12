@@ -1,5 +1,5 @@
 <section class="user-info-wrapper container-fluid">
-    <div class="col-md-4 col-sm-12 col-xs-12  user-info pull-right-md">
+    <div class="col-md-2 col-sm-12 col-xs-12  user-info pull-right-md">
         <header>
             <h1 class="text-uppercase text-sm-center text-md-left">{{session('userInfo.fName').' '. session('userInfo.lName')}}</h1>
         </header>

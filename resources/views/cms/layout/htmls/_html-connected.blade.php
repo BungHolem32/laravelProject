@@ -18,6 +18,10 @@
     @include('cms._partials.account-info')
 
 
+    {{--NAV BAR TAG--}}
+    @include('cms._partials.nav-bar-cms')
+    @yield('nav-bar')
+
 
     {{--HEADER TAG--}}
     <header class="top-title col-md-12">
@@ -28,10 +32,6 @@
         </div>
     </header>
     <div class="clearfix"></div>
-
-    {{--NAV BAR TAG--}}
-    @include('cms._partials.nav-bar-cms')
-    @yield('nav-bar')
 
     {{--MAIN CONTENT --}}
     <main class="cms-content ">

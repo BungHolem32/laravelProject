@@ -26,6 +26,9 @@
     @include('pages._partials._create-pop-up')
     @include('pages.content.default.edit')
 
+
+
+
     {{--EDIT PAGE--}}
     <div id="edit" class="edit-page-wrapper col-md-3 jumbotron margin-right">
         @include('pages.content.default.edit')
@@ -101,7 +104,7 @@
         $('.createNewPageFirstStep').on('click', function () {
             var url = $('.url').val().toLowerCase();
             url = url.replace(' ', '-');
-            var name = $('.name').val().toLowerCase();
+            var name = $('.name').val();
 
 
             $('.friendlyUrl').val(url);
