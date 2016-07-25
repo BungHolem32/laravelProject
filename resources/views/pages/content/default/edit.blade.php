@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <div id="create" class="create-page-wrapper col-md-offset-1 col-md-3 margin-right jumbotron">
 
     {{--CONTENT EDIT --}}
@@ -41,7 +42,7 @@
 
                         {{--submit-btn--}}
                         <div class="form-group col-md-12 no-padding-right">
-                            {{Form::submit('Update Controller',['class'=>'full-width form-control btn-warning controller-btn text-uppercase','name'=>'pageMaze[head][controller-btn]'])}}
+                            {{Form::button('Update Controller',['class'=>'full-width form-control btn-warning controller-btn text-uppercase','name'=>'pageMaze[head][controller-btn]'])}}
                         </div>
 
                         {{Form::close()}}
@@ -127,10 +128,15 @@
 @section('bottom-scripts')
 
     <script>
-        $('.controller-btn').on('click',function(e){
-            e.prevenetDefault();
-            console.log(123);
+        $('.controller-btn').on('click',function(){
+            var parent = $(this).parent().parent();
+            $('.form-control',parent).each(function(index,val){
+                if($(val).prop('tagName') != 'BUTTON'){
+                   console.log(val);
+               }
+            })
         })
+
 
     </script>
 

@@ -9256,13 +9256,17 @@ body .container-fluid.register-page .cms-register-wrapper .form-group .form-cont
   height: 50px;
   font-size: 20px;
 }
-body .container-fluid.login-page .cms-login-wrapper.container {
+body .container-fluid.wrapper.login-page .cms-content {
+  border: none;
+  box-shadow: none;
+}
+body .container-fluid.wrapper.login-page .cms-login-wrapper.container {
   width: 600px;
   border-radius: 5px;
   padding: 20px 40px;
   margin-top: 20px;
 }
-body .container-fluid.login-page .cms-login-wrapper .login-submit {
+body .container-fluid.wrapper.login-page .cms-login-wrapper .login-submit {
   width: 100%;
   font-size: 26px;
 }

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('pages.layout._html-full')
 @section('title','Contact Page')
 
 @section('content')

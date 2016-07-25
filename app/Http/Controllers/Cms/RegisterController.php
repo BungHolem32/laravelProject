@@ -62,7 +62,7 @@ class RegisterController extends Controller
 
                 /*IF USER ADDED*/
                 if ($isUserAdded){
-                    return redirect()->route('crm-dashboard')->with('feedback');
+                    return redirect()->route('cms-dashboard')->with('feedback');
                 }
 
                 /*IF USER DIDN'T ADDED*/

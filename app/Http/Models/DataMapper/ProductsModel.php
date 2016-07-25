@@ -20,7 +20,7 @@ class ProductsModel extends BaseModel
         $products = null;
         $query = $this->DBservice->connect->createQueryBuilder()
             ->select('*')
-            ->from('laravelCrmProducts')->execute();
+            ->from('laravelCMSProducts')->execute();
         $products = $query->fetchAll();
 
         if (!$products) {
@@ -36,7 +36,7 @@ class ProductsModel extends BaseModel
         $product = null;
         $query = $this->DBservice->connect->createQueryBuilder()
             ->select('*')
-            ->from('laravelCrmProducts')
+            ->from('laravelCMSProducts')
             ->where('id = ?')
             ->setParameter(0, $id)
             ->execute();

@@ -95,6 +95,10 @@
 //            pageManagement.changeColorByValue();
         })();
 
+        $('input[class$="btn"]').on('click',function(e){
+            e.preventDefault();
+            console.log(123);
+        })
 
         $('.create-btn').on('click', function (e) {
             e.preventDefault();
@@ -105,7 +109,6 @@
             var url = $('.url').val().toLowerCase();
             url = url.replace(' ', '-');
             var name = $('.name').val();
-
 
             $('.friendlyUrl').val(url);
             $('.pageName').val(name);

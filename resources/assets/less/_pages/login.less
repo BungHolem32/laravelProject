@@ -1,19 +1,28 @@
 body {
 
   .container-fluid {
-    &.login-page {
 
-      .cms-login-wrapper {
-        &.container {
-          width: @container-width-form;
-          border-radius: 5px;
-          padding: @default-size @default-size*2;
-          margin-top: @default-size;
+    &.wrapper {
+
+      &.login-page {
+
+        .cms-content {
+          border: none;
+          box-shadow: none;
         }
 
-        .login-submit {
-          width: 100%;
-          font-size: @default-size*1.3;
+        .cms-login-wrapper {
+          &.container {
+            width: @container-width-form;
+            border-radius: 5px;
+            padding: @default-size @default-size*2;
+            margin-top: @default-size;
+          }
+
+          .login-submit {
+            width: 100%;
+            font-size: @default-size*1.3;
+          }
         }
       }
     }

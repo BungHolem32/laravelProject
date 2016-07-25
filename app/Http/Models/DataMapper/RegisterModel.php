@@ -53,7 +53,7 @@ class RegisterModel extends BaseModel
         $this->userInfo = $this->user->setConfiguration($userInfo);
 
         /*2-CREATE QUERY*/
-        $queryUserStatement = createDynamicQuery();
+        $queryUserStatement = createDynamicQuery(null,$this->userInfo);
 
         /*3-EXECUTE THE QUERY*/
         $isUserAdded = $this->DBservice->connect->query($queryUserStatement);

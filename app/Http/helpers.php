@@ -30,17 +30,19 @@ if (!function_exists('validateInput')) {
 }
 
 /*DYNAMIC QUERY BUILDER INSERTION*/
-if (!function_exists('insetDynamicTable')) {
+if (!function_exists('createDynamicQuery')) {
 
-    function createDynamicQuery($table = null)
+    function createDynamicQuery($table = null,$userInfo)
     {
+
         if ($table) {
+
             $validTable = validateInput($table);
             $queryUserStatement = "INSERT INTO $validTable VALUES ('',";
         }
-        $queryUserStatement = "INSERT INTO `laravelcmsuser` VALUES ('',";
+        $queryUserStatement = "INSERT INTO `laravelCMSUser` VALUES ('',";
 
-        foreach ($this->userInfo as $name => $val) {
+        foreach ($userInfo as $name => $val) {
             if ($name == 'uId') {
                 continue;
             } elseif ($name == 'password') {
